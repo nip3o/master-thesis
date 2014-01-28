@@ -1,0 +1,70 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage[toc,page]{appendix}
+\usepackage{listings}
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customizable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage[margin=2.5cm]{geometry}
+
+\setlength{\parindent}{0pt}
+
+%%% HEADERS & FOOTERS
+\author{Niclas Olofsson <nicol271@student.liu.se>}
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{1pt} % customise the layout...
+\fancyhead[LO,LE]{Niclas Olofsson\\Planning report}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%%% SECTION TITLE APPEARANCE
+%\usepackage{sectsty}
+%\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+%% (This matches ConTeXt defaults)
+%
+%%%% ToC (table of contents) APPEARANCE
+%\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+%\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+%\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+%\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Planning rapport for master thesis at IDA}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed
+
+\begin{document}
+\maketitle
+
+\section{Author}
+Niclas Olofsson, Civilingenjörsutbildning i Datateknik
+
+\section{Working title}
+Web application for assignment of manning in organizations
+
+\section{Problem formulation}
+\input{problem_formulation.tex}
+
+\section{Initial approach}
+\input{initial_approach.tex}
+
+\section{Literature basis}
+\input{litterature_basis.tex}
+
+\section{Time schedule}
+\input{time_schedule.tex}
+
+\end{document}
