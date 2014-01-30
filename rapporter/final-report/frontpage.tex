@@ -1,0 +1,95 @@
+\documentclass[a4paper]{memoir}
+
+\usepackage{ifxetex}
+\ifxetex
+\usepackage{fontspec,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont{Times}
+\else
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\fi
+\usepackage{calc,fancybox,graphicx,pict2e}
+\usepackage[absolute]{textpos}
+\setlength{\TPVertModule}{1mm}
+\setlength{\TPHorizModule}{\TPVertModule}
+\setlength{\parindent}{0pt}
+\begin{document}
+\pagestyle{empty}
+\fontsize{29}{35pt}\selectfont
+\begin{textblock*}{127mm}(41mm,18mm)
+  Institutionen för datavetenskap
+\end{textblock*}
+
+\fontsize{18}{35pt}\selectfont
+\begin{textblock*}{127mm}(41mm,28mm)
+Department of Computer and Information Science
+\end{textblock*}
+
+\fontsize{18}{35pt}\selectfont
+\begin{textblock*}{39mm}(85mm,48mm)
+  Examensarbete
+\end{textblock*}
+
+\fontsize{24}{29pt}\selectfont
+\begin{textblock*}{175mm}(14mm,62mm)
+  \hspace*{\fill}\textbf{Titel}\hspace*{\fill}
+\end{textblock*}
+
+\fontsize{12}{14pt}\selectfont
+\begin{textblock*}{4mm}(103mm,75mm)
+  av
+\end{textblock*}
+
+\fontsize{24}{29pt}\selectfont
+\begin{textblock*}{175mm}(14mm,82mm)
+  \hspace*{\fill}\textbf{Namn}\hspace*{\fill}
+\end{textblock*}
+
+
+\fontsize{18}{22pt}\selectfont
+\begin{textblock*}{175mm}(14mm,100mm)
+  \hspace*{\fill}LIU-IDA-\ldots\hspace*{\fill}
+\end{textblock*}
+
+\fontsize{18}{22pt}\selectfont
+\begin{textblock*}{46mm}(84mm,111mm)
+  \hspace*{\fill}ÅÅÅÅ--MM--DD\hspace*{\fill}
+\end{textblock*}
+
+
+\begin{textblock*}{173mm}(19mm,131mm)
+  \cornersize{10}
+  \setlength{\fboxrule}{1mm}
+  \thicklines
+  \Ovalbox{
+    \begin{minipage}{173mm-4mm}
+     \mbox{} \vspace{16mm} 
+      \begin{figure}\centering
+        \includegraphics[width=141mm]{linkuniv_sv_vert_blk}
+     \end{figure}
+     \vspace{9mm}
+   \end{minipage}}
+\end{textblock*}
+
+\fontsize{12}{14pt}\selectfont
+\begin{textblock*}{52mm}(18mm,256mm)
+  \begin{centering}
+    Linköpings universitet\\
+    SE-581 83 Linköping, Sweden
+  \end{centering}
+\end{textblock*}
+
+
+\fontsize{12}{14pt}\selectfont
+\begin{textblock*}{52mm}(141mm,256mm)
+  \begin{centering}
+    Linköpings universitet\\
+    SE-581 83 Linköping, Sweden
+  \end{centering}
+\end{textblock*}
+
+
+
+\end{document}

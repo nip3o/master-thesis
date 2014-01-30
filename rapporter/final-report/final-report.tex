@@ -18,16 +18,13 @@
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
 \usepackage[margin=2.5cm]{geometry}
 
-\usepackage[stable]{footmisc} % footnotes in section tags
-\usepackage{natbib} % automatic short-hand citations
-
 \setlength{\parindent}{0pt}
 
 %%% HEADERS & FOOTERS
 \author{Niclas Olofsson\\<nicol271@student.liu.se>}
 \pagestyle{fancy} % options: empty , plain , fancy
 \renewcommand{\headrulewidth}{1pt} % customise the layout...
-\fancyhead[LO,LE]{Niclas Olofsson\\Planning report}
+\fancyhead[LO,LE]{Niclas Olofsson}
 \lfoot{}\cfoot{\thepage}\rfoot{}
 
 %%%% SECTION TITLE APPEARANCE
@@ -45,33 +42,15 @@
 
 %%% The "real" document content comes below...
 
-\title{Planning rapport for master thesis at IDA}
+\title{Master's thesis}
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed
 
 \begin{document}
+
+\input{frontpage.tex}
+
 \maketitle
 
-\section{Author}
-Niclas Olofsson, Civilingenjörsutbildning i Datateknik
-
-\section{Working title}
-Automated testing in a web application for staff manning
-
-\section{Problem formulation}
-\input{problem_formulation.tex}
-
-\section{Initial approach}
-\input{initial_approach.tex}
-
-\section{Literature basis}
-\input{litterature_basis.tex}
-
-\section{Time schedule}
-\input{time_schedule.tex}
-
-%\bibliographystyle{plain}
-\bibliographystyle{plainnat}
-\bibliography{references}
 
 \end{document}
