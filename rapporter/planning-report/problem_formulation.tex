@@ -3,37 +3,43 @@
 % [Problemformuleringen ska grundas i litteraturbasen. Planera för att
 % [finjustera formuleringen i takt med att litteraturstudierna fortgår.]
 
-In large organizations, there is often a need for efficient
-administration of staff. Resource planning is often used to determine
-the required production capacity in order to reach a specific goal. One
-example could be the required number of examinations that is needed to
-be done at a hospital in order to keep the waiting times within specific
-bounds. The results of the resource planning poses as the base for
-allocating staff. GOLI is a startup company developing a web application
-for production planning, currently focused on following up plans and
-goals. Due to requirements from customers, the code base will be
-extended to include new features.\\
+% In large organizations, there is often a need for efficient
+% administration of staff. Resource planning is often used to determine
+% the required production capacity in order to reach a specific goal. One
+% example could be the required number of examinations that is needed to
+% be done at a hospital in order to keep the waiting times within specific
+% bounds. The results of the resource planning poses as the base for
+% allocating staff. GOLI is a startup company developing a web application
+% for production planning, currently focused on following up plans and
+% goals. Due to requirements from customers, the code base will be
+% extended to include new features.\\
 
 During code refactoring or implementation of new features in software,
-errors often occur in existing parts. Automatic testing is often used to
-verify the functionality of software, in order to detect bugs and errors
-before they end up in a production environment. The goal of this
-master's thesis is to analyze how this can be introduced in a good way,
-and if lower-level tests can be derived from existing high-level tests
-automatically.\\
+errors often occur in existing parts. This may have a serious impact on
+the reliability of the system, thus jeopardizing user's confidence for
+the system. Automatic testing is utilized to verify the functionality of
+software in order to detect bugs and errors before they end up in a
+production environment.\\
 
+The goal of this final thesis is to analyze how automatic testing can be
+introduced in an existing web application in a good way, and if lower-
+level tests can be derived from existing high-level tests automatically.
+We will also study how this can be applied when extending the system
+with new features.\\
 
-\subsection{Formulation of question}
+The main research questions of this project are the following:
 
 \begin{itemize}
-    \item How can a combination of low-level and high-level testing be used
-          in order to achieve good test coverage?
-    \item Is it possible to automate the process of breaking down high-level
-          behavioral into lower-level unit tests?
+    \item How can a combination of low-level and high-level testing be
+          used when testing a web application?
+    \item How can tests be implemented when adding new functionality
+          into existing software?
+    \item Is it possible to automatically derive lower-level unit tests
+          from high-level behavioral tests?
 \end{itemize}
 
 
-% The current product uses automatic testing to some extent, primary
+% The current system uses automatic testing to some extent, primary
 % behavior-level testing in the Cucumber framework. According to the
 % developers, these tests are cumbersome to write and takes long time to
 % run.
