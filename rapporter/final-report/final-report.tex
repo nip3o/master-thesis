@@ -12,43 +12,54 @@
 \usepackage[toc,page]{appendix}
 \usepackage{listings}
 \usepackage{booktabs} % for much better looking tables
-\usepackage{array} % for better arrays (eg matrices) in maths
-\usepackage{paralist} % very flexible & customizable lists (eg. enumerate/itemize, etc.)
+\usepackage{array} % for better arrays (e.g. matrices) in maths
+\usepackage{paralist} % very flexible & customizable lists (e.g. enumerate, etc.)
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
-\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage{subfig} % make it possible to include more than one captioned figure / table in a single float
 \usepackage[margin=2.5cm]{geometry}
 
 \usepackage{titling} % for useful adjustments to the titles
-\usepackage{url} % for simple url formatting
+\usepackage{url} % for simple URL formatting
 \usepackage{natbib} % automatic short-hand citations
+
+\usepackage{hyperref} % useful stuff for references
+\usepackage[hypcap]{caption} % smarter pointing for reference links
+
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+
 
 \setlength{\parindent}{0pt}
 
-%%% HEADERS & FOOTERS
+%%% Headers, footers
 \author{Niclas Olofsson}
-\pagestyle{fancy} % options: empty , plain , fancy
-\renewcommand{\headrulewidth}{1pt} % customise the layout...
-\fancyhead[LO,LE]{Niclas Olofsson}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[LO,L]{Automated testing in web applications}
 \lfoot{}\cfoot{\thepage}\rfoot{}
 
+%%% Custom chapter and section style
 \usepackage{titlesec, blindtext, color}
 \definecolor{gray75}{gray}{0.75}
 \newcommand{\hsp}{\hspace{20pt}}
 
 \usepackage{sectsty}
-\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+\allsectionsfont{\sffamily\mdseries\upshape} % sans serif headings
 
-% Custom chapter style
 \titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
 
-\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
-
+%%% Title page
 \makeatletter
 \newcommand{\myinfo}{
   \gdef\@myinfo{%
-  \begin{tabular}{ll}
-  Supervisor: & Anders Fröberg\\
-  Examiner: & Erik Berglund\\
+  \begin{tabular}{cl}
+  Supervisor & Anders Fröberg\\
+             & IDA, Linköping University\\
+  \\
+  Technical  & Mattias Ekberg\\
+  supervisor & GOLI AB\\
+  \\
+  Examiner & Erik Berglund\\
+           & IDA, Linköping University\\
   \end{tabular}
   \par\vspace{12pt}
   \textsc{Linköping University\\
@@ -58,7 +69,7 @@
 \postdate{\par\vspace{12pt}\@myinfo\end{center}}
 \makeatother
 
-\title{\textsc{Final thesis}\\\textbf{Automated testing in web applications}}
+\title{\textsc{Final thesis}\\\Huge\textbf{Automated testing in web applications}}
 \author{Niclas Olofsson}
 \date{\today}
 
