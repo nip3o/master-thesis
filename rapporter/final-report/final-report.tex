@@ -1,7 +1,7 @@
 % !TEX TS-program = pdflatex
 % !TEX encoding = UTF-8 Unicode
 
-\documentclass[a4paper]{article}
+\documentclass[a4paper]{report}
 
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
@@ -18,39 +18,88 @@
 \usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
 \usepackage[margin=2.5cm]{geometry}
 
+\usepackage{titling} % for useful adjustments to the titles
+\usepackage{url} % for simple url formatting
+\usepackage{natbib} % automatic short-hand citations
+
 \setlength{\parindent}{0pt}
 
 %%% HEADERS & FOOTERS
-\author{Niclas Olofsson\\<nicol271@student.liu.se>}
+\author{Niclas Olofsson}
 \pagestyle{fancy} % options: empty , plain , fancy
 \renewcommand{\headrulewidth}{1pt} % customise the layout...
 \fancyhead[LO,LE]{Niclas Olofsson}
 \lfoot{}\cfoot{\thepage}\rfoot{}
 
-%%%% SECTION TITLE APPEARANCE
-%\usepackage{sectsty}
-%\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
-%% (This matches ConTeXt defaults)
-%
-%%%% ToC (table of contents) APPEARANCE
-%\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
-%\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
-%\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
-%\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
 
-%%% END Article customizations
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
 
-%%% The "real" document content comes below...
+% Custom chapter style
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
 
-\title{Final thesis}
-%\date{} % Activate to display a given date or no date (if empty),
-         % otherwise the current date is printed
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+
+\makeatletter
+\newcommand{\myinfo}{
+  \gdef\@myinfo{%
+  \begin{tabular}{ll}
+  Supervisor: & Anders Fröberg\\
+  Examiner: & Erik Berglund\\
+  \end{tabular}
+  \par\vspace{12pt}
+  \textsc{Linköping University\\
+          Department of Computer and Information Science}}
+}
+% add the extra information after the date
+\postdate{\par\vspace{12pt}\@myinfo\end{center}}
+\makeatother
+
+\title{\textsc{Final thesis}\\\textbf{Automated testing in web applications}}
+\author{Niclas Olofsson}
+\date{\today}
+
+\myinfo
 
 \begin{document}
 
-\input{frontpage.tex}
-
 \maketitle
+\newpage
 
+\begin{abstract}
+\input{abstract.tex}
+\end{abstract}
+
+\renewcommand{\abstractname}{Acknowledgments}
+\begin{abstract}
+\input{acknowledgements.tex}
+\end{abstract}
+
+\tableofcontents
+\thispagestyle{empty} % No page numbering of ToC pages
+\newpage
+
+\setcounter{page}{1}
+
+\chapter{Introduction}
+
+    \section{Background}
+    \input{introduction/background.tex}
+
+    \section{Problem formulation}
+    \input{introduction/problem.tex}
+
+    \section{Scope and limitations}
+    \input{introduction/limitations.tex}
+
+    \section{Method}
+    \input{introduction/method.tex}
+
+
+\bibliographystyle{plainnat}
+\bibliography{references}
 
 \end{document}
