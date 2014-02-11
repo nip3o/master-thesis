@@ -20,7 +20,7 @@
 
 \usepackage{titling} % for useful adjustments to the titles
 \usepackage{url} % for simple URL formatting
-\usepackage{natbib} % automatic short-hand citations
+\usepackage[numbers]{natbib} % automatic short-hand citations
 
 \usepackage{hyperref} % useful stuff for references
 \usepackage[hypcap]{caption} % smarter pointing for reference links
@@ -97,17 +97,34 @@
 
 \chapter{Introduction}
 
-    \section{Background}
-    \input{introduction/background.tex}
+  \section{Background}
+  \input{introduction/background.tex}
 
-    \section{Problem formulation}
-    \input{introduction/problem.tex}
+  \section{Problem formulation}
+  \input{introduction/problem.tex}
 
-    \section{Scope and limitations}
-    \input{introduction/limitations.tex}
+  \section{Scope and limitations}
+  \input{introduction/limitations.tex}
 
-    \section{Method}
-    \input{introduction/method.tex}
+
+\chapter{Methodology}
+  \input{methodology/method-intro.tex}
+
+  \section{Literature study}
+  \input{methodology/literature-study.tex}
+
+
+
+\chapter{Theory}
+
+  \section{Test-driven development}
+  \input{theory/tdd.tex}
+
+  \section{Behavior-driven development}
+  \input{theory/bdd.tex}
+
+  \section{Quality factors for tests}
+  \input{theory/quality-factors.tex}
 
 
 \bibliographystyle{plainnat}
