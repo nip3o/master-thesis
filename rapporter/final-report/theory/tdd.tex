@@ -1,1 +1,58 @@
-TDD
+Test-Driven Development (TDD) originates from the Test First principle
+in the eXtreme Programming (XP) methodology, and is said to be one of
+the most controversial and influential agile practices
+\cite{book:tdd_madeyski}.\\
+
+\citet{book:tdd_madeyski} describes two types of software development
+principles; Test First and Test Last. When following the Test Last
+methodology, functionality is implemented in the system directly based
+on user stories. When the functionality is implemented, tests are
+written in order to verify the implementation. Tests are run and the
+code is modified until there seems to be enough tests and all tests
+passes.\\
+
+Following the Test First methodology basically means doing these things
+in reversed order. A test is written based on some part of a user story.
+The functionality is implemented in order to make the test pass, and
+more tests and implementation is added as needed until the user story in
+completed \cite{book:tdd_madeyski}.\\
+
+The Test First principle is a central theme in TDD.
+\citet{book:tdd_beck} describes the basics of TDD in a \quotes{mantra}
+called \emph{Red/green/refactor}. The color references refers to colors
+used by often test runners to indicate failing or passing tests, and the
+three words refers to the basic steps of TDD.
+
+\begin{itemize}
+    \item Red - a small, failing test is written.
+    \item Green - functionality is implemented in order to get the test
+          to pass as fast as possible.
+    \item Refactor - duplications and other quick fixes introduces
+          during the previous stage is removed.
+\end{itemize}
+
+According to \citeauthor{book:tdd_beck}, TDD is a way of managing fear
+during programming. This fear makes you more careful, less willing to
+communicate with others, and makes you avoid feedback. A more ideal
+situation would be one there developers instead try to learn fast,
+communicates much with others and searches out constructive feedback.\\
+
+Some measures are required in order to practice TDD in an efficient way.
+
+\begin{itemize}
+    \item Developers needs to write tests themselves, instead of relying
+          on some test department writing all tests afterwards. It would
+          simply not be practical to wait for someone else all the time.
+
+    \item The development environment must provide fast response to changes.
+          In practice this means that small code changes must compile fast,
+          and tests need to run fast. Since we make a lot of small changes
+          often and run the tests each time, the overhead would be overwhelming
+          otherwise.
+
+    \item Designs must consist of modules with high cohesion and loose coupling.
+          It is very impractical to write tests for modules with many of
+          unrelated input and output parameters.
+\end{itemize}
+
+
