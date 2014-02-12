@@ -22,6 +22,9 @@
 \usepackage{url} % for simple URL formatting
 \usepackage[numbers]{natbib} % automatic short-hand citations
 
+\usepackage{listings} % code listings
+\usepackage{shortvrb} % shorthand pre-formatted text
+
 \usepackage{hyperref} % useful stuff for references
 \usepackage[hypcap]{caption} % smarter pointing for reference links
 
@@ -48,6 +51,16 @@
 \newcommand{\quotes}[1]{``#1''}
 
 \titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+
+\lstset{
+language=Ruby,
+basicstyle=\small\sffamily,
+numbers=left,
+numberstyle=\tiny,
+frame=tb,
+columns=fullflexible,
+showstringspaces=false
+}
 
 %%% Title page
 \makeatletter
@@ -117,6 +130,15 @@
 
 
 \chapter{Theory}
+
+  \section{Unit-testing}
+  \input{theory/unit-testing.tex}
+
+  \section{Integration-testing}
+  \input{theory/integration-testing.tex}
+
+  \section{System-testing}
+  \input{theory/system-testing.tex}
 
   \section{Test-driven development}
   \input{theory/tdd.tex}
