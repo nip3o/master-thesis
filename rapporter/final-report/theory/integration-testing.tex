@@ -1,1 +1,46 @@
-It is a scam.
+Integration testing refers to the testing phase where several individual
+modules are tested together, in order to discover errors in the
+communication between modules \cite{wiki:integrationtests}. In practice,
+this means testing multiple classes or methods which uses a bunch of
+other classes and methods.\\
+
+\citet{video:integrated_scam} criticizes one form of integration tests
+that he calls integrated tests. This refers to integration tests that
+are testing the functionality of multiple units in the same way as unit-
+tests, i.e. by input data and examine the output. When we are testing
+multiple units in this way, we lose the ability to see which part of all
+the tested units that are actually failing. As the number of tested
+units rises, the number of possible paths will grow exponentially. This
+makes it hard to see the reason for a failed test, but also makes it
+very hard to decide which of all this paths that needs to be testes.
+Integrated tests therefore puts much less pressure on the tested
+functions compared to unit tests.\\
+
+\citeauthor{video:integrated_scam} claims that this fact makes
+developers more sloppy, which increases the risk of introducing mistakes
+that goes unnoticed through the test suite. If this is solved by writing
+even more integration tests, developers have less time to do proper unit
+tests and instead introduce more sloppy designs, forming an infinite
+feedback-loop.\\
+
+One may argue that this argument is based on the fact that integrated
+tests to a large part are used instead of unit tests. The purpose of
+integration tests are not to verify special cases of individual modules
+but to make sure that they work together as intended. However, it would
+be very hard to assure that all modules are working together by just
+using a few test cases due to the number of possible execution paths.
+The running time would also be long since large parts of the code base
+needs to be run.\\
+
+Instead of integrated tests, another type of integration test is
+proposed by \citeauthor{video:integrated_scam} called contract- and
+collaboration tests. The purpose of these tests is to verify the
+interface between all unit-tested modules by using mocks to test that
+Unit A tries to invoke the expected methods on Unit B (contract test).
+In order to avoid errors due to mocking, tests are also needed to make
+sure that Unit B really responds to the calls that are expected to be
+performed by Unit A in the contract test. The idea of this is to build a
+chain of trust inside our own software via transitivity. This means that
+if Unit A and Unit B works together as expected, and Unit B and Unit C
+also works together as expected, Unit A and Unit C will also work
+together as expected.\\
