@@ -1,20 +1,35 @@
 Integration testing refers to the testing phase where several individual
-modules are tested together, in order to discover errors in the
-communication between modules \cite{wiki:integrationtests}. In practice,
-this means testing multiple classes or methods which uses a bunch of
-other classes and methods.\\
+units are tested together. Since units tests only assures that a single
+unit works as expected, faults may still reside in how the units works
+together.\\
 
-\citet{video:integrated_scam} criticizes one form of integration tests
-that he calls integrated tests. This refers to integration tests that
-are testing the functionality of multiple units in the same way as unit-
-tests, i.e. by input data and examine the output. When we are testing
-multiple units in this way, we lose the ability to see which part of all
-the tested units that are actually failing. As the number of tested
-units rises, the number of possible paths will grow exponentially. This
-makes it hard to see the reason for a failed test, but also makes it
-very hard to decide which of all this paths that needs to be testes.
-Integrated tests therefore puts much less pressure on the tested
-functions compared to unit tests.\\
+\citet{book:adp} states that integration tests should be built
+incrementally by extending unit tests so that they span over multiple
+units. The scope of the tests is increased gradually, and both valid and
+invalid data is given into the integration tested system unit in order
+to test the interfaces between smaller units. Since this process is done
+gradually, it is possible to see which parts of the integrated unit that
+is faulty by examining which parts have been integrated since the latest
+test run.\\
+
+\citet{book:pfleeger} refers to this type of integration testing as
+\emph{bottom-up testing}, since several low-level modules (modules at
+the bottom level of the software) are integrated into higher-level
+modules. Multiple other integration approaches such as \emph{top-down
+testing} and \emph{sandwich testing} are also mentioned. The difference
+between the approaches is in which order the units are integrated.\\
+
+\citet{video:integrated_scam} criticizes one kind of integration tests,
+which he refers to as \emph{integrated tests}. This refers to
+integration tests that are testing the functionality of multiple units
+in the same way as unit tests, i.e. by input data and examine the
+output. When testing multiple units in this way, one loses the ability
+to see which part of all the tested units that are actually failing. As
+the number of tested units rises, the number of possible paths will grow
+exponentially. This makes it hard to see the reason for a failed test,
+but also makes it very hard to decide which of all this paths that needs
+to be testes. Integrated tests therefore puts much less pressure on the
+tested functions compared to unit tests.\\
 
 \citeauthor{video:integrated_scam} claims that this fact makes
 developers more sloppy, which increases the risk of introducing mistakes
@@ -32,7 +47,7 @@ using a few test cases due to the number of possible execution paths.
 The running time would also be long since large parts of the code base
 needs to be run.\\
 
-Instead of integrated tests, another type of integration test is
+Instead of integrated tests, another type of integration tests are
 proposed by \citeauthor{video:integrated_scam} called contract- and
 collaboration tests. The purpose of these tests is to verify the
 interface between all unit-tested modules by using mocks to test that
