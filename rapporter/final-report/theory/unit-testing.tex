@@ -1,20 +1,23 @@
 \MakeShortVerb{\|}
-Unit testing refers to testing of small parts of a software. In
-practice, this often means testing a specific class or method of a
-software. The purpose of unit tests is to verify the implementation,
-i.e. to find bugs and make sure special cases are handled. It also helps
-verifying the functionality as the software unit is re-factored over
-time, and makes it easier to discover accidental changes to the module
-\cite{web:xp_unittests, wiki:unittests}.\\
+
+% In order to verify the functionality of program, it is possible to use a
+% formal logical proof. This is done dividing the program into small
+% pieces of logic, and the possible input data into different classes.
+% \citet{book:pfleeger}
+
+Unit testing\footnotemark refers to testing of small parts of a
+software. In practice, this often means testing a specific class or
+method of a software. The purpose of unit tests is to verify the
+implementation, i.e. to make sure that the tested unit works correct.
+\cite{web:xp_unittests}\cite{book:pfleeger}.\\
 
 Since each unit test only covers a small part of the software, it is
 easy to find the cause for a failing test. Writing unit tests alone does
 not give a sufficient test coverage for the whole system, since unit
-tests only assures that each tested module works as expected, but does
-not necessarily say anything about how the units works together. A well-
-tested function for validating a 12-digit personal identification number
-is worth nothing if the module that uses it passes a 10-digit number as
-input \cite{wiki:unittests}.\\
+tests only assures that each single tested module works as expected. A
+well- tested function for validating a 12-digit personal identification
+number is worth nothing if the module that uses it passes a 10-digit
+number as input \cite{wiki:unittests}.\\
 
 
 \subsection{Testability}
@@ -97,7 +100,9 @@ methods and warns or makes the test fail if such mocks are created
 \cite{video:boundaries}. Another possible solution is to re-factor the
 code to avoid the need for mocks or stubs.\\
 
-\begin{lstlisting}[caption=Example of how mocking might make tests pass even when they are not indented to, label=code:mocks, float=t]
+\begin{lstlisting}[caption=Example of how mocking might make tests pass
+                           even when they are not indented to,
+                   label=code:mocks, float=t]
 class Cookie
     def eat_cookie
         "Cookie is being eaten"
@@ -117,5 +122,7 @@ def test_cookie_jar
 end
 \end{lstlisting}
 
+
+\footnotetext{Unit testing is also called low-level testing, module testing or component testing}
 
 \footnotetext{Also called the Law of Demeter}
