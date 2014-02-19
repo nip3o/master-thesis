@@ -20,28 +20,25 @@ module Humm
   end
 end
 
-def inject(mod, klass, method)
-  injector_class = Class.new(klass) do
-    def self._inject(method)
-      self.singleton_class.send(:alias_method, '_old_' + method, method)
-      self.singleton_class.send(:define_method, method) do |*args|
-        puts "Method '#{__callee__}' called from #{caller} with args #{args.inspect}"
-        self.send('_old_' + method, *args)
-      end
-    end
+module Injector
+  def self.helper(callee, callr, *args)
+    puts "Method '#{callee}' called from #{callr} with args #{args.inspect}"
   end
 
-  class_name = klass.name.split('::').last
-  suppress_warnings do
-    mod.const_set(class_name, injector_class)
+  def self.inject(klass, method)
+    old_method_name = '_old_' + method
+    klass.singleton_class.send(:alias_method, old_method_name, method)
+    klass.singleton_class.send(:define_method, method) do |*args|
+      Injector::helper(__callee__, caller, *args)
+      self.send(old_method_name, *args)
+    end
   end
-  injector_class._inject(method)
 end
 
 p Humm::Meep.kaka([3, 4, 1])
 puts '#' * 40
 
-inject(Humm, Humm::Meep, 'kaka')
-inject(Humm, Humm::Meep, 'plusone_map_each')
+Injector.inject(Humm::Meep, 'kaka')
+Injector.inject(Humm::Meep, 'plusone_map_each')
 
 p Humm::Meep.kaka([3, 4, 1])
