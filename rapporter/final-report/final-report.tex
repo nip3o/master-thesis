@@ -22,6 +22,7 @@
 \usepackage{url} % for simple URL formatting
 \usepackage[numbers]{natbib} % automatic short-hand citations
 
+\usepackage[plain]{fancyref} % auto-detection of cross-referenced types
 \usepackage{listings} % code listings
 \usepackage{shortvrb} % shorthand pre-formatted text
 
@@ -29,7 +30,6 @@
 \usepackage[hypcap]{caption} % smarter pointing for reference links
 
 \usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
-
 
 \setlength{\parindent}{0pt}
 
@@ -100,7 +100,9 @@ showstringspaces=false
 \end{abstract}
 
 \renewcommand{\abstractname}{Acknowledgments}
-\renewcommand{\lstlistingname}{Code}
+\renewcommand{\lstlistingname}{Code listing}
+
+\newcommand*{\fancyreflstlabelprefix}{lst}
 
 \begin{abstract}
 \input{acknowledgements.tex}
@@ -134,6 +136,7 @@ showstringspaces=false
 \chapter{Theory}
 
   \section{Unit-testing}
+  \label{sec:unit_testing}
   \input{theory/unit-testing.tex}
 
   \section{Integration-testing}
@@ -143,6 +146,7 @@ showstringspaces=false
   \input{theory/system-testing.tex}
 
   \section{Test-driven development}
+  \label{sec:tdd}
   \input{theory/tdd.tex}
 
   \section{Behavior-driven development}

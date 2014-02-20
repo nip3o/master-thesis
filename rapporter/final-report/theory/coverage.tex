@@ -14,7 +14,7 @@ following subsections are based on the chapter on test-case designs in
 \subsubsection{Statement coverage}
 
 \begin{lstlisting}[caption=A small example program,
-                   label=code:small, float=t]
+                   label=lst:small, float=t]
   def foo(a, b, x)
     if a > 1 and b == 0
       x = x / a
@@ -29,7 +29,7 @@ One basic requirement of the tests for a program could be that each
 statement should be executed at least once. This requirement is called
 full \emph{statement coverage}. We illustrate this by using an example
 from \citet{book:art_of_testing}. For the program given in
-\ref{code:small}, we could achieve full statement coverage by setting
+\ref{lst:small}, we could achieve full statement coverage by setting
 |a = 2|, |b = 0| and |x = 3|.\\
 
 This requirement alone does not verify the correctness of the code,
@@ -55,7 +55,7 @@ branch statement is executed at least once. This means for example that
 an if-statement that depends on a boolean variable must be tested with
 both |true| and |false| as input. Loops and switch-statements are other
 examples of code that typically contains branch statements. In order to
-achieve this for the code in \ref{code:small}, we could create one test
+achieve this for the code in \ref{lst:small}, we could create one test
 where |a = 3|, |b = 0|, |x = 3| and another test where |a = 2|, |b = 1|,
 |x = 1|. Each of these tests fulfills one of the two if-conditions
 each, so that all branches are evaluated.\\
@@ -73,7 +73,7 @@ Condition coverage\footnote{Also called \emph{predicate coverage} or
 program takes all possible values at least once. If we have an if-
 statement that depends on two boolean variables, we must make sure that
 each of these variables are tested with both |true| and |false| as
-value. This can be achieved in \ref{code:small} with a combination of
+value. This can be achieved in \ref{lst:small} with a combination of
 the input values |a = 2|, |b = 0|, |x = 4| and |a = 1|, |b = 1|,
 |x = 1|.\\
 
@@ -94,7 +94,7 @@ be covered by the \emph{multiple-condition coverage} criterion, which
 means that for each decision, all combinations of condition outcomes
 must be tested.\\
 
-For the code given in \ref{code:small}, this requires the code to be
+For the code given in \ref{lst:small}, this requires the code to be
 tested with $2^2 = 4$ combinations for each of the two decisions to be
 fulfilled, eight combinations in total. This can be achieved with four
 tests for this particular case (|x a b| values |2 0 4| and |2 1 1| and
