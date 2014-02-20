@@ -12,3 +12,20 @@ a large part of the total system. As the system gets bigger, so does the
 number of functions invoked by the test, thus increasing the execution
 time.\\
 
+One of the main purposes of a fast test suite is the possibility to use
+test-driven software development methodologies. As discussed in
+\fref{sec:tdd}, a fast response to changes is required in order to make
+it practically possible to write tests in small iterations.\\
+
+Even without using test-driven approaches, a fast test suite is
+beneficial since it means that the tests can be run often. If all tests
+can be run in a couple of seconds, they can easily be run every time a
+source file in the system is changed. This gives the developer instant
+feedback if something breaks.\\
+
+In order to achieve fast tests, \citeauthor{video:fast_slow_test}
+proposes writing a large amount of low-level unit tests which is focused
+on a small testing part of the system, rather than many system tests
+that integrates with large parts of the system.\\
+
+\citet{video:fast_rails_tests} also says something.

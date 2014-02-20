@@ -5,10 +5,11 @@
 % pieces of logic, and the possible input data into different classes.
 % \citet{book:pfleeger}
 
-Unit testing\footnotemark refers to testing of small parts of a
-software. In practice, this often means testing a specific class or
-method of a software. The purpose of unit tests is to verify the
-implementation, i.e. to make sure that the tested unit works correct.
+Unit testing\footnote{Also called low-level testing, module testing or
+component testing} refers to testing of small parts of a software. In
+practice, this often means testing a specific class or method of a
+software. The purpose of unit tests is to verify the implementation,
+i.e. to make sure that the tested unit works correct.
 \cite{web:xp_unittests, book:pfleeger}.\\
 
 Since each unit test only covers a small part of the software, it is
@@ -29,7 +30,7 @@ implementation is done. He demonstrates this by showing an example of
 code written without tests in mind, and points out which parts of the
 implementation that makes it hard to unit-test.
 \citeauthor{video:misko_psychology} mentions global state variables,
-violations of the principle of least knowledge, global time references
+violations of the Law of Demeter, global time references
 and hard-coded dependencies as some causes for making implementations
 hard to test.\\
 
@@ -39,14 +40,15 @@ therefore might change between test runs. Global time references is bad
 since it depends on the time when the tests are run, which means that a
 test might pass if it is run today, but fail if it is run tomorrow.\\
 
-The principle of least knowledge\footnotemark means that one unit should
-only have limited knowledge of other units, and only communicate with
-related modules \cite{wiki:demeter}. If this principle is not followed,
-it is hard to create an isolated test for a unit which does not depend
-on unrelated changes in some other module. The same thing also applies
-to the usage of hard-coded dependencies. This makes the unit dependent
-on other modules, and makes it impossible to replace the other unit
-in order to make it easier to test.\\
+The Law of Demeter\footnote{Also called the principle of least
+knowledge} means that one unit should only have limited knowledge of
+other units, and only communicate with related modules
+\cite{wiki:demeter}. If this principle is not followed, it is hard to
+create an isolated test for a unit which does not depend on unrelated
+changes in some other module. The same thing also applies to the usage
+of hard-coded dependencies. This makes the unit dependent on other
+modules, and makes it impossible to replace the other unit in order to
+make it easier to test.\\
 
 \citeauthor{video:misko_psychology} shows how code with these issues can
 be solved by using dependency injection and method parameters instead
@@ -84,7 +86,7 @@ instead of in a real database, in order to gain performance.
 
 \citet{video:boundaries} mentions some of the drawbacks with using mocks
 and stubs. If the interface of the replaced unit changes, this might not
-be noticed in our test. Consider the scenario given in \ref{code:mocks}.
+be noticed in our test. Consider the scenario given in \ref{lst:mocks}.
 In this example we have written a test for the |take_cookie()| method of
 the |CookieJar| class, which replaces the |eat_cookie()| method with a
 stub in order to make the |CookieJar| class independent of the |Cookie|
@@ -102,7 +104,7 @@ code to avoid the need for mocks or stubs.\\
 
 \begin{lstlisting}[caption=Example of how mocking might make tests pass
                            even when they are not indented to,
-                   label=code:mocks, float=t]
+                   label=lst:mocks, float=t]
 class Cookie
     def eat_cookie
         "Cookie is being eaten"
@@ -121,8 +123,3 @@ def test_cookie_jar
     assert CookieJar.new.take_cookie == "One cookie in the jar was eaten"
 end
 \end{lstlisting}
-
-
-\footnotetext{Unit testing is also called low-level testing, module testing or component testing}
-
-\footnotetext{Also called the Law of Demeter}
