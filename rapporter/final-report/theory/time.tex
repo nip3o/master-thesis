@@ -28,4 +28,10 @@ proposes writing a large amount of low-level unit tests which is focused
 on a small testing part of the system, rather than many system tests
 that integrates with large parts of the system.\\
 
-\citet{video:fast_rails_tests} also says something.
+\citet{video:fast_rails_tests} also emphasizes the importance of fast
+tests, and proposes a way of achieving this in a Ruby on Rails
+application. The basic idea is the same as proposed by
+\citeauthor{video:fast_slow_test}, namely separating business logic so
+it is independent from Rails and other frameworks. This makes it
+possible to write small unit tests which only tests an isolated part of
+the system, independent from any third-party classes.\\
