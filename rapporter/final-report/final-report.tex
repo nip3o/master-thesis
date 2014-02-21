@@ -19,8 +19,8 @@
 \usepackage[margin=2.5cm]{geometry}
 
 \usepackage{titling} % for useful adjustments to the titles
-\usepackage{url} % for simple URL formatting
-\usepackage[numbers]{natbib} % automatic short-hand citations
+\usepackage[hyphens]{url} % for simple URL formatting
+\usepackage[numbers,sort]{natbib} % automatic short-hand citations
 
 \usepackage[plain]{fancyref} % auto-detection of cross-referenced types
 \usepackage{listings} % code listings
@@ -30,6 +30,7 @@
 \usepackage[hypcap]{caption} % smarter pointing for reference links
 
 \usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage{multicol}
 
 \setlength{\parindent}{0pt}
 
@@ -92,17 +93,15 @@ showstringspaces=false
 
 \begin{document}
 
+\renewcommand{\abstractname}{Acknowledgments}
+\renewcommand{\lstlistingname}{Code listing}
+
 \maketitle
 \newpage
 
 \begin{abstract}
 \input{abstract.tex}
 \end{abstract}
-
-\renewcommand{\abstractname}{Acknowledgments}
-\renewcommand{\lstlistingname}{Code listing}
-
-\newcommand*{\fancyreflstlabelprefix}{lst}
 
 \begin{abstract}
 \input{acknowledgements.tex}
@@ -157,7 +156,13 @@ showstringspaces=false
 
 
 \newpage
-\bibliographystyle{plainnat}
-\bibliography{references}
+
+\chapter*{References}
+\begin{multicols}{2}
+    \small
+    \renewcommand{\bibsection}{ \vspace{-\baselineskip}\vspace{-1.1mm} }
+    \bibliographystyle{plainnat}
+    \bibliography{references}
+\end{multicols}
 
 \end{document}
