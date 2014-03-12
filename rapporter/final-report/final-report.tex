@@ -93,7 +93,6 @@ showstringspaces=false
 
 \begin{document}
 
-\renewcommand{\abstractname}{Acknowledgments}
 \renewcommand{\lstlistingname}{Code listing}
 
 \maketitle
@@ -102,6 +101,9 @@ showstringspaces=false
 \begin{abstract}
 \input{abstract.tex}
 \end{abstract}
+
+% Fake that the Acknowledgments is an abstract in order to get a nice style
+\renewcommand{\abstractname}{Acknowledgments}
 
 \begin{abstract}
 \input{acknowledgements.tex}
@@ -133,6 +135,7 @@ showstringspaces=false
 
 
 \chapter{Theory}
+\label{chap:theory}
 
   \section{Unit-testing}
   \label{sec:unit_testing}
@@ -155,12 +158,26 @@ showstringspaces=false
   \input{theory/quality-factors.tex}
 
 
+\chapter{Approach}
+
+  \input{approach/approach-intro.tex}
+
+  \section{Hypothesis}
+  \label{sec:hypothesis}
+  \input{approach/hypothesis.tex}
+
+  \section{Case study}
+  \input{approach/case-study.tex}
+
+
 \chapter{Results}
+\label{chap:results}
 
   \input{results/results.tex}
 
 
 \chapter{Discussion}
+\label{chap:discussion}
 
   \input{discussion/discussion.tex}
 
