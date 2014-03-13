@@ -8,10 +8,10 @@ combined.\\
 \subsection{Refactoring of old tests}
 
 There have been attempts to introduce testing of the ECP system a while
-back, but this attempts stopped since the chosen approaches was found to
-be very cumbersome. At the start of this project, the implemented tests
-had not been maintained for a very long time, which resulted in that
-many tests failed although the system itself worked fine.\\
+back, but this has stopped since the chosen approaches was found to be
+very cumbersome. At the start of this project, the implemented tests had
+not been maintained for a very long time, which resulted in that many
+tests failed although the system itself worked fine.\\
 
 As mentioned in section \ref{sec:hypothesis}, TDD methodology will be
 used during the case study. This methodology is based on the fact that
@@ -25,18 +25,31 @@ The first part of the case study is therefore to make all old tests run.
 Apart from being a prerequisite for new tests and features to be
 implemented, it also gives a view on how tests are affected as new
 functionality is implemented. This is especially interesting since it
-would be impossible to evaluate such factors in the scope of a master
-thesis otherwise. It will also give a perspective on some of the
-advantages and drawbacks of the old testing approach.\\
+otherwise would be impossible to evaluate such factors in the scope of a
+master thesis. It also gives a perspective on some of the advantages
+and drawbacks of the old testing approach.\\
 
-Another drawback of the old tests are the fact that their running time
-are too high to run them continuously, in a TDD manner. Another
-objective of this part of the case study is therefore to make them
-faster, so at least some of the tests can be run continuously.\\
+Another drawback of the old tests are the fact that they run too slow in
+order to be continuously in a TDD manner. Another objective of this part
+of the case study is therefore to make them faster, so at least some of
+the tests can be run continuously.\\
 
 
 \subsection{Implementation of new functionality}
 
-A new feature will be implemented.
+As mentioned in section \ref{sec:background}, the commissioner body of
+this project wishes to implement support for staff manning in the ECP
+system. This functionality is implemented and tests are written for
+new parts of the system as well as for re-factored code.\\
+
+The purpose of this part is besides implementing the new feature itself,
+to evaluate test-driven development and how tests and implementation
+code can be written together. We also evaluate how different kinds of
+tests serves different purposes in the development process.\\
+
+
+\subsection{Increasing test coverage}
+
+Implement more tests for old functionality.
 
 (wip)
