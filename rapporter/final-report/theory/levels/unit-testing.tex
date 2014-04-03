@@ -102,8 +102,8 @@ methods and warns or makes the test fail if such mocks are created
 \cite{video:boundaries}. Another possible solution is to re-factor the
 code to avoid the need for mocks or stubs.\\
 
-\begin{lstlisting}[caption=Example of how mocking might make tests pass
-                           even when they are not indented to,
+\begin{lstlisting}[caption=Example of how mocking might make tests unaware
+                           of changes which breaks functionality,
                    label=lst:mocks, float=t]
 class Cookie
     def eat_cookie
@@ -113,13 +113,13 @@ end
 
 class CookieJar
     def take_cookie
-        self.cookies.first.eat_cookie
+        self.cookies.first.eat_cookie()
         "One cookie in the jar was eaten"
     end
 end
 
 def test_cookie_jar
     Cookie.eat_cookie = Mock
-    assert CookieJar.new.take_cookie == "One cookie in the jar was eaten"
+    assert CookieJar.new.take_cookie() == "One cookie in the jar was eaten"
 end
 \end{lstlisting}
