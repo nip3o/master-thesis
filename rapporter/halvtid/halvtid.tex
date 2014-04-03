@@ -1,0 +1,64 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% "dictionary": "Packages/User/Swedish.dic",
+
+\documentclass[a4paper]{article}
+
+\usepackage[swedish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage[toc,page]{appendix}
+\usepackage{listings}
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customizable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage[margin=2.5cm]{geometry}
+
+\usepackage[stable]{footmisc} % footnotes in section tags
+\usepackage{natbib} % automatic short-hand citations
+
+%%% Custom chapter and section style
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % sans serif headings
+
+\setlength{\parindent}{0pt}
+
+%%% HEADERS & FOOTERS
+\author{Niclas Olofsson}
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{1pt} % customise the layout...
+\fancyhead[LO,L]{Niclas Olofsson\\Halvtidsrapport}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+\title{Halvtidsrapport}
+
+\begin{document}
+\maketitle
+
+\section{Inledning}
+\input{introduction.tex}
+
+\section{Bakgrund}
+\input{background.tex}
+
+\section{Metodik}
+\input{methodology.tex}
+
+\section{Systemdesign}
+\input{system.tex}
+
+
+%\section{Nuvarande design}
+%\input{current.tex}
+
+\end{document}
