@@ -1,2 +1,34 @@
 An alternative to draw conclusions from which paths of the code that is
-run by a test, as done when using test coverage, is mutation testing.
+run by a test, as done when using test coverage, is to draw conclusions
+from what happens when we modify the code. The idea is that if the code
+if incorrect, the test should fail. Thus, we can modify the code so it
+becomes incorrect and then look at whether the test fails or not.\\
+
+Mutation testing is done by creating several versions of the tested
+code, and introduce slight modifications into each one of them. Each
+such version containing a mutated version of the original source code is
+called a \emph{mutant}. All tests which we want to evaluate are run for
+each mutant. If at least one of the tests fails, the mutant is
+considered to be \emph{killed}. We can measure the efficiency of the
+test suite as the ratio of killed mutants versus the total number of
+mutants.\cite{wiki:mutation}\\
+
+
+\begin{lstlisting}[caption=Example of a piece of code before mutation,
+                   label=lst:mutation_before, float=t]
+    def odd?(x, y)
+        (x % 2) && (y % 2)
+    end
+\end{lstlisting}
+
+
+\begin{lstlisting}[caption=Two mutated versions of \ref{lst:mutation_before},
+                   label=lst:mutant_1, float=t]
+    def odd?(x, y)
+        (x % 2) && (x % 2)
+    end
+
+    def odd?(x, y)
+        (x % 2) || (y % 2)
+    end
+\end{lstlisting}
