@@ -107,14 +107,14 @@ code to avoid the need for mocks or stubs.\\
                    label=lst:mocks, float=t]
 class Cookie
     def eat_cookie
-        "Cookie is being eaten"
+        return "Cookie is being eaten"
     end
 end
 
 class CookieJar
     def take_cookie
         self.cookies.first.eat_cookie()
-        "One cookie in the jar was eaten"
+        return "One cookie in the jar was eaten"
     end
 end
 
