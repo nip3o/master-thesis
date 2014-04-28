@@ -14,7 +14,7 @@ exactly one bug.\cite{article:mutation, wiki:mutation}\\
 \begin{lstlisting}[caption=Example of a piece of code before mutation,
                    label=lst:mutation_before, float=t]
     def odd?(x, y)
-        (x % 2) && (y % 2)
+        return (x % 2) && (y % 2)
     end
 \end{lstlisting}
 
@@ -22,19 +22,19 @@ exactly one bug.\cite{article:mutation, wiki:mutation}\\
 \begin{lstlisting}[caption=Mutated versions of \ref{lst:mutation_before},
                    label=lst:mutation_after, float=t]
     def odd?(x, y)
-        (x % 2) && (x % 2)
+        return (x % 2) && (x % 2)
     end
 
     def odd?(x, y)
-        (x % 2) || (y % 2)
+        return (x % 2) || (y % 2)
     end
 
     def odd?(x, y)
-        (x % 2) && (0 % 2)
+        return (x % 2) && (0 % 2)
     end
 
     def odd?(x, y)
-        (x % 2)
+        return (x % 2)
     end
 \end{lstlisting}
 

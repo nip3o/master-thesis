@@ -2,14 +2,22 @@
 The intended audience of this report is primarily people with some or
 good knowledge of programming and software development. A great deal of
 knowledge in the area of software testing or test methodologies should
-however not be required. The report can probably be of interest for
+however not be required. The report can probably also be of interest for
 people without programming knowledge which is interested in the area of
 software testing and development.\\
 
 Code examples are written in Ruby\footnote{\url{https://www.ruby-
-lang.org}} since that is the primary language of this thesis, but with
-emphasis on being understandable by people without knowledge of this
-language rather than using Ruby-specific tools and practices.\\
+lang.org}} 2.1.1 since that is the primary language of this thesis, but
+with emphasis on being understandable by people without knowledge of
+this language rather than using Ruby-specific tools and practices. For
+example, implicit return statements are avoided since these are
+nontrivial to understand for people used to languages without this
+feature, such as Python or Java.\\
+
+The built-in Ruby module \emph{Test::Unit} is used for general test code
+examples in order to preserve independence of a specific testing
+framework to as wide extent as possible, although other testing
+frameworks are also mentioned and exemplified in the report.\\
 
 The area of software development contains several terminologies which
 are similar or exactly the same. In cases where multiple different
