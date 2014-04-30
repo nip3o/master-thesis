@@ -27,9 +27,10 @@ following subsections are based on the chapter on test-case designs in
 
 One basic requirement of the tests for a program could be that each
 statement should be executed at least once. This requirement is called
-full \emph{statement coverage}. We illustrate this by using an example
-from \citet{book:art_of_testing}. For the program given in
-\ref{lst:small}, we could achieve full statement coverage by setting
+full \emph{statement coverage}\footnote{Some websites, mostly in the
+Ruby community, refers to this as C0 coverage}. We illustrate this by
+using an example from \citet{book:art_of_testing}. For the program given
+in \ref{lst:small}, we could achieve full statement coverage by setting
 |a = 2|, |b = 0| and |x = 3|.\\
 
 This requirement alone does not verify the correctness of the code,
@@ -50,15 +51,16 @@ sure that no syntax errors exists.\\
 \subsubsection{Branch coverage}
 
 In order to achieve full branch coverage\footnote{Sometimes called
-\emph{decision coverage}}, tests must make sure that each path in a
-branch statement is executed at least once. This means for example that
-an if-statement that depends on a boolean variable must be tested with
-both |true| and |false| as input. Loops and switch-statements are other
-examples of code that typically contains branch statements. In order to
-achieve this for the code in \ref{lst:small}, we could create one test
-where |a = 3|, |b = 0|, |x = 3| and another test where |a = 2|, |b = 1|,
-|x = 1|. Each of these tests fulfills one of the two if-conditions
-each, so that all branches are evaluated.\\
+\emph{decision coverage} and sometimes also referred to as C1 coverage},
+tests must make sure that each path in a branch statement is executed at
+least once. This means for example that an if-statement that depends on
+a boolean variable must be tested with both |true| and |false| as input.
+Loops and switch-statements are other examples of code that typically
+contains branch statements. In order to achieve this for the code in
+\ref{lst:small}, we could create one test where |a = 3|, |b = 0|,
+|x = 3| and another test where |a = 2|, |b = 1|, |x = 1|. Each of these
+tests fulfills one of the two if-conditions each, so that all branches
+are evaluated.\\
 
 Branch coverage often implicates statement coverage, unless there are no
 branches or the program has multiple entry points. There is however
@@ -97,13 +99,14 @@ must be tested.\\
 For the code given in \ref{lst:small}, this requires the code to be
 tested with $2^2 = 4$ combinations for each of the two decisions to be
 fulfilled, eight combinations in total. This can be achieved with four
-tests for this particular case (|x a b| values |2 0 4| and |2 1 1| and
-|1 0 2| and |1 1 1|).\\
+tests for this particular case. One example of variable values for
+such test cases are |x = 2|, |a = 0|, |b = 4| and |x = 2|, |a = b = 1|
+and |x = 1|, |a = 0|, |b = 2| and |x = a = b = 1|.\\
 
 \citeauthor{book:art_of_testing} shows that a simple 20-statement
 program consisting of a single loop with a couple of nested if-
 statements can have 100 trillion different logical paths. While real
 world programs might not have such extreme amounts of logical paths,
-they are typically much larger and more complex. In other words can it
-is typically impossible to achieve full multiple-condition test
-coverage.\\
+they are typically much larger and more complex than the simple example
+presented in \ref{lst:small}. In other words can it is typically
+impossible to achieve full multiple-condition test coverage.\\
