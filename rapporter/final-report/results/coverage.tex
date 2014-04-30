@@ -1,0 +1,52 @@
+
+There are multiple different ways of testing code coverage, and the
+properties and conditions for each different kind of test coverage are
+discoursed in \fref{sec:coverage}. However, we were unable to find any
+test coverage tools for Ruby which analyzed anything else than statement
+coverage, which is the weakest test coverage metric. Quite much effort
+was spent on finding such tool, but without any success. Several
+websites and Stack Overflow-answers indicates that no such tool exists
+for Ruby at the time of this writing \cite{web:coverage_ruby19,
+so:c1c2_coverage, so:c1_coverage, web:toolbox_code_metrics}. On one
+hand, some of these sources are rather old and might be outdated, but on
+the other hand would at least some of these sources probably be updated
+if such tool became available.\\
+
+
+\subsubsection{Before the case study}
+
+Before the start of this master's thesis, the average statement coverage
+of all RSpec unit- and integration tests was 45.2 \%. A major part of
+the modules with high test coverage score was modules without any
+methods, such as data models which only contain model definitions. Such
+modules typically get full test coverage just by being loaded by the
+application. Since these modules also can have methods which needs
+tests, we could not just exclude all such modules either.\\
+
+For the client-side code, no unit-tests existed. The test coverage was
+thus zero at this state.\\
+
+
+\subsubsection{After the first part of the case study}
+
+The first part of the case study (described in \fref{sec:casestudy_1})
+was focused on rewriting broken tests, since some of the existing tests
+was not functional. During this period, a large part of the existing
+test suite was either fixed or completely rewritten. Many of the
+existing unit- and integration tests was rewritten and a few large
+acceptance-level test was replaced by more fine-grained integration
+tests. The statement coverage increased to 59.5 \% after this part of
+the case study.
+
+
+\subsubsection{After the second part of the case study}
+
+The second part of the case study (described in \fref{sec:casestudy_2})
+was focused on implementing new functionality while re-factoring old
+parts as needed and write tests for new as well as re-factored code. The
+first sprint of this part was focused on basic functionality, while the
+second sprint was focused on extending and generalizing the new
+functionality.\\
+
+When the implementation of the new functionality was finished, statement
+coverage of unit- and integration tests was 69.5 \%.

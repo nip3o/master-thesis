@@ -81,13 +81,19 @@ still much work to be done in this field.\\
 
 \begin{lstlisting}[caption=Example of a program with an equivalent mutant,
                    label=lst:mutation_eq, float=t]
-    def odd?(x, y)
-        x = y
-        (x % 2) && (y % 2)
+    def some_function(x)
+        i = 0
+        while i != 2 do
+            x += 1
+        end
+        return x
     end
 
-    def equivalent_mutant(x, y)
-        x = y
-        (x % 2) && (x % 2)
+    def equivalent_mutant(x)
+        i = 0
+        while i < 2 do
+            x += 1
+        end
+        return x
     end
 \end{lstlisting}

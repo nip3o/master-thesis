@@ -32,6 +32,8 @@
 \usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
 \usepackage{multicol}
 
+\usepackage[stable]{footmisc} % footnotes in section tags
+
 \setlength{\parindent}{0pt}
 
 %%% Headers, footers
@@ -169,10 +171,12 @@ showstringspaces=false
 
 
   \section{Evaluating test efficiency}
+    \label{sec:efficiency}
     \input{theory/quality/efficiency.tex}
 
 
   \section{Other test quality factors}
+    \label{sec:quality}
     \input{theory/quality/quality-factors.tex}
 
 
