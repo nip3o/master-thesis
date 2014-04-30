@@ -15,3 +15,53 @@ Another benefit is that new features and bug fixes are released.\\
 The Ruby Toolbox website \footnote{\url{https://www.ruby-toolbox.com/}},
 which uses information from the Github and RubyGems websites was
 consulted in order to find frameworks with mentioned qualities.\\
+
+\subsection{Ruby test frameworks}
+RSpec, RSpec-mocks, Cucumber, Capybara, FactoryGirl, Timecop, site\_prism. (wip)
+
+\subsection{Javascript test frameworks}
+Jasmine, Karma. (wip)
+
+\subsection{Test coverage}
+\label{sec:coverage_frameworks}
+
+There are multiple different ways of testing code coverage, and the
+properties and conditions for each different kind of test coverage are
+discoursed in \fref{sec:coverage}. However, we were unable to find any
+test coverage tools for Ruby which analyzed anything else than statement
+coverage, which is the weakest test coverage metric. Quite much effort
+was spent on finding such tool, but without any success. Several
+websites and Stack Overflow-answers indicates that no such tool exists
+for Ruby at the time of this writing \cite{web:coverage_ruby19,
+so:c1c2_coverage, so:c1_coverage, web:toolbox_code_metrics}. On one
+hand, some of these sources are rather old and might be outdated, which
+would indicate that such tool could have been created recently. On the
+other hand would at least some of these sources probably have been
+updated if such tool became available.\\
+
+We ended up using the
+SimpleCov\footnote{\url{https://github.com/colszowka/simplecov}} tool
+for Ruby test coverage metrics. At the time of this writing, it is the
+most used tool for coverage . It is also actively developed, works with
+recent Ruby versions and RSpec versions, and produces pretty and easy-
+to-read coverage reports in HTML.\\
+
+
+\subsection{Mutation analysis}
+
+There exists a few different tools for mutation analysis of Javascript
+code. The ones we have found originates from academic research papers.
+\citet{paper:mutandis} proposes a solution which has been implemented as
+a tool called Mutandis
+\footnote{\url{https://github.com/saltlab/mutandis/}}.
+\citet{paper:ajaxmutator} presents another approach which has been
+released as AjaxMutator \footnote{\url{https://github.com/knishiura-
+lab/AjaxMutator}}. \citet{paper:webmujava} proposes a system-level
+mutation testing approach called webMuJava.\\
+
+Mutandis is based on website crawling tests. Although
+\citeauthor{paper:mutandis} mentions that pure Javascript frameworks
+have been tested using this tool, its implementation showed to be too
+specific to be considered in our context. webMuJava does not seem to be
+publicly available, and also seems to be too tightly integrated with a
+specific back-end technique to be useful for Javascript-testing only.
