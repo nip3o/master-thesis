@@ -1,0 +1,80 @@
+
+All execution times below are mean values of multiple runs and excluding
+start-up time. Execution times was measured on a 13" mid-2012 Macbook
+Air\footnote{\url{http://www.everymac.com/systems/apple/macbook-
+air/specs /macbook-air-core-i5-1.8-13-mid-2012-specs.html}} with 1.83
+GHz Intel Core i5 processor and Mac OS 10.9.2. Google Chrome 34.0.1847
+was used as browser for execution of browser tests and Jasmine unit
+tests. The browser window was focused in order to mitigate effects of
+Mac OS X power saving features.\\
+
+\subsubsection{Before the case study}
+
+The total running time of the 59 RSpec integration- and unit tests
+before the case study was 23.0 seconds. Average test execution time was
+340 ms per test, which means an execution rate of 3.0 tests per
+second.\\
+
+Twelve Cucumber browser tests existed at this time (with 178 steps), but
+none of these tests passed at this stage. After fixing the most critical
+issues with these tests, 36 steps passed in 42.7 seconds. The average
+time per test was 3.6 seconds. These numbers are however not entirely
+fair compared to later test runs, since large parts of the tests could
+not be run at this stage.\\
+
+
+\subsubsection{After refactoring old tests}
+
+Several of the previous tests was removed and replaced by more efficient
+tests during the second part of the case study. 58 RSpec integration-
+and unit tests existed after this stage, an the total execution time was
+8.3 seconds.\\
+
+The running time of the ten Cucumber tests (with 118 steps) was 160
+seconds, and the average time per test was 18 seconds.\\
+
+
+\subsubsection{After implementation of new functionality}
+
+In total, 81 RSpec integration- and unit tests existed at this stage,
+and the execution time of these was 7.6 seconds. Average test execution
+time was 94 ms per test, and the rate was 10.7 tests per
+second.\\
+
+At this phase, 34 Jasmine unit tests had been written and the total
+running time of these was 0.043 seconds. Average execution time was 1.3
+ms per test and the rate was 791 tests per second.\\
+
+The running time of the three RSpec browser tests was 12.4 seconds, with
+an average time per test of 4.1 seconds per test. One of the Cucumber
+tests had been re-factored into RSpec browser tests, and the running
+time of the remaining nine Cucumber browser tests (with 111 steps) was
+153 seconds. The average time per test was 17 seconds.\\
+
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{l l l l l}
+        Phase & No. of tests & Total time (s) & Time per test (ms) & Tests per second\\
+        \hline
+        Before case-study & 59 & 19.9& 340 & 3.0 \\
+        After first part  & 58 & 8.3 & 140 & 6.9 \\
+        After second part & 81 & 7.6  & 153 & 10.7\\
+    \end{tabular}
+    \caption{ Execution times of RSpec integration- and unit tests at different phases }
+    \label{tab:unit_times}
+\end{table}
+
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{l l l l l}
+        Phase & No. of tests & Total time (s) & Time per test (ms) & Tests per second \\
+        \hline
+        Before case-study & 12 & 43 & 3.6 & 0.27 \\
+        After first part  & 10 & 160 & 18 & 0.056\\
+        After second part & 9 &  153 & 17 & 0.056\\
+    \end{tabular}
+    \caption{ Execution times of Cucumber feature tests at different phases }
+    \label{tab:cucumber_times}
+\end{table}

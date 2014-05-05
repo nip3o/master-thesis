@@ -33,10 +33,10 @@ using an example from \citet{book:art_of_testing}. For the program given
 in \ref{lst:small}, we could achieve full statement coverage by setting
 |a = 2|, |b = 0| and |x = 3|.\\
 
-This requirement alone does not verify the correctness of the code,
-however. Maybe the first comparison |a > 1| really should be |a > 0|.
-Such bugs would go unnoticed. The program also does nothing if x and a
-are less than zero. If this was an error, it would also go unnoticed.\\
+This requirement alone does however not verify the correctness of the
+code. Maybe the first comparison |a > 1| really should be |a > 0|. Such
+bugs would go unnoticed. The program also does nothing if x and a are
+less than zero. If this was an error, it would also go unnoticed.\\
 
 \citeauthor{book:art_of_testing} finds that these properties makes the
 statement coverage criterion so weak that it often is useless. One could
@@ -79,13 +79,13 @@ value. This can be achieved in \ref{lst:small} with a combination of
 the input values |a = 2|, |b = 0|, |x = 4| and |a = 1|, |b = 1|,
 |x = 1|.\\
 
-One interesting this about the example above it that logical coverage
+One interesting this about the example above it that condition coverage
 does not require more test cases than branch coverage, although the
 former is often considered superior to branch coverage. Condition
-coverage does however not imply branch coverage, even if that is
-sometimes the case. A combination of the two conditions,
-\emph{decision coverage}, can be used in order to solve make
-sure that the implication holds.\\
+coverage does however not necessarily imply branch coverage, even if
+that is sometimes the case. A combination of the two conditions,
+\emph{decision coverage}, can be used in order to solve make sure that
+the implication holds.\\
 
 
 \subsubsection{Multiple-condition coverage}
