@@ -10,6 +10,23 @@ will instead use a subjective measurement based on the detailed coverage
 report output for estimating test coverage of new functionality.\\
 
 
+An quick overview of the results are presented in
+\fref{tab:unit_coverage}. More information is presented in the following
+sections.\\
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{l l}
+        Phase & Test coverage\\
+        \hline
+        Before case-study & 42.24 \%\\
+        After first part  & 55.25 \%\\
+        After second part & 62.34 \%\\
+    \end{tabular}
+    \caption{ Statement test coverage of RSpec unit- and integration tests at different phases. }
+    \label{tab:unit_coverage}
+\end{table}
+
 \subsubsection{Before the case study}
 
 Before the start of this master's thesis, the average statement coverage
@@ -49,7 +66,12 @@ second sprint was focused on extending and generalizing the new
 functionality.\\
 
 When the implementation of the new functionality was finished, statement
-coverage of unit- and integration tests for the server side was 62 \%.\\
+coverage of unit- and integration tests for the server side was 62 \%. A
+subjective measure indicated that new and re-factored functions in
+general has high statement coverage. In cases where full statement
+coverage is not achieved, the reason is generally special cases. The
+most common example is when error-messages are given when request
+parameters are missing or invalid.\\
 
 Statement test coverage for the client-side was 21 \% and the
 corresponding branch coverage was 10 \%. A subjective measure
@@ -57,17 +79,3 @@ indicates that almost all of the newly implemented functions achieves
 full statement coverage. The branch coverage is in general also high for
 newly implemented functions, but conditionals for special cases (such as
 when variables are zero or not set) are sometimes not covered.\\
-
-
-\begin{table}[t]
-    \centering
-    \begin{tabular}{l l}
-        Phase & Test coverage\\
-        \hline
-        Before case-study & 42.24 \%\\
-        After first part  & 55.25 \%\\
-        After second part & 62.34 \%\\
-    \end{tabular}
-    \caption{ Statement test coverage of RSpec unit- and integration tests at different phases. }
-    \label{tab:unit_coverage}
-\end{table}
