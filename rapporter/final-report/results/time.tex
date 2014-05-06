@@ -9,18 +9,18 @@ tests. The browser window was focused in order to mitigate effects of
 Mac OS X power saving features.\\
 
 An quick overview of the results are presented in \fref{tab:unit_times}
-and \fref{tab:cucumber_times}. Additional information and results which
+and \ref{tab:cucumber_times}. Additional information and results which
 are only available for certain phases of the case study are presented in
 the following sections.\\
 
 \begin{table}[t]
     \centering
     \begin{tabular}{l l l l l}
-        Phase & No. of tests & Total time (s) & Time per test (ms) & Tests per second\\
+        Phase & No. of tests & Total time & Time per test & Tests per second\\
         \hline
-        Before case-study & 59 & 19.9& 340 & 3.0 \\
-        After first part  & 58 & 8.3 & 140 & 6.9 \\
-        After second part & 81 & 7.6  & 153 & 10.7\\
+        Before case-study & 59 & 19.9 s& 340 ms & 3.0 \\
+        After first part  & 58 & 8.3 s & 140 ms & 6.9 \\
+        After second part & 81 & 7.6 s  & 153 ms & 10.7\\
     \end{tabular}
     \caption{ Execution times of RSpec integration- and unit tests at different phases }
     \label{tab:unit_times}
@@ -30,11 +30,11 @@ the following sections.\\
 \begin{table}[t]
     \centering
     \begin{tabular}{l l l l l}
-        Phase & No. of tests & Total time (s) & Time per test (ms) & Tests per second \\
+        Phase & No. of tests & Total time & Time per test & Tests per second \\
         \hline
-        Before case-study & 12 & 43 & 3.6 & 0.27 \\
-        After first part  & 10 & 160 & 18 & 0.056\\
-        After second part & 9 &  153 & 17 & 0.056\\
+        Before case-study & 12 & 43 s & 3.6 s & 0.27 \\
+        After first part  & 10 & 160 s & 18 s & 0.056\\
+        After second part & 9 &  153 s & 17 s & 0.056\\
     \end{tabular}
     \caption{ Execution times of Cucumber feature tests at different phases }
     \label{tab:cucumber_times}
