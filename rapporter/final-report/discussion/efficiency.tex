@@ -1,0 +1,75 @@
+
+\subsection{Usability of test coverage}
+
+As seen in \fref{sec:results_coverage}, the test coverage for the
+existing RSpec integration-tests was 42 \% before this thesis project,
+which is quite much considering that the existing tests was partially
+duplicated and only was focused on a few specific parts of the system.
+One reason for this is found when the coverage reports are inspected,
+where we can see that certain kinds code gets full statement coverage,
+even though there are not any tests for them. Method definitions and
+field definitions on model objects are such types, since they are
+executed as soon the application loads.\\
+
+A major part of the modules with high test coverage score in the
+beginning of the case study was modules without any methods, such as
+data models. Since these modules also can have methods which needs
+tests, it is not possible to just exclude all such modules from the
+coverage report either. This is an symptom of the weakness of statement
+coverage, which is also previously discussed in
+\fref{sec:theory_statement_coverage}. Statement coverage is a very weak
+metric and it is absolutely possible to create a non-empty class with
+100 \% statement coverage without writing any tests for it.\\
+
+One may thus impeach the usefulness of statement test coverage. We did
+however find that apart from the coverage score being a bad indicator on
+how well-tested the code was, analyzing the statement coverage report
+was highly usable for finding untested parts of the code. The nature of
+our code was such that it in general contained few branches, which of
+course makes statement coverage considerably much more useful than for
+code with higher complexity.\\
+
+On the client-side, we also had the ability to evaluate branch coverage.
+The most important difference between the coverage scores for branch
+coverage versus statement coverage is that the branch coverage is zero
+for all untested functions, which makes the branch coverage score a more
+sound metric for the overall testing level. Branch coverage of course
+also made it possible to discover a few more untested code paths.\\
+
+
+\subsection{Usability of mutation testing}
+
+We believe that mutation testing may be a good alternative to code
+coverage as method for evaluating test efficiency. Our small manual test
+indicated that mutation testing and test coverage is related, since
+several of the alive mutants modified the same line, which also showed
+to have zero statement test coverage. The mutation tests also found non-
+equivalent modifications to the code which was not discovered by the
+tests, even though they had full statement and branch test coverage.\\
+
+Our experiences with however shows that more work is required before it
+is possible to use it in our application. Mutation tests may also have
+limited usability on the server side, which in our case is mostly tested
+with higher-level integration-tests rather than with unit-tests. As
+mentioned in \fref{sec:theory_mutation}, efficient mutation testing
+requires the scope to be narrow and the test suite to be fast, due to
+the large amount of possible mutants. This is not the case for
+integration-level tests. Mutation testing might thus be more useful for
+the client-side, which contains more logic and therefore is tested with
+isolated unit-tests to a larger extent.\\
+
+
+\subsection{Efficiency of tests written during this thesis}
+
+Since most of the implemented code consisted of extensions or
+refactoring to existing files, it is hard to get a fair metric value for
+how well tested the modified parts of the software is. This is because
+these metrics are given in percent per file, and since the same file
+contains a lot of unmodified code, that will affect the result. It is
+also hard to detect which parts of the code that has been modified. We
+ended up using a self-constructed, subjective metric, which imposes
+questions on whether or not we can draw any solutions about how
+efficient the tests for the new functionality is.\\
+
+We can however see that the overall test coverage has increased
+

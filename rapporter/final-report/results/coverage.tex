@@ -1,41 +1,29 @@
+\label{sec:results_coverage}
 
-As discussed in \fref{sec:coverage_frameworks}, we were unable to find
-any tool for analyzing anything else than statement test coverage for
-Ruby. Since most of the implemented code consisted of extensions or
-refactoring to existing files, it is hard to get a specific metric value
-for how well tested the modified parts of the software is. This is
-because these metrics are given in percent per file, and since the same
-file contains a lot of unmodified code, that will affect the result. We
-will instead use a subjective measurement based on the detailed coverage
-report output for estimating test coverage of new functionality.\\
-
-
-An quick overview of the results are presented in
+A quick overview of the results are presented in
 \fref{tab:unit_coverage}. More information is presented in the following
-sections.\\
+sections. As discussed in \fref{sec:coverage_frameworks}, we were unable
+to find any tool for analyzing anything else than statement test
+coverage for Ruby.\\
 
 \begin{table}[t]
     \centering
-    \begin{tabular}{l l}
-        Phase & Test coverage\\
+    \begin{tabular}{l l l}
+        Phase & No. of tests & Test coverage\\
         \hline
-        Before case-study & 42.24 \%\\
-        After first part  & 55.25 \%\\
-        After second part & 62.34 \%\\
+        Before case-study &       59 & 42.24 \%\\
+        After first part  &       58 & 55.25 \%\\
+        After second part &       81 & 62.34 \%\\
+        Including browser tests & 85 & 66.80 \%\\
     \end{tabular}
-    \caption{ Statement test coverage of RSpec unit- and integration tests at different phases. }
+    \caption{ Statement test coverage of RSpec tests at different phases (unit- and integration tests, unless otherwise stated). }
     \label{tab:unit_coverage}
 \end{table}
 
 \subsubsection{Before the case study}
 
 Before the start of this master's thesis, the average statement coverage
-of all RSpec unit- and integration tests was 42 \%. A major part of
-the modules with high test coverage score was modules without any
-methods, such as data models which only contain model definitions. Such
-modules typically get full test coverage just by being loaded by the
-application. Since these modules also can have methods which needs
-tests, we could not just exclude all such modules either.\\
+of all RSpec unit- and integration tests was 42 \%.\\
 
 For the client-side code, no unit-tests existed. The test coverage was
 thus zero at this state.\\
@@ -57,6 +45,7 @@ focus was fixing the existing server-side tests. The client-side test
 coverage was still zero at this state \\
 
 \subsubsection{After the second part of the case study}
+\label{sec:result_coverage_end}
 
 The second part of the case study (described in \fref{sec:casestudy_2})
 was focused on implementing new functionality while re-factoring old
@@ -79,3 +68,15 @@ indicates that almost all of the newly implemented functions achieves
 full statement coverage. The branch coverage is in general also high for
 newly implemented functions, but conditionals for special cases (such as
 when variables are zero or not set) are sometimes not covered.\\
+
+\subsubsection{Coverage including browser tests}
+
+All metrics in the previous sections refer to test coverage for unit-
+and integration tests. As one of the last steps of the second part of
+the case study, browser tests was added in order to do system-level
+testing.\\
+
+The total RSpec statement test coverage for the browser tests alone was
+46 \%, and the statement test coverage for all Ruby tests was 67 \%.
+With the tools used, it was not possible to measure Javascript test
+coverage for the test suite including browser tests.\\
