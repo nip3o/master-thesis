@@ -14,10 +14,22 @@ coverage for Ruby.\\
         Before case-study &       59 & 42.24 \%\\
         After first part  &       58 & 55.25 \%\\
         After second part &       81 & 62.34 \%\\
-        Including browser tests & 84 & 66.80 \%\\
     \end{tabular}
-    \caption{ Statement test coverage of RSpec tests at different phases (unit- and integration tests, unless otherwise stated). }
+    \caption{ Statement test coverage of RSpec unit- and integration tests at different phases. }
     \label{tab:unit_coverage}
+\end{table}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{l l l}
+        Description & No. of tests & Test coverage\\
+        \hline
+        RSpec browser tests &     3 & 46.3 \%\\
+        Cucumber browser tests &  8 & 61.2 \%\\
+        All RSpec tests &        84 & 66.8 \%\\
+    \end{tabular}
+    \caption{ Statement test coverage including browser tests after the second part of the case study. }
+    \label{tab:browser_coverage}
 \end{table}
 
 \subsubsection{Before the case study}
@@ -76,7 +88,11 @@ and integration tests. As one of the last steps of the second part of
 the case study, browser tests was added in order to do system-level
 testing.\\
 
-The total RSpec statement test coverage for the browser tests alone was
+The total statement test coverage for the RSpec browser tests alone was
 46 \%, and the statement test coverage for all Ruby tests was 67 \%.
 With the tools used, it was not possible to measure Javascript test
 coverage for the test suite including browser tests.\\
+
+The total statement test coverage for the Cucumber browser tests alone
+was 61 \%. It was not possible to calculate the total coverage for
+Cucumber and RSPec tests combined.\\
