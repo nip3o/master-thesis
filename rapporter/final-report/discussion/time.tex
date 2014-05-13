@@ -18,6 +18,22 @@ compared to before.\\
 The single most important factor for speeding up tests when re-factoring
 the old tests was to reduce the construction of database objects. Before
 the case-study, all test data for all tests was created before every
-test. By using factory objects, we could instead choose to only create
-the objects needed for each specific test, and to cache objects between
-tests that needed similar test data.\\
+test, since the database needs to be cleaned between each test in order
+for one test not to affect other tests. By using factory objects, we
+could instead only create the objects needed for each specific test,
+instead of creating a huge amount of data which is not even used. RSpec
+also caches factory objects between tests which uses the same objects,
+which gives some additional speed gain.\\
+
+By looking at the execution times for the Cucumber feature test, it
+might seem like these tests became a great deal slower after the first
+part of the case-study. One issue is however that Cucumber stops
+executing a test as soon as some part of the test fails. Since almost
+all of the tests failed at an early stage, large part of the test suite
+was never executed and the execution time before the first part of the
+case study is therefore misleading.\\
+
+
+\subsection{Execution time of different test types}
+
+
