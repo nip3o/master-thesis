@@ -25,15 +25,64 @@ instead of creating a huge amount of data which is not even used. RSpec
 also caches factory objects between tests which uses the same objects,
 which gives some additional speed gain.\\
 
-By looking at the execution times for the Cucumber feature test, it
-might seem like these tests became a great deal slower after the first
-part of the case-study. One issue is however that Cucumber stops
-executing a test as soon as some part of the test fails. Since almost
-all of the tests failed at an early stage, large part of the test suite
-was never executed and the execution time before the first part of the
-case study is therefore misleading.\\
+By looking at the execution times for the Cucumber feature test
+(\fref{tab:cucumber_times}), it might seem like these tests became a
+great deal slower after the first part of the case-study. One issue is
+however that Cucumber stops executing a test as soon as some part of the
+test fails. Since almost all of the tests failed at an early stage,
+large part of the test suite was never executed and the execution time
+before the first part of the case study is therefore misleading.\\
 
 
-\subsection{Execution time of different test types}
+\subsection{Execution time for different test types}
 
+In \fref{sec:theory_levels}, we discussed different levels of testing,
+and how this affects the amount of executed code and the test execution
+time. \Fref{tab:jasmine_times} shows that our Jasmine isolated unit-
+tests runs at a rate of over 700 tests per second, while our system-
+level browser tests in \fref{tab:rspec_browser_times} runs at a rate of
+less than 0.3 tests per second. We can conclude that the principle of
+writing many isolated unit tests and just a few system-level tests seems
+very reasonable unless we choose to discard the execution time
+completely.\\
+
+One other interesting thing is the large difference between the Cucumber
+browser tests and the RSpec browser tests. Even though both types of
+tests are in the category of system-level tests, RSpec browser tests are
+more than four times faster than the Cucumber tests. One reason for this
+might be the size of the test. As seen in \fref{tab:browser_coverage},
+the Cucumber tests cover more code than the RSpec browser tests, and
+therefore takes longer time to execute. Another reason might be that
+some Cucumber tests are redundant. For example, the Cucumber test suite
+tests login functionality multiple times, while the RSpec browser test
+suite only tests this functionality once. Yet another reason might be
+the overhead of parsing the ubiquitous language used by Cucumber.\\
+
+
+\subsection{Importance of a fast test suite}
+
+One may argue that there is no reason to have a fast test suite, and one
+may also argue that a fast test suite is very important. We think the
+importance of tests being fast depends on the mindset on the people
+writing them, how often the tests are run and in which way. We will
+discuss some of our own experiences on this area.\\
+
+Having a super-fast unit test suite such as our Jasmine tests is really
+nice when using TDD methodology, since it feels like the whole test
+suite is completed in the same moment a file is saved. However, using
+integration-level RSpec tests which runs in about 150 ms also works fine
+when using TDD-methodology, as long as we only run tests for the
+affected module. Running the whole integration test suite continuously
+takes too much time, though. For the RSpec tests, the startup time is
+also considerably long, which is annoying but can be mitigated by using
+tools like Zeus\footnote{\url{https://github.com/burke/zeus/}}.\\
+
+For browser tests, we believe that the important thing is the ability to
+run these in some reasonable time. In our case, we believe that the
+RSpec browser test suite fast enough to be run before each deploy
+without annoyance, while the Cucumber suite barely fulfills the
+criterion of being run within \"reasonable time\". A good approach would
+be to eventually re-factor the Cucumber test suite into unit-,
+integration- and RSpec browser tests. Running browser tests on a
+separate testing server instead of locally is another alternative.\\
 

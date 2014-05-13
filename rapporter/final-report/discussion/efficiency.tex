@@ -47,16 +47,16 @@ to have zero statement test coverage. The mutation tests also found non-
 equivalent modifications to the code which was not discovered by the
 tests, even though they had full statement and branch test coverage.\\
 
-Our experiences with however shows that more work is required before it
-is possible to use it in our application. Mutation tests may also have
-limited usability on the server side, which in our case is mostly tested
-with higher-level integration-tests rather than with unit-tests. As
-mentioned in \fref{sec:theory_mutation}, efficient mutation testing
-requires the scope to be narrow and the test suite to be fast, due to
-the large amount of possible mutants. This is not the case for
-integration-level tests. Mutation testing might thus be more useful for
-the client-side, which contains more logic and therefore is tested with
-isolated unit-tests to a larger extent.\\
+Our experiences with mutation testing however shows that more work is
+required before it is possible to use it in our application. Mutation
+tests may also have limited usability on the server side, which in our
+case is mostly tested with higher-level integration-tests rather than
+with unit-tests. As mentioned in \fref{sec:theory_mutation}, efficient
+mutation testing requires the scope to be narrow and the test suite to
+be fast, due to the large amount of possible mutants. This is not the
+case for integration-level tests. Mutation testing might thus be more
+useful for the client-side, which contains more logic and therefore is
+tested with isolated unit-tests to a larger extent.\\
 
 
 \subsection{Efficiency of tests written during this thesis}
