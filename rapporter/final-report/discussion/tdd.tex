@@ -1,0 +1,32 @@
+
+We have striven for using test- and behavioral-driven development
+methodologies in as strict way as possible throughout this entire
+thesis. The purpose of this has been to gain experience of different
+advantages and drawbacks of these methodologies. In situations where we
+have found these methodologies to be unsuitable, we have however chosen
+to disregard some principles of these methodologies rather than try to
+apply them anyway.\\
+
+Using a test-driven approach has is in our opinion two major advantages.
+The most important is perhaps that it mitigates a sense of fear about
+whether or not the implementation really works as it is supposed to, and
+a fear of that things may break when code is refactored. The other
+important aspect is that the written code is self-testing; you can run a
+command in order to find out whether or not the code is in a working
+state, rather than just test manually and see what happens.\\
+
+Another benefit from using the test-first principle is that one often
+think through the design before implementation. We have to write the
+implementation in a way such that it is testable, which makes us
+discover new ways of solving the problem and design our software better.
+We also usually find it tedious to write tests when the implementation
+is done, and we think that writing the tests first simply makes the
+development more fun than writing tests after implementation.\\
+
+It is however no axiomatic guarantee for that a more testable design is
+better than a less testable design. For example, making it possible to
+test a module may require it to be split up in several non-intuitive
+modules, or to use a large amount of mocking. We believe that it is better
+to test on a higher level and perhaps discard the test-first principle
+in cases where making the code testable introduces more drawbacks than
+advantages to the overall design.\\
