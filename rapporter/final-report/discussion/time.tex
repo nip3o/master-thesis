@@ -1,0 +1,23 @@
+
+\subsection{Evolution of test execution time}
+
+As seen in \fref{sec:results_time}, the execution time of the RSpec
+integration- and unit tests has decreased for every part of the case
+study, even though the number of tests has increased. On average, each
+test is more than twice as fast after the second part compared to before
+the case study.\\
+
+The major reason for the increase of speed comes from the refactoring of
+old tests, initiated in the first part of the case study. Some old tests
+was also re-factored during the second part, which explains the decrease
+in test execution time between the first and the second part of the case
+study. One reason for the drop in average execution time after the
+second part was also the fact that a few more unit-tests was written,
+compared to before.\\
+
+The single most important factor for speeding up tests when re-factoring
+the old tests was to reduce the construction of database objects. Before
+the case-study, all test data for all tests was created before every
+test. By using factory objects, we could instead choose to only create
+the objects needed for each specific test, and to cache objects between
+tests that needed similar test data.\\
