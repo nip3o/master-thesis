@@ -73,9 +73,17 @@ suite is completed in the same moment a file is saved. However, using
 integration-level RSpec tests which runs in about 150 ms also works fine
 when using TDD-methodology, as long as we only run tests for the
 affected module. Running the whole integration test suite continuously
-takes too much time, though. For the RSpec tests, the startup time is
-also considerably long, which is annoying but can be mitigated by using
-tools like Zeus\footnote{\url{https://github.com/burke/zeus/}}.\\
+takes too much time, though.\\
+
+For the RSpec tests, the startup time before tests actually are run is
+considerably long, since Rails and related components are very large and
+takes some time to load. It would be possible to separate parts of the
+test suite from Rails and associated frameworks as mentioned in
+\fref{sec:theory_time}, but we refrained from doing this since we
+considered it to affect the code structure in a bad way. This problem
+can be mitigated by using tools like
+Zeus\footnote{\url{https://github.com/burke/zeus/}}, but we were unable
+to evaluate this tool due to incompatibilities with our Ruby version.\\
 
 For browser tests, we believe that the important thing is the ability to
 run these in some reasonable time. In our case, we believe that the

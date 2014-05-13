@@ -7,7 +7,7 @@ with KnockoutJS and a MongoDB database. The main server-side language
 was thus Ruby, and the client-side code was written in CoffeeScript.
 CoffeeScript is a scripting language which compiles into Javascript.\\
 
-For the choice of testing-related frameworks, we choose to look for
+For the choice of testing-related frameworks, we chose to look for
 frequently used and active developed open source frameworks.
 Technologies that are used by many people intuitively often has more
 resources on how they are used, and also has the advantage of being more
@@ -33,9 +33,11 @@ this framework seemed to be very popular, actively developed and had
 good documentation\footnote{It is worth to mention that the Jasmine
 documentation is basically its own test suite with some additional
 comments. This works incredibly good in this case, presumably since it
-is a test framework.}. Its syntax is inspired by RSpec, which also is an
-advantage since RSpec is used for the server side tests.\\
+is a test framework and the tests are very well-written.}. Its syntax is
+inspired by RSpec, which also is an advantage since RSpec is used for
+the server side tests.\\
 
+\subsubsection{Test runner}
 The Jasmine framework provides a way of writing tests, but a test runner
 is also required in order to run the tests. Jasmine ships with a basic
 test runner which was used initially, which worked out-of-the box using
@@ -51,27 +53,41 @@ the Jasmine Ruby gem. A screenshot of this test runner is shown in
 
 The Jasmine test runner did however have multiple issues. First of all,
 it runs completely in the browser. Switching to the browser and reload
-in order to run the tests are not excessively problematic, but might be
-a little bit tiresome in the long run when using a test-driven
+the page in order to run the tests are not excessively problematic, but
+might be a little bit tiresome in the long run when using a test-driven
 development methodology. A larger problem was the fact that the asset
 handling, i.e. the compilation of CoffeeScript into Javascript, is
-handled by Rails upon each reload. Rails currently re-compiles all
-assets upon page load if any file has been changed. This process takes a
-while, which means that each test run could take up to 10-15 seconds
-even though the actual tests only takes a fraction of a second to run.
-The asset compilation also got stuck for for apparently no reason once
-in a while. Since the server port on which the test runner runs cannot
-be specified, it is also impossible to restart the test runner without
-manually killing its process.\\
+handled by Rails upon each reload. The used version of Rails re-compiles
+all assets upon page load if any file has been changed. This process
+takes a while, which means that each test run could take up to 10-15
+seconds even though the actual tests only takes a fraction of a second
+to run. The asset compilation also got stuck for for apparently no
+reason once in a while. Since the server port on which the test runner
+runs cannot be specified, it is also impossible to restart the test
+runner without manually killing its system process.\\
 
 Due to these issues, we switched to the Karma\footnote{\url{http
 ://karma-runner.github.io/}} test runner. Karma originates from a
-master's thesis by \citet{article:karma}, and this thesis also covers
-several problems with other test runners (such as the mentioned Jasmine
-test runner). Karma was designed to solve several of these issues and to
-be used with test-driven software methodologies. Test are run in a
-browser as soon as a file is changed, and the results are reported back
-to the terminal and displayed as shown in \fref{fig:karma_runner}.\\
+master's thesis by \citet{article:karma}, and this covers several
+problems with the Jasmine test runner as well as with some other
+Javascript test runners. Karma was designed to solve several of these
+issues and to be used with test-driven software methodologies. Tests are
+run in a browser as soon as a file is changed, and the results are
+reported back to the terminal and displayed as shown in
+\fref{fig:karma_runner}. Re-compilation of source files and tests is
+very fast and we did not experience any stability issues.\\
+
+It took some effort with getting Karma to work with Rails, since it is
+written in Node.js and does not have any knowledge about which
+CoffeeScript files that exists in the Rails application. The task of
+finding the location of all such files became more complex since
+external Javascript libraries such as jQuery was loaded as Ruby gems,
+and therefore not even located inside the project folder. We ended up
+using a slightly modified version of a Rake script from a blog entry by
+\citet{web:saunier_angular} for bootstrapping Karma in a Rails
+environment. This script basically collects a list of filenames for all
+Javascript assets by using Rails internal modules for asset handling,
+and injects it into Karma's configuration file.\\
 
 \begin{figure}
 \centering
@@ -79,6 +95,7 @@ to the terminal and displayed as shown in \fref{fig:karma_runner}.\\
 \caption{The Karma test runner.}
 \label{fig:karma_runner}
 \end{figure}
+
 
 \subsection{Test coverage}
 \label{sec:coverage_frameworks}
@@ -109,9 +126,10 @@ and easy- to-read coverage reports in HTML (see
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{results/simplecov}
-\caption{A coverage report generated by SimpleCov}
+\caption{A test coverage report generated by SimpleCov.}
 \label{fig:simplecov_report}
 \end{figure}
+
 
 \subsubsection{CoffeeScript test coverage}
 For the client-side CoffeeScript, we used a plug-in for the Karma test
@@ -139,9 +157,10 @@ produced as an interactive HTML report (see \fref{fig:karma_report}).\\
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{methodology/karma_coverage}
-\caption{A coverage report generated by istanbul-js using karma-coverage}
+\caption{A test coverage report generated by istanbul-js using karma-coverage.}
 \label{fig:karma_report}
 \end{figure}
+
 
 \subsubsection{Test coverage issues}
 
@@ -171,6 +190,7 @@ covered.\\
          which demonstrates three different types of tested functions.}
 \label{fig:coverage_example}
 \end{figure}
+
 
 \subsection{Mutation analysis}
 \label{sec:choices_mutation}

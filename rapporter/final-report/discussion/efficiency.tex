@@ -21,13 +21,13 @@ coverage, which is also previously discussed in
 metric and it is absolutely possible to create a non-empty class with
 100 \% statement coverage without writing any tests for it.\\
 
-One may thus impeach the usefulness of statement test coverage. We did
-however find that apart from the coverage score being a bad indicator on
-how well-tested the code was, analyzing the statement coverage report
-was highly usable for finding untested parts of the code. The nature of
-our code was such that it in general contained few branches, which of
-course makes statement coverage considerably much more useful than for
-code with higher complexity.\\
+Based on the weaknesses of statement test coverage, one may thus impeach
+its usefulness. We did however find that apart from the coverage score
+being a bad indicator on how well-tested the code was, analyzing the
+statement coverage report was highly usable for finding untested parts
+of the code. The nature of our code was such that it in general
+contained few branches, which of course makes statement coverage
+considerably much more useful than for code with higher complexity.\\
 
 On the client-side, we also had the ability to evaluate branch coverage.
 The most important difference between the coverage scores for branch
@@ -59,7 +59,7 @@ useful for the client-side, which contains more logic and therefore is
 tested with isolated unit-tests to a larger extent.\\
 
 
-\subsection{Efficiency of tests written during this thesis}
+\subsection{Efficiency of written tests}
 
 Since most of the implemented code consisted of extensions or
 refactoring to existing files, it is hard to get a fair metric value for
@@ -71,5 +71,13 @@ ended up using a self-constructed, subjective metric, which imposes
 questions on whether or not we can draw any solutions about how
 efficient the tests for the new functionality is.\\
 
-We can however see that the overall test coverage has increased
+We can however see that the overall test coverage has increased during
+the different parts of the case study, which would not be the case if
+the test coverage of the newly implemented functionality was low, since
+the total SLOC\footnote{Source lines of code} count has increased. Based
+on this fact, combined with the results of our subjective metric, we
+would argue that the efficiency of the tests written during this thesis
+is high in general. Mutation testing could be used in future in order to
+evaluate this conclusion further. It is however hard to tell whether or
+not the reason for this is because TDD methodology has been used.\\
 
