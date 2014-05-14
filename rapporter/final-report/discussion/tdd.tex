@@ -10,23 +10,58 @@ apply them anyway.\\
 Using a test-driven approach has is in our opinion two major advantages.
 The most important is perhaps that it mitigates a sense of fear about
 whether or not the implementation really works as it is supposed to, and
-a fear of that things may break when code is refactored. The other
+a fear of that things may break when code is re-factored. The other
 important aspect is that the written code is self-testing; you can run a
 command in order to find out whether or not the code is in a working
-state, rather than just test manually and see what happens.\\
+state, rather than testing it manually and see what happens. In
+particular we found writing a failing test before fixing a software
+defect to be especially helpful. We could instantly see when the defect
+was fixed and therefore know when we were done, and we did not have to
+constantly test the software manually during development.\\
 
 Another benefit from using the test-first principle is that one often
 think through the design before implementation. We have to write the
 implementation in a way such that it is testable, which makes us
 discover new ways of solving the problem and design our software better.
 We also usually find it tedious to write tests when the implementation
-is done, and we think that writing the tests first simply makes the
-development more fun than writing tests after implementation.\\
+is done, and we think that writing the tests first makes the development
+more fun than writing tests after implementation.\\
 
-It is however no axiomatic guarantee for that a more testable design is
-better than a less testable design. For example, making it possible to
-test a module may require it to be split up in several non-intuitive
-modules, or to use a large amount of mocking. We believe that it is better
-to test on a higher level and perhaps discard the test-first principle
-in cases where making the code testable introduces more drawbacks than
-advantages to the overall design.\\
+There is however no guarantee that a more testable design is better than
+a less testable design. For example, making it possible to test a module
+may require it to be split up in several non-intuitive modules, or to
+use a large amount of mocking. We believe that it is better to test on a
+higher level and perhaps discard the test-first principle in cases where
+making the code testable introduces more drawbacks than advantages to
+the overall design.\\
+
+Our biggest difficulties while using TDD was the \emph{refactor}-part of
+the \emph{red/green/refactor} mantra. We found it hard to know whether
+or not code needed to be refactored, and to know how large part of the
+code to refactor. Some small changes required large parts of the code to
+be refactored in order for the code to be possible to unit-test, and in
+some situations we found that the overhead of doing refactoring simply
+was too large. One reason for this may be that the old implementations
+has been written without testability or test-driven development in mind,
+and the need for heavy refactoring would probably decrease over time if
+test-driven methodologies are used.\\
+
+Our experiences from using behavior-driven development principles is
+generally positive. We found that using descriptive strings for tests
+(rather than function names) forced us split up tests into smaller
+parts, since each part must be possible to describe with a single
+sentence. It also felt natural to share preconditions (such as \emph{if
+the user is logged in}) for a set of tests using a string. One drawback
+is however that the full string for a test, including preconditions,
+tends to be very long. This can make it harder to perceive which of the
+tests that failed.\\
+
+While using single descriptive strings for describing tests and
+preconditions in general worked very well, using an ubiquitous language
+when writing and reading tests felt unnatural. We experienced that the
+resulting test stories was hard to read and understand, and we could not
+see any gain from using it in this particular project. It might be worth
+considering for large software development projects with many roles and
+multiple stakeholders, but hardly for projects where developers are in
+charge of feature specifications as well as testing and
+implementation.\\
