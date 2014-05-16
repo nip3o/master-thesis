@@ -1,0 +1,56 @@
+
+We worked with Cucumber during the first part of the case study.
+Cucumber is a framework for acceptance-level testing using BDD
+methodology. Tests, called \emph{features}, are written using an
+ubiquitous language as seen in listing \ref{lst:cucumber_feature}. The
+action for each line, called \emph{step}, of the feature is specified
+using a \emph{step definition}, as seen in listing
+\ref{lst:cucumber_step}.\\
+
+One benefit from using Cucumber is that all steps are reusable, which
+means that code duplication can be avoided. However, it can be hard to
+write the steps in such way that they benefit from this, and it
+sometimes also requires a lot of parameters to be passed in to each
+step. Cucumber also provides code snippets for creating step
+definitions, which evades some unnecessary work.\\
+
+Apart from these benefits, we found Cucumber tiresome to work with. The
+separation between features and step definitions makes it hard to get an
+overview of the code executed during the test, and it is often hard to
+find specific step definitions. We also experienced problems with the
+mapping step definitions, where the generated step definition simply did
+not match the written step.\\
+
+The chosen level of testing is another big issue. We felt that using
+TDD-methodology was hard to do with system-level tests since they take
+long time to execute and affects a much larger part of the software than
+the part we are typically working with when implementing new
+functionality. Considering these drawbacks, we decided to not continue
+the use of Cucumber for this thesis.\\
+
+
+\begin{lstlisting}[caption=Example of a Cucumber test.,
+                   label=lst:cucumber_feature, float=t, language=HTML]
+Feature: creating new cookies
+  As a bakery worker
+  So that I can sell cookies to my customers
+  I want to create a new cookie object
+
+Background:
+  Given a user and a cookie type called "Chocolate chip"
+  And I have created one cookie
+
+Scenario: create a new cookie
+  When I visit the page for creating cookies
+  Then I should see one cookie
+  When I create a new Chocolate chip cookie
+  Then I should see two cookies
+\end{lstlisting}
+
+
+\begin{lstlisting}[caption=Cucumber step definition for the step on row 13 in code listing \ref{lst:cucumber_feature}.,
+                   label=lst:cucumber_step, float=t]
+When /^I create a new (.+) cookie$/ do |cookie_type|
+  # Code for creating a new cookie
+end
+\end{lstlisting}
