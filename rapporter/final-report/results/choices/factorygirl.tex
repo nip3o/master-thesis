@@ -1,0 +1,56 @@
+\MakeShortVerb{\|}
+
+One important framework used was
+factory\_girl\footnote{\url{https://github.com/thoughtbot/factory\_girl}},
+which is used for generating factory objects. As discussed in
+\fref{sec:theory_mocks}, factory objects behaves just like instances of
+model objects, but has several advantages. As alternatives to
+factory\_girl, we also considered
+Machinist\footnote{\url{https://github.com/notahat/machinist}} and
+Fabrication\footnote{\url{http://www.fabricationgem.org/}}. Machinist
+was discarded since it is no longer actively developed. We did not find
+any significant differences between Fabrication and factory\_girl, and
+therefore chose the latter since it was more popular.\\
+
+There are many advantages of using a framework such as factory\_girl
+rather than just instantiate model objects by hand (i.e. just write
+|MyModel.new| in Ruby to create a new model instance). First of all,
+factory\_girl automatically passes in default values for required
+parameters, so that we only need to supply the attributes needed in a
+particular test. Secondly, related objects are also created
+automatically, which typically saves as huge amount of work compared to
+manual creation of objects. Code listing \ref{lst:factory_def} and
+\ref{lst:factory_use} shows a factory definition and its usage. The name
+of the cookie and a new Bakery-object is created automatically since we
+do not give them as parameters when using the factory.\\
+
+We did initially have some issues with the creation of related objects
+since the factory\_girl documentation did not cover working with
+document-based databases such as MongoDB in our case, but we eventually
+found out how to do this.\\
+
+One feature that we felt was missing in factory\_girl was the ability to
+specify attributes on related objects, for example to specify the name
+of a Bakery when creating a new Cookie. It is of course possible to
+first create a Bakery object and then creating a Cookie and pass in the
+created bakery object, but a shortcut for doing this would have been
+convenient in some situations. To our knowledge, Fabrication also lacks
+this feature.\\
+
+\begin{lstlisting}[caption=Example usage of the factory defined in code listing \ref{lst:factory_def}.,
+                   label=lst:factory_use, float=t]
+FactoryGirl.create :cookie, diameter: 4.5, thickness: 0.5
+\end{lstlisting}
+
+\begin{lstlisting}[caption=A factory definition for a Cookie model.,
+                   label=lst:factory_def, float=t]
+FactoryGirl.define do
+  factory :cookie do
+    name      'Vanlilla dream'
+    diameter  1
+    thickness 2
+    bakery    { FactoryGirl.build(:bakery) }
+  end
+end
+\end{lstlisting}
+

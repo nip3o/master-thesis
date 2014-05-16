@@ -56,7 +56,8 @@ of global states and hard-coded dependencies. This makes testing of the
 unit much easier.\\
 
 
-\subsubsection{Stubs, mocks and fakes}
+\subsubsection{Stubs, mocks and factory objects}
+\label{sec:theory_mocks}
 
 Another way of dealing with dependencies on other modules is to use some
 kind of object that replaces the other module. The replacement object
@@ -74,8 +75,8 @@ replacement objects are used by the tested unit instead of some other
 module, but mocks sets expectations on how it can be used by the tested
 module on beforehand. \cite{web:mocks_arent_stubs}\\
 
-Another type of replacement object are \emph{fakes} or \emph{factory
-objects}. This kind of object is typically provides a real
+Another type of replacement object are \emph{factory objects} or
+\emph{fakes}. This kind of object is typically provides a real
 implementation of the object that it replaces, as opposed to a stub or
 mock which only has just as many methods or properties that is needed
 for the test to run. The difference between a fake object and the real

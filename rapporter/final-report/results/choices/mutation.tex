@@ -1,0 +1,36 @@
+\label{sec:choices_mutation}
+
+There exists a few different tools for mutation analysis of Javascript
+code. The ones we have found originates from academic research papers.
+\citet{paper:mutandis} proposes a solution which has been implemented as
+a tool called Mutandis
+\footnote{\url{https://github.com/saltlab/mutandis/}}.
+\citet{paper:ajaxmutator} presents another approach which has been
+released as AjaxMutator \footnote{\url{https://github.com/knishiura-
+lab/AjaxMutator}}. \citet{paper:webmujava} proposes a system-level
+mutation testing approach called webMuJava.\\
+
+Mutandis is based on website crawling tests. Although
+\citeauthor{paper:mutandis} mentions that pure Javascript frameworks
+have been tested using this tool, its implementation showed to be too
+specific to be considered in our context. webMuJava does not seem to be
+publicly available, and also seems to be too tightly integrated with a
+specific back-end technique to be useful for Javascript-testing only.
+
+AjaxMutator is in our opinion the most mature of all the considered
+frameworks. It provides some basic documentation and installation
+instructions, and the amount of implementation needed in order to begin
+using it in a new project is reasonable. However, AjaxMutator currently
+only supports Javascript tests written in Java using
+JUnit\footnote{\url{http://junit.org/}}. Using it for mutation testing
+tests written in CoffeeScript using Jasmine would probably be possible,
+but the effort of doing this is outside the scope of this thesis.\\
+
+For mutation analysis of Ruby code, we tried to use
+Mutant\footnote{\url{https://github.com/mbj/mutant}}, which initially
+seemed very promising since it is actively developed and is used in
+several real-life software development projects. We were however unable
+to get Mutant to work properly, probably due to our recent Ruby and
+Rails versions. It was possible to start a mutation test, but the
+command never finished and no result was presented. Unfortunately we
+were unable to find any alternative tools for Ruby mutation testing.\\

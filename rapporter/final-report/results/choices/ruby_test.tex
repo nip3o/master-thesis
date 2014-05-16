@@ -1,0 +1,24 @@
+
+Before the case study, Cucumber\footnote{\url{http://cukes.info/}} and
+RSpec\footnote{\url{http://rspec.info/}} was used as testing frameworks
+for existing tests. Both these frameworks are very popular and actively
+maintained. We also considered
+Minitest\footnote{\url{https://github.com/seattlerb/minitest}}, but
+concluded that it did not have enough interesting advantages over RSpec
+compared to the effort of migrating the existing RSpec tests.\\
+
+\subsubsection{Cucumber}
+\input{results/choices/cucumber.tex}
+
+\subsubsection{RSpec}
+\input{results/choices/rspec.tex}
+
+\subsubsection{Factory girl}
+\input{results/choices/factorygirl.tex}
+
+\subsubsection{Other tools}
+
+TimeCop\footnote{\url{https://github.com/travisjeffery/timecop}} was
+used in order to mock date and time for a test which was dependent on
+the current date and time. We did not have much experience with this
+tool, but it worked as we expected for our specific use.\\

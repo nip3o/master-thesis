@@ -87,7 +87,8 @@ showstringspaces=false
 \postdate{\par\vspace{12pt}\@myinfo\end{center}}
 \makeatother
 
-\title{\textsc{Master's thesis}\\\Huge\textbf{Automated testing of a dynamic web application}}
+\title{\textsc{Master's thesis}\\
+\Huge\textbf{Automated testing of a dynamic web application}}
 \author{Niclas Olofsson}
 \date{\today}
 
@@ -111,9 +112,12 @@ showstringspaces=false
 \input{acknowledgements.tex}
 \end{abstract}
 
+% No page numbering of ToC pages
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+
 \setcounter{tocdepth}{4}
 \tableofcontents
-\thispagestyle{empty} % No page numbering of ToC pages
+\thispagestyle{empty}
 \newpage
 
 \setcounter{page}{1}
@@ -200,7 +204,7 @@ showstringspaces=false
   \section{Evaluation of tools and frameworks}
   \input{results/choices/choices.tex}
 
-  \section{Chosen test procedures}
+  \section{Chosen levels of testing}
   \input{results/approaches.tex}
 
   \section{Test efficiency}

@@ -1,0 +1,36 @@
+
+Just like Cucumber, RSpec also claims to be made for use with BDD. In
+contrast, it only uses descriptive strings instead of a full ubiquitous
+language and can be used for writing isolated unit-tests as well as
+integration- and browser tests.\\
+
+We found it quite straightforward to write tests with RSpec, and to use
+descriptive strings rather than function names for describing tests. The
+plug-in rspec-mocks\footnote{\url{https://github.com/rspec/rspec-mocks}}
+was used in some situations where mocking was required, since the RSpec
+core does not include support for this. One major drawback of rspec-
+mocks is that it allows stubbing non-existent methods and properties,
+which as discussed in \fref{sec:theory_mocks} can be dangerous. We
+worked around this by writing a helper for checking existence of
+properties before stubbing.\\
+
+\begin{lstlisting}[caption=Example of RSpec tests for a module.,
+                   label=lst:rspec, float=t]
+describe Math do
+  describe '#minus' do
+    it 'returns the difference between two positive integers' do
+      expect(Math::minus(3, 1)).to eq(2)
+    end
+
+    it 'returns the sum if the second integer is negative' do
+      expect(Math::minus(5, -2)).to eq(7)
+    end
+  end
+
+  describe '#plus' do
+    it 'returns the sum of two positive integers' do
+      expect(Math::plus(1, 2)).to eq(3)
+    end
+  end
+end
+\end{lstlisting}
