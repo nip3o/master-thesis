@@ -1,8 +1,8 @@
 
-Just like Cucumber, RSpec also claims to be made for use with BDD. In
-contrast, it only uses descriptive strings instead of a full ubiquitous
-language and can be used for writing isolated unit-tests as well as
-integration- and browser tests.\\
+Just like Cucumber, RSpec also claims to be made for use with
+BDD\cite{web:rspec}. In contrast, it only uses descriptive strings
+instead of a full ubiquitous language and can be used for writing
+isolated unit-tests as well as integration- and browser tests.\\
 
 We found it quite straightforward to write tests with RSpec, and to use
 descriptive strings rather than function names for describing tests. The
@@ -12,7 +12,7 @@ core does not include support for this. One major drawback of rspec-
 mocks is that it allows stubbing non-existent methods and properties,
 which as discussed in \fref{sec:theory_mocks} can be dangerous. We
 worked around this by writing a helper for checking existence of
-properties before stubbing.\\
+properties before stubbing them.\\
 
 \begin{lstlisting}[caption=Example of RSpec tests for a module.,
                    label=lst:rspec, float=t]

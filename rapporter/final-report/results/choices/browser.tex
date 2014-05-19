@@ -1,1 +1,138 @@
 Capybara and site\_prism.
+
+\subsubsection{Selenium 2}
+The absolutely most widespread framework for browser testing seems to be
+Selenium\footnote{\url{http://docs.seleniumhq.org/}}. In fact, we have
+not even been able to find any other frameworks for running tests in
+real browsers, possibly since it takes a lot of effort to integrate with
+a large number of browsers on a large number of platforms. Selenium
+supports a number of popular programming languages, for example Java,
+C\#, Python and Ruby, and also has support the majority of all modern web
+browsers on Windows as well as Linux and Mac OS. The interface used by
+newer versions of Selenium for interacting with browsers, WebDriver, has
+been proposed as an W3C Internet
+standard\footnote{\url{https://dvcs.w3.org/hg/webdriver/raw-file/default
+/webdriver-spec.html}}, which may indicate that support for Selenium
+will be continue to be present in future browser versions.
+\cite{wiki:selenium}\\
+
+While Selenium is very widespread and seems to be the only option for
+running tests in real browsers, its API is on a rather low level. In
+order to fill in a string of text to a text field, we have to locate the
+label of the field using an XPath\footnote{XPath is a language for
+selecting elements and attributes in an XML document, such as an
+website.} function, then figure out its associated text element and
+sending out text as keystrokes to this element. Rather than writing
+helper methods for such functionality ourselves, we decided to use
+a higher-level framework.\\
+
+
+\subsubsection{Capybara}
+Capybara\footnote{\url{https://github.com/jnicklas/capybara}} provides a
+much higher level API for browser testing compared to Selenium, and
+besides from using it with Selenium it can also be used with drivers for
+headless browsers or for testing frameworks using mock requests. Tests
+can also be written in multiple testing frameworks, such as RSpec which
+was used in our case.\\
+
+We did not find any particular difficulties when using Capybara. Its API
+provides very convenient high-level helpers for every common task that
+we needed, and we did not experience any problems with any of them. An
+example of a browser test using Capybara is found in code listing
+\ref{lst:capybara}.\\
+
+
+\begin{lstlisting}[caption=A browser test written in RSpec using Capybara.,
+                   label=lst:capybara, float=t]
+describe 'creating new cookies' do
+  before do
+    FactoryGirl.create :cookie_type, name: 'Chocolate chip'
+    login_as FactoryGirl.create :user
+  end
+
+  it 'should be possible to create new cookies' do
+    visit new_cookie_path
+
+    fill_in 'Amount', with: 1
+    select 'Chocolate chip', from: 'Cookie type'
+    click_button 'Save'
+
+    expect(page).to have_content 'The cookie has been created.'
+  end
+end
+\end{lstlisting}
+
+
+\subsubsection{SitePrism}
+
+As mentioned in \fref{sec:testing_web}, one way of writing more
+structured browser tests is to use the page object pattern. We chose to
+use this pattern from the start rather than cleaning up overly
+complicated tests afterwards. While this pattern is perfectly possible
+to use without any frameworks, we found a framework called
+SitePrism\footnote{\url{https://github.com/natritmeyer/site_prism}}
+which provided some additional convenient functionality.\\
+
+SitePrism makes it possible to define pages of an application by
+specifying its URL, as well as elements and sections of a specific page
+by specifying a CSS or XPath selector. An example of a such definition
+can be seen in code listing \ref{lst:siteprism_page}. Page objects
+automatically gets basic methods for accessing elements, and allows us
+to define additional methods for each page or element. This allows us to
+use higher-level functions in our tests rather than locating elements
+manually in out Capybara tests, as seen in code listing
+\ref{lst:siteprism_test}.\\
+
+One drawback of using SitePrism can be that elements currently must be
+specified using selectors rather than having the possibility to select
+them based on text, which is possible with Capybara directly. On the
+other hand, it would be trivial to create a method for doing this. Using
+text for locating elements also only makes sense for some specific
+cases. Overall, we found the page object pattern as well as SitePrism
+very convenient to work with.\\
+
+\begin{lstlisting}[caption=Page definition for a page with a list of cookie information.,
+                   label=lst:siteprism_page, float=t]
+
+class CookieRowSection < SitePrism::Section
+  element :name, '.name'
+  element :amount, '.amount'
+end
+
+class CookiePage < SitePrism::Page
+  set_url '/cookies'
+
+  element :heading, 'h1'
+  element :new_cookie_button, 'button#createCookie'
+  sections :cookies, CookieRowSection, '.cookieInfo'
+
+  def create_cookie
+    self.new_cookie_button.click
+  end
+end
+
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Browser test using SitePrism a page object defined in
+                           code listing \ref{lst:siteprism_page}.,
+                   label=lst:siteprism_test, float=t]
+
+describe 'cookie information page' do
+  before do
+    FactoryGirl.create :cookie, name: 'Vanilla dream', amount: 2
+    FactoryGirl.create :cookie, name: 'Apple crush', amount: 4
+    @cookie_page = CookiePage.new
+    @cookie_page.load
+  end
+
+  it 'should contain a list of cookies in alphabetical order' do
+    expect(page.heading.text).to eq('List of cookies')
+    expect(page.cookies.length).to be(2)
+
+    cookie = page.cookies.first
+    expect(cookie.name.text).to eq('Apple crush')
+    expect(cookie.amount.text).to eq('2')
+  end
+end
+
+\end{lstlisting}
