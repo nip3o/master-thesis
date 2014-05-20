@@ -1,35 +1,47 @@
+
 This chapter presents some final thoughts and reflections on the results
 and summarizes the previously discussed conclusions.\\
 
-The experience of using test-driven methodology as well as some topics
-originating from behavior-driven development has been pleasant. While
-this is a subjective opinion, we believe that this might be the case for
-many other software developers and for other projects as well. We have
-also found that the newly implemented functionality is well tested and
-that its test efficiency is high, which may be another benefit from
-using these methodologies.\\
+\begin{itemize}
 
-The combination of many integration- and unit-tests, complemented by a
-few browser tests was successful for this project. It might however be
-hard to determine the best level of testing for a certain functionality.
-This basically depends on the application, and it is not possible to say
-that either writing higher-level unit- or integration-test is generally
-either better or worse than writing lower-level unit tests. However, we
-would not recommend using browser-level tests as the primary testing
-method for most projects.\\
+\item  Working with the chosen stack of testing frameworks (RSpec and
+Jasmine with the Karma test runner) has worked very well for testing
+this particular application. We believe that it would also work very
+well for testing most similar web applications.\\
 
-A test suite can speed up significantly by using factory objects rather
-than using fixtures or manually create data when the test suite is
-initialized. While these tests still are not in the same magnitude of
-speed as the low- level unit tests written on the Javascript side, they
-are still fast enough to be usable for using test-driven development
+\item The experience of using test-driven development as well as some
+topics originating from behavior-driven development has been pleasant.
+While this is a subjective opinion, we believe that this might be the
+case for many other software developers and for other projects as well.
+We have also found that the newly implemented functionality is well
+tested and that its test efficiency is high, which may be another
+benefit from using these methodologies. Writing tests using an
+ubiquitous language is however not beneficial for this particular
+application.\\
+
+\item The combination of many integration- and unit-tests, complemented
+by a few browser tests was successful for this project. It might however
+be hard to determine the best level of testing for a certain
+functionality. This basically depends on the application, and it is not
+possible to say that either writing higher-level unit- or integration-
+test is generally either better or worse than writing lower-level unit
+tests. However, we would not recommend using browser-level tests as the
+primary testing method for most projects.\\
+
+\item A test suite can speed up significantly by using factory objects
+rather than using fixtures or manually create data when the test suite
+is initialized. While these tests still are not in the same magnitude of
+speed as the low-level unit tests written for the client side, they are
+still fast enough to be usable for using test-driven development
 methodologies.\\
 
-Using metrics for test efficiency such as test coverage is usable for
-finding parts of the code that lacks testing, in order to make tests
+\item Using metrics for test efficiency such as test coverage is usable
+for finding parts of the code that lacks testing, in order to make tests
 better. We believe that statement test coverage is usable, even if
 branch coverage is more helpful and returns more fair coverage
 percentages. The increased test efficiency could possibly lead to
 finding more software defects due to more efficient tests, but we have
 not found any such defects by using test efficiency metrics in this
 project.\\
+
+\end{itemize}

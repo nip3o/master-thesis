@@ -86,10 +86,13 @@ manually in out Capybara tests, as seen in code listing
 One drawback of using SitePrism can be that elements currently must be
 specified using selectors rather than having the possibility to select
 them based on text, which is possible with Capybara directly. On the
-other hand, it would be trivial to create a method for doing this. Using
-text for locating elements also only makes sense for some specific
-cases. Overall, we found the page object pattern as well as SitePrism
-very convenient to work with.\\
+other hand, it would be trivial to create a method for doing this using
+Capybara\'s helper methods. We would also claim that using text
+for locating elements only makes sense for some specific types of
+elements, such as buttons and links, not for elements in general.\\
+
+Overall, we found the page object pattern as well as SitePrism very
+convenient to work with.\\
 
 \begin{lstlisting}[caption=Page definition for a page with a list of cookie information.,
                    label=lst:siteprism_page, float=t]
