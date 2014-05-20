@@ -1,2 +1,44 @@
+\MakeShortVerb{\|}
 
-wip
+Software is written by humans and therefore has bugs. This quote is
+claimed to have been coined by John Jacobs\cite{web:quote_jacobs}, and
+explains the basic reason for software testing. Most programmers would
+agree that defects (or \quotes{undesirable features}), tend to show up
+during the software development process as well as in the finished
+software. The ultimate goal of the testing process is to establish that
+a certain level of software quality has been reached, which is achieved
+by revealing defects in the code \cite{book:adp}.\\
+
+Automated software testing is typically performed by writing pieces of
+code called \emph{tests}. Each test uses the implemented code that we
+want to evaluate, and performs different assertions to make sure that
+the result is the same as we expect. Code listing
+\ref{lst:basic_function} and \ref{lst:basic_test} shows a very simple
+function and a test for it. The |assert|-statement checks if the given
+condition is true, and raises an exception otherwise (the assertion
+\emph{fails}).\\
+
+The code for each test is executed by some kind of \emph{test runner},
+which is often included as a part of the test framework. If at least one
+assertion in a test fails during the execution, the test has failed.\\
+
+
+\begin{lstlisting}[caption=An example function.,
+                   label=lst:basic_function, float=t]
+
+def plus(x, y)
+  return x + y
+end
+
+\end{lstlisting}
+
+
+\begin{lstlisting}[caption=A basic test for the function in code listing \ref{lst:basic_function}.,
+                   label=lst:basic_test, float=t]
+
+def test_plus
+  assert plus(1, 2) == 3
+  assert plus(3, -4) < 0
+end
+
+\end{lstlisting}
