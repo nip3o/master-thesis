@@ -20,7 +20,10 @@ separation between features and step definitions makes it hard to get an
 overview of the code executed during the test, and it is often hard to
 find specific step definitions. We also experienced problems with the
 mapping step definitions, where the generated step definition simply did
-not match the written step.\\
+not match the written step. In cases where we want to use the same step
+definition, but use slightly different language (such as the steps on
+line 12 and line 14 in code listing \ref{lst:cucumber_feature}),
+adjusting the regular expression to match both steps can be hard.\\
 
 The chosen level of testing is another big issue. We felt that using
 TDD-methodology was hard to do with system-level tests since they take
@@ -38,14 +41,14 @@ Feature: creating new cookies
   I want to create a new cookie object
 
 Background:
-  Given a user and a cookie type called "Chocolate chip"
+  Given a cookie type called "Chocolate chip"
   And I have created one cookie
 
 Scenario: create a new cookie
   When I visit the page for creating cookies
-  Then I should see one cookie
+  Then I should see 1 cookie
   When I create a new Chocolate chip cookie
-  Then I should see two cookies
+  Then I should see 2 cookies
 \end{lstlisting}
 
 
