@@ -65,6 +65,10 @@ columns=fullflexible,
 showstringspaces=false
 }
 
+\makeatletter
+\renewcommand\@makefntext[1]{\leftskip=2em\hskip-2em\@makefnmark#1}
+\makeatother
+
 %%% Title page
 \makeatletter
 \newcommand{\myinfo}{
@@ -131,14 +135,14 @@ showstringspaces=false
   \section{Intended audience}
   \input{introduction/audience.tex}
 
+  \section{Conventions and definitions}
+  \input{introduction/conventions.tex}
+
   \section{Problem formulation}
   \input{introduction/problem.tex}
 
   \section{Scope and limitations}
   \input{introduction/limitations.tex}
-
-  \section{Conventions and definitions}
-  \input{introduction/conventions.tex}
 
 
 \chapter{Methodology}

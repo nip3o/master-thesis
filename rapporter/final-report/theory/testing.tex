@@ -10,18 +10,32 @@ a certain level of software quality has been reached, which is achieved
 by revealing defects in the code \cite{book:adp}.\\
 
 Automated software testing is typically performed by writing pieces of
-code called \emph{tests}. Each test uses the implemented code that we
-want to evaluate, and performs different assertions to make sure that
-the result is the same as we expect. Code listing
-\ref{lst:basic_function} and \ref{lst:basic_test} shows a very simple
-function and a test for it. The |assert|-statement checks if the given
-condition is true, and raises an exception otherwise (the assertion
-\emph{fails}).\\
+code\footnote{There are also techniques for recoding clicks when testing
+graphical interfaces, but that is outside the scope of this thesis.}
+called \emph{tests}. Each test uses the implemented code that we want to
+evaluate, and performs different assertions to make sure that the result
+is the same as we expect. Code listing \ref{lst:basic_function} and
+\ref{lst:basic_test} shows a very simple function and a test for it. The
+|assert| statement checks if the given condition is true, and raises an
+exception otherwise (the assertion \emph{fails}).\\
 
-The code for each test is executed by some kind of \emph{test runner},
-which is often included as a part of the test framework. If at least one
-assertion in a test fails during the execution, the test has failed.\\
+For writing more complicated tests, and in order to manage collections
+of tests, we often want to have a little bit more support than just
+|assert| statements\footnote{The core Ruby module does not even provide
+|assert| statements, this is provided by the Test::Unit module. Many
+other languages does provide this as a reserved word, though.}. We may
+for example want to run a piece of code before each test for a specific
+module, or present more helpful error-messages depending on the compared
+data types. A \emph{testing framework}\footnote{Also called testing
+tool.} typically provides such functionality.\\
 
+The code for each test is executed by some kind of \emph{test runner}
+which finds and executes our collection of tests (called \emph{test
+suite}), and then collects and reports the results. The test runner is
+often included as a part of the testing framework. If at least one
+assertion in a test fails during the execution, the test is considered
+to be failed. Test may also fail due to syntax errors and unexpected
+exceptions.\\
 
 \begin{lstlisting}[caption=An example function.,
                    label=lst:basic_function, float=t]

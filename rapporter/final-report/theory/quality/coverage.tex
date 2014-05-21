@@ -51,11 +51,11 @@ sure that no syntax errors exists.\\
 
 \subsubsection{Branch coverage}
 
-In order to achieve full branch coverage\footnote{Sometimes called
-\emph{decision coverage} and sometimes also referred to as C1 coverage},
-tests must make sure that each path in a branch statement is executed at
-least once. This means for example that an if-statement that depends on
-a boolean variable must be tested with both |true| and |false| as input.
+In order to achieve full branch coverage\footnote{Sometimes also called
+decision coverage and sometimes referred to as C1 coverage.}, tests must
+make sure that each path in a branch statement is executed at least
+once. This means for example that an if-statement that depends on a
+boolean variable must be tested with both |true| and |false| as input.
 Loops and switch-statements are other examples of code that typically
 contains branch statements. In order to achieve this for the code in
 \ref{lst:small}, we could create one test where |a = 3|, |b = 0|,
@@ -71,14 +71,13 @@ even with full branch coverage.\\
 
 \subsubsection{Condition coverage}
 
-Condition coverage\footnote{Also called \emph{predicate coverage} or
-\emph{logical coverage}} means that each condition for a decision in a
-program takes all possible values at least once. If we have an if-
-statement that depends on two boolean variables, we must make sure that
-each of these variables are tested with both |true| and |false| as
-value. This can be achieved in \ref{lst:small} with a combination of
-the input values |a = 2|, |b = 0|, |x = 4| and |a = 1|, |b = 1|,
-|x = 1|.\\
+Condition coverage\footnote{Also called predicate coverage or logical
+coverage.} means that each condition for a decision in a program takes
+all possible values at least once. If we have an if- statement that
+depends on two boolean variables, we must make sure that each of these
+variables are tested with both |true| and |false| as value. This can be
+achieved in \ref{lst:small} with a combination of the input values
+|a = 2|, |b = 0|, |x = 4| and |a = 1|, |b = 1|, |x = 1|.\\
 
 One interesting this about the example above it that condition coverage
 does not require more test cases than branch coverage, although the
