@@ -14,20 +14,23 @@ code\footnote{There are also techniques for recoding clicks when testing
 graphical interfaces, but that is outside the scope of this thesis.}
 called \emph{tests}. Each test uses the implemented code that we want to
 evaluate, and performs different assertions to make sure that the result
-is the same as we expect. Code listing \ref{lst:basic_function} and
-\ref{lst:basic_test} shows a very simple function and a test for it. The
-|assert| statement checks if the given condition is true, and raises an
-exception otherwise (the assertion \emph{fails}).\\
+is the same as we expect. Code listing \ref{lst:basic_function} shows a
+very simple function and \ref{lst:dummy_test} shows a piece of code for
+testing it.\cite{wiki:test_automation}\\
 
 For writing more complicated tests, and in order to manage collections
-of tests, we often want to have a little bit more support than just
-|assert| statements\footnote{The core Ruby module does not even provide
-|assert| statements, this is provided by the Test::Unit module. Many
-other languages does provide this as a reserved word, though.}. We may
-for example want to run a piece of code before each test for a specific
-module, or present more helpful error-messages depending on the compared
-data types. A \emph{testing framework}\footnote{Also called testing
-tool.} typically provides such functionality.\\
+of tests, writing a bunch of |if|-statements all the time is repetitive
+and tedious. Several languages provide |assert| statements\footnote{The
+Ruby core module does not provide this as a reserved word, but it is
+included as part of the Test::Unit module.}, which checks if the given
+condition is true, and raises an exception otherwise (the assertion
+\emph{fails}). The same test using assertions is shown in code listing
+\ref{lst:basic_test}. However, we often want to have a little bit more
+support than just |assert| statements. We may for example want to run a
+piece of code before each test for a specific module, present more
+helpful error- messages depending on the compared data types. A
+\emph{testing framework}\footnote{Also called testing tool.} typically
+provides such functionality.\cite{wiki:test_automation}\\
 
 The code for each test is executed by some kind of \emph{test runner}
 which finds and executes our collection of tests (called \emph{test
@@ -46,6 +49,20 @@ end
 
 \end{lstlisting}
 
+
+\begin{lstlisting}[caption=A piece of code that could be used for testing the function in code listing \ref{lst:basic_function}.,
+                   label=lst:dummy_test, float=t]
+
+def test_plus
+  if !(plus(1, 2) == 3)
+    raise
+  end
+  if !(plus(3, -4) < 0)
+    raise
+  end
+end
+
+\end{lstlisting}
 
 \begin{lstlisting}[caption=A basic test for the function in code listing \ref{lst:basic_function}.,
                    label=lst:basic_test, float=t]

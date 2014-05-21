@@ -28,18 +28,27 @@ make it easier to understand why a test fails. It also sets a natural
 barrier for how large the test should be, since it must be possible to
 describe in one sentence.\\
 
-After coming up with these ideas, \citeauthor{web:dan_north} realized
-that writing behavior-oriented descriptions about a system had much in
-common with software analysis. They came up with scenarios on the
-following form to represent the purpose and preconditions for
-behaviors:\\
+After coming up with these ideas, \citeauthor{web:dan_north} met a
+software analyst and realized that writing behavior-oriented
+descriptions about a system had much in common with software analysis.
+Software analysts write specifications and acceptance criteria for
+systems before development, which are used when developing the system as
+well as for evaluating the system during acceptance testing. They came
+up with a way of writing scenarios in order to represent the purpose and
+preconditions for behaviors in a uniform way, as seen below.\\
 
-\emph{Given} some initial context (the givens),\\
-\emph{When} an event occurs,\\
-\emph{Then} ensure some outcomes.\\
+\framebox[\textwidth]{
+\minibox{
+    \emph{Given} some initial context (the givens),\\
+    \emph{When} an event occurs,\\
+    \emph{Then} ensure some outcomes.\\
+}}
+\linebreak
+\linebreak
 
 By using this pattern, analysts, developers and testers can all use the
-same language, and is hence called a \emph{ubiquitous language}. Multiple
-scenarios are written by analysts to specify the properties of the
-system, which can be used by developers as functional requirements, and
-as desired behaviors when writing tests.\\
+same language, and is hence called a \emph{ubiquitous language} (a
+language that exists everywhere). Multiple scenarios are written by
+analysts to specify the properties of the system, which can be used by
+developers as functional requirements, and as desired behaviors when
+writing tests.\\
