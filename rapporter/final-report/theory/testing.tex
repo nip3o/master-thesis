@@ -26,11 +26,12 @@ included as part of the Test::Unit module.}, which checks if the given
 condition is true, and raises an exception otherwise (the assertion
 \emph{fails}). The same test using assertions is shown in code listing
 \ref{lst:basic_test}. However, we often want to have a little bit more
-support than just |assert| statements. We may for example want to run a
-piece of code before each test for a specific module, present more
-helpful error- messages depending on the compared data types. A
-\emph{testing framework}\footnote{Also called testing tool.} typically
-provides such functionality.\cite{wiki:test_automation}\\
+support than just statements like this. We may for example want to run a
+piece of code before each test for a specific module, assert that a
+function throws an exception, or present different error-messages
+depending on the assertion. A \emph{testing framework}\footnote{Also
+called testing tool.} typically provides such
+functionality.\cite{wiki:test_automation}\\
 
 The code for each test is executed by some kind of \emph{test runner}
 which finds and executes our collection of tests (called \emph{test
