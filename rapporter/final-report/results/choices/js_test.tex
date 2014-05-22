@@ -55,7 +55,8 @@ issues and to be used with test-driven software methodologies. Tests are
 run in a browser as soon as a file is changed, and the results are
 reported back to the terminal and displayed as shown in
 \fref{fig:karma_runner}. Re-compilation of source files and tests is
-very fast and we did not experience any stability issues.\\
+very fast and we did not experience any stability issues. One minor
+drawback is however that pending tests are not displayed very clearly.\\
 
 It took some effort with getting Karma to work with Rails, since it is
 written in Node.js and does not have any knowledge about which
@@ -68,6 +69,15 @@ using a slightly modified version of a Rake script from a blog entry by
 environment. This script basically collects a list of filenames for all
 Javascript assets by using Rails internal modules for asset handling,
 and injects it into Karma's configuration file.\\
+
+After the case study, we discovered another Javascript test runner
+called Teaspoon\footnote{\url{https://github.com/modeset/teaspoon}},
+which is built for Rails and can discover assets by default. We believe
+that this test runner looks very promising and may be more suitable for
+Rails projects than Karma. At the time of this writing, Teaspoon does
+not have support for the most recent version of Jasmine and therefore
+does not work with our test suite. We were thus unable to evaluate this
+test runner any further.\\
 
 \begin{lstlisting}[caption=Example of Jasmine tests for a module (compare with code listing \ref{lst:rspec}).,
                    label=lst:jasmine, float=t, language=HTML]

@@ -1,8 +1,112 @@
 \label{sec:testing_web}
 
-wip
+\subsection{Typical characteristics of a web application}
 
-What is a web application and what properties makes it harder to test?
-Database access? Browser testing. Client- vs server side languages.
-NoSQL. Headless vs. inte. Mockade requests. Page object pattern.
+Web application typically shares multiple properties with traditional
+software, i.e. software that runs as an application locally on a single
+computer. Many languages can be used for writing traditional software as
+well as web applications, and the objective of doing software testing is
+typically the same. There are however some key differences and features
+exhibited by web applications. \citet{book:web} mentions the following
+specific characteristics for web applications:\\
 
+\begin{itemize}
+
+\item It can be used by a large number of users from multiple
+geographical locations at the same time.
+
+\item The execution environment is very complex and may include
+different hardware, web servers, Internet connections, operating systems
+and web browsers.
+
+\item The software itself typically consists of heterogeneous
+components, which often uses several different technologies. For example
+it may have a server component which uses Ruby and Ruby on Rails, and a
+client component which uses HTML, CSS and Javascript.
+
+\item Some components, such as parts of the graphical interface, may be
+generated at run time depending on user input and the current state of
+the application.
+
+\end{itemize}
+
+Each of these characteristics contributes to different challenges when
+doing software testing. While some of these characteristics poses
+testing issues that are outside the scope of this thesis, others are
+highly relevant. It may for instance be impossible to use the same
+testing framework for the server-side components as for the client-side
+components since the components are written in different programming
+languages. Another example is the complexity of the execution
+environment which may result in defects that occur in some environments
+but not in others.\\
+
+
+\subsection{Levels of testing}
+
+Defining levels of testing requires greater attention in web
+applications than in traditional software due to its heterogeneous
+nature. For example, it is hard to define the scope of a unit during
+unit testing since it depends on the type of component. Defining levels
+of integration testing provides the same types of problem, since one for
+example may choose to either integrate different smaller server-side
+units, as well as test the integration between server-side and client-
+side components.\cite{book:web}
+
+\citeauthor{book:web} proposes that client-side unit testing should be
+done on each page, where scripting modules as well as HTML statements
+and links are tested. Server-side unit testing should test storage of
+data into databases, failures during execution of controllers and
+generation of HTML client pages. Integration testing is proposed to be
+done by testing the integration of multiple pages, for example testing
+redirections and submission of forms. System testing is done by testing
+different use cases and defective pointing of links between pages.\\
+
+The book by \citeauthor{book:web} is rather old, and we would argue that
+some parts of the proposed testing approach would not fit into a modern
+web application. As one example, several modern web applications
+consists of one single page which makes it impossible to test the
+integration of several pages, form submissions or to test link between
+pages. We also fail to see the purpose of testing hyperlinks at all
+three testing levels, and would also claim that generation of such links
+is handled to a large extent by modern web frameworks and thus is
+outside our application scope. One could also claim that the interaction
+between different pages is covered by the use cases evaluated during
+the system-level testing.\\
+
+We do however believe that unit-testing client-side as well as server-
+side code respectively is important, and also that use-cases are a
+relevant approach when doing system-level testing.\\
+
+
+\subsection{Browser testing}
+
+As previously mentioned, a web application may be run on a variety of
+different operating systems and browsers which may cause defects
+specific to each environment. In order to be able to discover such
+defects, we must be able to test our web application in each environment
+that we choose to support.\\
+
+\emph{Browser tests} are a kind of tests where a browser is controlled
+in order to simulate the behavior of a real user, by clicking on buttons
+and entering text into text fields. This tests the application in the
+same way as we would do when conducting manual testing, which is an
+advantage as well as a drawback. On one hand, it is by far the most
+realistic way of testing functionality, but on the other hand it tests a
+lot of code and it takes a lot of effort to test things thoroughly.
+Because of this, browser tests are considered to be system-level
+tests.\\
+
+Besides from using browser tests in order to ensure the functionality of
+the system as a user would perceive it, it can be run the same test in
+multiple browsers, and can thus help finding browser-specific software
+defects.\\
+
+Browser tests are slow, mostly due to the level of testing, but also due
+to the script-execution, rending and loading speeds of the browser. One
+way of achieving higher test execution speed is by using a
+\emph{headless} browser. A headless browser is a browser where most
+functionality of modern browsers has been stripped away in order to gain
+speed. A headless browser may for example lack support for images, CSS
+and Javascript.\\
+
+Page object pattern. (work in progress) \cite{web:page_object}

@@ -1,6 +1,6 @@
 Capybara and site\_prism.
 
-\subsubsection{Selenium 2}
+\subsubsection{Selenium}
 The absolutely most widespread framework for browser testing seems to be
 Selenium\footnote{\url{http://docs.seleniumhq.org/}}. In fact, we have
 not even been able to find any other frameworks for running tests in
@@ -13,7 +13,7 @@ newer versions of Selenium for interacting with browsers, WebDriver, has
 been proposed as an W3C Internet
 standard\footnote{\url{https://dvcs.w3.org/hg/webdriver/raw-file/default
 /webdriver-spec.html}}, which may indicate that support for Selenium
-will be continue to be present in future browser versions.
+is very likely to continue to be present in future browser versions.
 \cite{wiki:selenium}\\
 
 While Selenium is very widespread and seems to be the only option for
@@ -26,6 +26,8 @@ sending out text as keystrokes to this element. Rather than writing
 helper methods for such functionality ourselves, we decided to use
 a higher-level framework.\\
 
+Note that there are two major versions of Selenium; Selenium RC
+and the newer Selenium 2, of which we have used the latter.\\
 
 \subsubsection{Capybara}
 Capybara\footnote{\url{https://github.com/jnicklas/capybara}} provides a
