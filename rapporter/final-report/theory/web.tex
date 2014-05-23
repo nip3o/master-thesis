@@ -1,3 +1,5 @@
+\MakeShortVerb{\|}
+
 \label{sec:testing_web}
 
 \subsection{Typical characteristics of a web application}
@@ -102,11 +104,45 @@ multiple browsers, and can thus help finding browser-specific software
 defects.\\
 
 Browser tests are slow, mostly due to the level of testing, but also due
-to the script-execution, rending and loading speeds of the browser. One
-way of achieving higher test execution speed is by using a
-\emph{headless} browser. A headless browser is a browser where most
-functionality of modern browsers has been stripped away in order to gain
-speed. A headless browser may for example lack support for images, CSS
-and Javascript.\\
+to the script-execution, rending and loading speeds of the browser.
+Another downside is that it requires a full graphical desktop
+environment and thus may take some effort and resources to set up on a
+server. One way of achieving higher test execution speed is to use a
+\emph{headless} browser, such as
+PhantomJS\footnote{\url{http://phantomjs.org/}}. A headless browser is a
+browser where most functionality of modern browsers has been stripped
+away in order to gain speed. It typically does not have any graphical
+interface and therefore does not require a graphical desktop
+environment.\cite{web:headless}\\
 
-Page object pattern. (work in progress) \cite{web:page_object}
+One may argue that by running the tests in a headless browser is
+pointless since no real users uses a such browser, and that we therefore
+cannot be sure that the tested functionality actually would work in a
+real browser just because it works in a headless browser. It it of
+course also impossible to find browser-specific defects when using  a
+headless browser. It would of course be possible to find bugs specific
+to the headless browser itself, but that would again be rather
+pointless. \citet{web:headless} however claims that using a headless
+browser covers the majority of all cases and can be used in the
+beginning of projects where cross-browser compatibility is less of an
+issue.\\
+
+\citet{web:page_object} explains that browser tests tend to be bound to
+the HTML and the CSS classes of the tested page, since we need to locate
+elements in order to click buttons or fill in forms. This makes the
+tests fragile since changes in the user interface may break them, and if
+the same elements are used in many tests, we may need to go over large
+parts of our test suite.\\
+
+One way of writing browser tests without making them bound to elements
+of a page is called \emph{page object pattern}. The basic principle is
+that the elements of a page are encapsulated into one or several
+\emph{page objects} which in turn provides an API that is used by the
+test itself. If we have a page with a list of items as well as a form for creating new items, we
+can for instance create one page object for the page itself, another
+for the form and yet another for the list of items. The page object for
+the page itself provides methods for accessing the page objects for the
+form and the list of items. The page object for the form may provide
+methods for entering data, and the page object for the list may provide
+methods for accessing each item in the list.\cite{web:page_object}
+
