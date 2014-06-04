@@ -1,5 +1,5 @@
 
-There exists a few different frameworks for testing Javascript or
+There are a few different frameworks for testing Javascript or
 CoffeeScript code. We had previously good experiences from working with
 Jasmine\footnote{\url{http://jasmine.github.io/}}. We also found that
 this framework seemed to be very popular, actively developed and had
@@ -28,17 +28,17 @@ the Jasmine Ruby gem. A screenshot of this test runner is shown in
 The Jasmine test runner did however have multiple issues. First of all,
 it runs completely in the browser. Switching to the browser and reload
 the page in order to run the tests are not excessively problematic, but
-might be a little bit tiresome in the long run when using a test-driven
-development methodology. A larger problem was the fact that the asset
-handling, i.e. the compilation of CoffeeScript into Javascript, is
-handled by Rails upon each reload. The used version of Rails re-compiles
-all assets upon page load if any file has been changed. This process
-takes a while, which means that each test run could take up to 10-15
-seconds even though the actual tests only takes a fraction of a second
-to run. The asset compilation also got stuck for for apparently no
-reason once in a while. Since the server port on which the test runner
-runs cannot be specified, it is also impossible to restart the test
-runner without manually killing its system process.\\
+might be tiresome in the long run when using a test-driven development
+methodology. A larger problem was the fact that the asset handling, i.e.
+the compilation of CoffeeScript into Javascript, is handled by Rails
+upon each reload. The used version of Rails re-compiles all assets upon
+page load if any file has been changed. This process takes a while,
+which means that each test run could take up to 10-15 seconds even
+though the actual tests only takes a fraction of a second to run. The
+asset compilation also got stuck for for apparently no reason once in a
+while. Since the server port on which the test runner runs cannot be
+specified, it is also impossible to restart the test runner without
+manually killing its system process.\\
 
 Another issue with the Jasmine test runner is that syntax errors are
 printed in the terminal rather than in the browser window where the test

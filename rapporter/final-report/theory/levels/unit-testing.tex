@@ -6,15 +6,15 @@
 % \citet{book:pfleeger}
 
 Unit testing\footnote{Also called low-level testing, module testing or
-component testing.} refers to testing of small parts of a software. In
-practice, this often means testing a specific class or method of a
-software. The purpose of unit tests is to verify the implementation,
-i.e. to make sure that the tested unit works correct
+component testing.} refers to testing of small parts of a software
+program. In practice, this often means testing a specific class or
+method of a software. The purpose of unit tests is to verify the
+implementation, i.e. to make sure that the tested unit works correct
 \cite{book:pfleeger}.\\
 
 Since each unit test only covers a small part of the software, it is
 easy to find the cause for a failing test. Writing unit tests alone does
-not give a sufficient test coverage for the whole system, since unit
+not give sufficient test coverage for the whole system, since unit
 tests only assures that each single tested module works as expected. A
 well- tested function for validating a 12-digit personal identification
 number is worth nothing if the module that uses it passes a 10-digit
@@ -44,7 +44,7 @@ The Law of Demeter\footnote{Also called the principle of least
 knowledge.} means that one unit should only have limited knowledge of
 other units, and only communicate with related modules
 \cite{wiki:demeter}. If this principle is not followed, it is hard to
-create an isolated test for a unit which does not depend on unrelated
+create an isolated test for a unit that does not depend on unrelated
 changes in some other module. The same thing also applies to the usage
 of hard-coded dependencies. This makes the unit dependent on other
 modules, and makes it impossible to replace the other unit in order to
@@ -62,28 +62,29 @@ unit much easier.\\
 Another way of dealing with dependencies on other modules is to use some
 kind of object that replaces the other module. The replacement object
 has a known value that is specified in the test, which means that
-changes to the real object will not affect the test. The reasons for
-using replacement objects is often to make it more robust to code
-changes outside the tested unit. It might also be used instead of calls
-to external services such as web-based API:s in order to make the tests
-run when the service is unavailable, or to be able to test
-implementations that depends on classes that has not been yet.\\
+changes to the real object will not affect the test. The main reason for
+using replacement objects are often to make it more robust to code
+changes outside the tested unit. A replacement object might also be used
+instead of calls to external services such as web-based APIs in order
+to make the tests run when the service is unavailable, or to be able to
+test implementations that depends on classes that has not been
+implemented yet.\\
 
 The naming of different kinds of replacement objects may differ, but two
-often used concepts are \emph{stubs} and \emph{mocks}. Both these
+widely used concepts are \emph{stubs} and \emph{mocks}. Both these
 replacement objects are used by the tested unit instead of some other
 module, but mocks sets expectations on how it can be used by the tested
 module on beforehand. \cite{web:mocks_arent_stubs}\\
 
-Another type of replacement object are \emph{factory objects} or
-\emph{fakes}. This kind of object is typically provides a real
-implementation of the object that it replaces, as opposed to a stub or
-mock which only has just as many methods or properties that is needed
-for the test to run. The difference between a fake object and the real
-object is typically that fake objects uses some shortcut which does not
-work in production. One example is objects that are stored in memory
-instead of in a real database, in order to gain performance.
-\cite{web:mocks_arent_stubs}\\
+Another type of replacement object is
+\emph{factory objects}\footnote{Also called fakes.}.
+This kind of object is typically provides a real implementation of the
+object that it replaces, as opposed to a stub or mock which only has
+just as many methods or properties that is needed for the test to run.
+The difference between a fake object and the real object is typically
+that fake objects uses some shortcut that does not work in production.
+One example is objects that are stored in memory instead of in a real
+database, in order to gain performance. \cite{web:mocks_arent_stubs}\\
 
 \citet{video:boundaries} mentions some of the drawbacks with using mocks
 and stubs. If the interface of the replaced unit changes, this might not
@@ -96,7 +97,7 @@ class.\\
 If we rename the |eat_cookie()| method to |eat()| without changing the
 test or the implementation of |take_cookie()|, the test might still pass
 although the code will fail in a production environment. This is since
-we have mocked an object which no longer exists in the |Cookie| class.\\
+we have mocked an object that no longer exists in the |Cookie| class.\\
 
 Some testing frameworks and plug-ins detects replacement of non-existing
 methods and warns or makes the test fail if such mocks are created

@@ -8,7 +8,7 @@ Web application typically shares multiple properties with traditional
 software, i.e. software that runs as an application locally on a single
 computer. Many languages can be used for writing traditional software as
 well as web applications, and the objective of doing software testing is
-typically the same. There are however some key differences and features
+typically the same. There is however some key differences and features
 exhibited by web applications. \citet{book:web} mentions the following
 specific characteristics for web applications:\\
 
@@ -23,7 +23,7 @@ and web browsers.
 
 \item The software itself typically consists of heterogeneous
 components, which often uses several different technologies. For example
-it may have a server component which uses Ruby and Ruby on Rails, and a
+it may have a server component that uses Ruby and Ruby on Rails, and a
 client component which uses HTML, CSS and Javascript.
 
 \item Some components, such as parts of the graphical interface, may be
@@ -39,7 +39,7 @@ highly relevant. It may for instance be impossible to use the same
 testing framework for the server-side components as for the client-side
 components since the components are written in different programming
 languages. Another example is the complexity of the execution
-environment which may result in defects that occur in some environments
+environment, which may result in defects that occur in some environments
 but not in others.\\
 
 
@@ -54,14 +54,15 @@ example may choose to either integrate different smaller server-side
 units, as well as test the integration between server-side and client-
 side components.\cite{book:web}
 
-\citeauthor{book:web} proposes that client-side unit testing should be
+\citeauthor{book:web} propose that client-side unit testing should be
 done on each page, where scripting modules as well as HTML statements
 and links are tested. Server-side unit testing should test storage of
 data into databases, failures during execution of controllers and
-generation of HTML client pages. Integration testing is proposed to be
-done by testing the integration of multiple pages, for example testing
+generation of HTML client pages. Integration testing should be done
+testing the integration of multiple pages, for example testing
 redirections and submission of forms. System testing is done by testing
-different use cases and defective pointing of links between pages.\\
+different use cases and by detecting defective pointing of links between
+pages.\\
 
 The book by \citeauthor{book:web} is rather old, and we would argue that
 some parts of the proposed testing approach would not fit into a modern
@@ -75,7 +76,7 @@ outside our application scope. One could also claim that the interaction
 between different pages is covered by the use cases evaluated during
 the system-level testing.\\
 
-We do however believe that unit-testing client-side as well as server-
+We do however believe that unit testing client-side as well as server-
 side code respectively is important, and also that use-cases are a
 relevant approach when doing system-level testing.\\
 
@@ -138,11 +139,12 @@ One way of writing browser tests without making them bound to elements
 of a page is called \emph{page object pattern}. The basic principle is
 that the elements of a page are encapsulated into one or several
 \emph{page objects} which in turn provides an API that is used by the
-test itself. If we have a page with a list of items as well as a form for creating new items, we
-can for instance create one page object for the page itself, another
-for the form and yet another for the list of items. The page object for
-the page itself provides methods for accessing the page objects for the
-form and the list of items. The page object for the form may provide
-methods for entering data, and the page object for the list may provide
-methods for accessing each item in the list.\cite{web:page_object}
+test itself. If we have a page with a list of items as well as a form
+for creating new items, we can for instance create one page object for
+the page itself, another for the form and yet another for the list of
+items. The page object for the page itself provides methods for
+accessing the page objects for the form and the list of items. The page
+object for the form may provide methods for entering data, and the page
+object for the list may provide methods for accessing each item in the
+list.\cite{web:page_object}
 

@@ -1,45 +1,47 @@
 \MakeShortVerb{\|}
 
-Software is written by humans and therefore has bugs. This quote is
-claimed to have been coined by John Jacobs\cite{web:quote_jacobs}, and
-explains the basic reason for software testing. Most programmers would
-agree that defects (or \quotes{undesirable features}), tend to show up
-during the software development process as well as in the finished
-software. The ultimate goal of the testing process is to establish that
-a certain level of software quality has been reached, which is achieved
-by revealing defects in the code \cite{book:adp}.\\
+\quotes{Software is written by humans and therefore has bugs} [sic].
+This quote is claimed to have been coined by John
+Jacobs \cite{web:quote_jacobs}, and explains the basic reason for
+software testing. Most programmers would agree that defects (or
+\quotes{undesirable features}), tend to show up during the software
+development process as well as in the finished software. The ultimate
+goal of the testing process is to establish that a certain level of
+software quality has been reached, which is achieved by revealing
+defects in the code \cite{book:adp}.\\
 
 Automated software testing is typically performed by writing pieces of
 code\footnote{There are also techniques for recoding clicks when testing
 graphical interfaces, but that is outside the scope of this thesis.}
-called \emph{tests}. Each test uses the implemented code that we want to
-evaluate, and performs different assertions to make sure that the result
-is the same as we expect. Code listing \ref{lst:basic_function} shows a
-very simple function and \ref{lst:dummy_test} shows a piece of code for
-testing it.\cite{wiki:test_automation}\\
+called \emph{tests} \cite{wiki:test_automation}. Each test uses the
+implemented code that we want to evaluate, and performs different
+assertions to make sure that the result is the same as we expect. Code
+listing \ref{lst:basic_function} shows a very simple function and
+\ref{lst:dummy_test} shows a piece of code for testing it.\\
 
 For writing more complicated tests, and in order to manage collections
 of tests, writing a bunch of |if|-statements all the time is repetitive
-and tedious. Several languages provide |assert| statements\footnote{The
+and tedious. Several languages provide |assert|-statements\footnote{The
 Ruby core module does not provide this as a reserved word, but it is
 included as part of the Test::Unit module.}, which checks if the given
 condition is true, and raises an exception otherwise (the assertion
 \emph{fails}). The same test using assertions is shown in code listing
-\ref{lst:basic_test}. However, we often want to have a little bit more
-support than just statements like this. We may for example want to run a
-piece of code before each test for a specific module, assert that a
-function throws an exception, or present different error-messages
-depending on the assertion. A \emph{testing framework}\footnote{Also
-called testing tool.} typically provides such
+\ref{lst:basic_test}. However, we often want to have more support than
+just statements like this. We may for example want to run a piece of
+code before each test for a specific module, assert that a function
+throws an exception, or present different error-messages depending on
+the assertion. A \emph{testing framework}\footnote{Also called testing
+tool.} typically provides such
 functionality.\cite{wiki:test_automation}\\
 
-The code for each test is executed by some kind of \emph{test runner}
-which finds and executes our collection of tests (called \emph{test
-suite}), and then collects and reports the results. The test runner is
-often included as a part of the testing framework. If at least one
-assertion in a test fails during the execution, the test is considered
-to be failed. Test may also fail due to syntax errors and unexpected
-exceptions.\\
+The code for each test is executed by a \emph{test runner}, which in
+many cases is included as a part of the testing framework. The test
+runner finds and executes our collection of tests (called \emph{test
+suite}), and then collects and reports the results back to the user. If
+at least one assertion in a test fails during the execution, the test is
+considered to have failed. A test may also fail due to syntax errors and
+unexpected exceptions.\\
+
 
 \begin{lstlisting}[caption=An example function.,
                    label=lst:basic_function, float=t]
