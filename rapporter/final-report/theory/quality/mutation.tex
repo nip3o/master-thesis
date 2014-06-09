@@ -5,11 +5,11 @@ is incorrect, the test should fail. Thus, we can modify the code so it
 becomes incorrect and then look at whether the test fails or not.\\
 
 Mutation testing is done by creating several versions of the tested
-code, where each version contains a slight modification. Each
+code where each version contains a slight modification. Each
 such version containing a mutated version of the original source code is
 called a \emph{mutant}. A mutant only differs at one location compared
 to the original program, which means that each mutant should represent
-exactly one bug.\cite{article:mutation, wiki:mutation}\\
+exactly one bug. \cite{article:mutation, wiki:mutation}\\
 
 \begin{lstlisting}[caption=Example of a piece of code before mutation,
                    label=lst:mutation_before, float=t]
@@ -42,30 +42,30 @@ There are numerous ways of creating mutations to be used in mutants. One
 could for example delete a method call or a variable, exchange an
 operator for another, negate an if-statement, replace a variable with
 zero or null-values, or something else. Code listing
-\ref{lst:mutation_before} shows an example of a function which should
+\ref{lst:mutation_before} shows an example of a function that should
 return true if both arguments are odd. Several mutated versions of this
-example is shown in code listing \ref{lst:mutation_after}. The goal of
+example are shown in code listing \ref{lst:mutation_after}. The goal of
 each mutation is to introduce a modification similar to a bug introduced
-by a programmer.\cite{article:mutation}\\
+by a programmer. \cite{article:mutation}\\
 
-All tests which we want to evaluate are run for the original program as
+All tests that we want to evaluate are run for the original program as
 well as for each mutant. If the test results differ, the mutant is
-considered to be \emph{killed}, which means that the test suite has
-discovered the bug. Some mutants may however have a change that does not
-change the functionality of the program. An example of this can be seen
-in \ref{lst:mutation_eq}, where two variables are equal and therefore
-not affected by replacing one of them with the other. This is called
-an \emph{equivalent mutant}. The goal is to kill all mutants which is
-not equivalent mutants.\cite{article:mutation, wiki:mutation}\\
+\emph{killed}, which means that the test suite has discovered the bug.
+Some mutants may however have a change that does not change the
+functionality of the program. An example of this can be seen in
+\ref{lst:mutation_eq}, where two variables are equal and therefore not
+affected by replacing one of them with the other. This is called an
+\emph{equivalent mutant}. The goal is to kill all mutants that are not
+equivalent mutants. \cite{article:mutation, wiki:mutation}\\
 
 \citet{article:mutation} presents the results of an experiment where
 mutation testing was used in a web application with an automatically
-generated test suite. Over 4500 mutants was generated, with a test suite
+generated test suite. Over 4500 mutants were generated, with a test suite
 of 38 test cases. Running each test case for each mutant would require
 over 170000 test runs. A large part of the program was therefore
 discarded and the evaluation was focused on a specific part of the
-software, which left 441 mutants. 223 of these was killed, 216 was
-equivalent and 2 was not killed.\\
+software, which left 441 mutants. 223 of these were killed, 216 were
+equivalent and 2 were not killed.\\
 
 The article by \citeauthor{article:mutation} exemplifies two challenges
 with mutation testing; a large amount of possible mutants, and a

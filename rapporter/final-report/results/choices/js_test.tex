@@ -8,13 +8,14 @@ documentation is basically its own test suite with some additional
 comments. This works incredibly good in this case, presumably since it
 is a test framework and the tests are very well-written.}. Code listing
 \ref{lst:jasmine} shows an example of a Jasmine test written in
-CoffeeScript. The syntax is inspired by RSpec, which also is an
-advantage since RSpec is used for the server side tests.\\
+CoffeeScript. The syntax of Jasmine is inspired by RSpec, which is
+another advantage since RSpec is used for the server side tests.\\
 
 \subsubsection{Test runner}
+
 The Jasmine framework provides a way of writing tests, but a test runner
 is also required in order to run the tests. Jasmine ships with a basic
-test runner which was used initially, which worked out-of-the box using
+test runner, which was used initially and worked natively using
 the Jasmine Ruby gem. A screenshot of this test runner is shown in
 \fref{fig:jasmine_runner}.\\
 
@@ -29,21 +30,24 @@ The Jasmine test runner did however have multiple issues. First of all,
 it runs completely in the browser. Switching to the browser and reload
 the page in order to run the tests are not excessively problematic, but
 might be tiresome in the long run when using a test-driven development
-methodology. A larger problem was the fact that the asset handling, i.e.
-the compilation of CoffeeScript into Javascript, is handled by Rails
-upon each reload. The used version of Rails re-compiles all assets upon
-page load if any file has been changed. This process takes a while,
-which means that each test run could take up to 10-15 seconds even
-though the actual tests only takes a fraction of a second to run. The
-asset compilation also got stuck for for apparently no reason once in a
-while. Since the server port on which the test runner runs cannot be
+methodology.\\
+
+A larger problem with the default test runner was that the asset
+handling, i.e. the process of compiling CoffeeScript into Javascript.
+Rails handle this compilation upon each reload when using the Jasmine
+gem. Since the used version of Rails re-compiles all assets upon page
+load if any file has been changed, this process takes a while, which
+means that each test run could take up to 10-15 seconds even though the
+actual tests only takes a fraction of a second to run. The asset
+compilation also got stuck for apparently no reason once in a while.
+Since the server port on which the test runner runs can- not be
 specified, it is also impossible to restart the test runner without
 manually killing its system process.\\
 
 Another issue with the Jasmine test runner is that syntax errors are
 printed in the terminal rather than in the browser window where the test
-result is reported, which is confusing. In practice, syntax errors was
-often undetected for a long time which required more debugging than
+result is reported, which is confusing. In practice, syntax errors were
+often undetected for a long time, which required more debugging than
 necessary.\\
 
 Due to these issues, we switched to the Karma\footnote{
@@ -56,11 +60,12 @@ run in a browser as soon as a file is changed, and the results are
 reported back to the terminal and displayed as shown in
 \fref{fig:karma_runner}. Re-compilation of source files and tests is
 very fast and we did not experience any stability issues. One minor
-drawback is however that pending tests are not displayed very clearly.\\
+drawback is however that pending tests is not displayed very clearly.
+This can be solved by using a different Karma test reporter.\\
 
-It took some effort with getting Karma to work with Rails, since it is
-written in Node.js and does not have any knowledge about which
-CoffeeScript files that exists in the Rails application. The task of
+It took some effort with getting Karma to work with Rails, since Karma
+is written in Node.js and does not have any knowledge about which
+CoffeeScript files that exist in the Rails application. The task of
 finding the location of all such files became more complex since
 external Javascript libraries such as jQuery was loaded as Ruby gems,
 and therefore not even located inside the project folder. We ended up

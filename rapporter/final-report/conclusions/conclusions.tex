@@ -4,10 +4,10 @@ and summarizes the previously discussed conclusions.\\
 
 \begin{itemize}
 
-\item  Working with the chosen stack of testing frameworks (RSpec and
-Jasmine with the Karma test runner) has worked very well for testing
-this particular application. We believe that it would also work very
-well for testing most similar web applications.\\
+\item  Working with the chosen testing frameworks (RSpec and Jasmine
+with the Karma test runner) has worked very well for testing this
+particular application. We believe that it would also work very well for
+testing most similar web applications.\\
 
 \item The experience of using test-driven development as well as some
 topics originating from behavior-driven development has been pleasant.
@@ -15,18 +15,21 @@ While this is a subjective opinion, we believe that this might be the
 case for many other software developers and for other projects as well.
 We have also found that the newly implemented functionality is well
 tested and that its test efficiency is high, which may be another
-benefit from using these methodologies. Writing tests using an
+benefit from using these methodologies. Writing tests using a
 ubiquitous language is however not beneficial for this particular
 application.\\
 
 \item The combination of many integration- and unit-tests, complemented
 by a few browser tests was successful for this project. It might however
-be hard to determine the best level of testing for a certain
-functionality. This basically depends on the application, and it is not
-possible to say that either writing higher-level unit- or integration-
-test is generally either better or worse than writing lower-level unit
-tests. However, we would not recommend using browser-level tests as the
-primary testing method for most projects.\\
+be hard to determine the best level of testing for certain
+functionality.\\
+
+The level of testing and the combination of different kinds of tests
+basically depends on the application. It is neither possible to say that
+writing higher-level unit- or integration- test is generally worse
+than writing lower-level unit tests, nor the contrary. Using browser
+tests as the primary testing method for most projects is probably not
+the best solution, however.\\
 
 \item A test suite can speed up significantly by using factory objects
 rather than using fixtures or manually create data when the test suite
@@ -41,7 +44,7 @@ better. We believe that statement test coverage is usable, even if
 branch coverage is more helpful and returns more fair coverage
 percentages. The increased test efficiency could possibly lead to
 finding more software defects due to more efficient tests, but we have
-not found any such defects by using test efficiency metrics in this
-project.\\
+not found any defects of this type by using test efficiency metrics in
+this project.\\
 
 \end{itemize}

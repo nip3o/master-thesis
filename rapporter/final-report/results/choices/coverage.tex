@@ -7,7 +7,7 @@ discoursed in \fref{sec:coverage}. However, we were unable to find any
 test coverage tools for Ruby which analyzed anything else than statement
 coverage, which is the weakest test coverage metric. Quite much effort
 was spent on finding such tool, but without any success. Several
-websites and Stack Overflow-answers indicates that no such tool exists
+websites and Stack Overflow-answers indicate that no such tool exists
 for Ruby at the time of this writing \cite{web:coverage_ruby19,
 so:c1c2_coverage, so:c1_coverage, web:toolbox_code_metrics}. On one
 hand, some of these sources are rather old and might be outdated, which
@@ -21,7 +21,7 @@ for Ruby test coverage metrics. At the time of this writing, it is the
 most used Ruby tool for test coverage. It is also actively developed,
 works with recent Ruby versions and RSpec versions, and produces pretty
 and easy- to-read coverage reports in HTML (see
-\fref{fig:simplecov_report}).\cite{web:toolbox_code_metrics}\\
+\fref{fig:simplecov_report}). \cite{web:toolbox_code_metrics}\\
 
 \begin{figure}
 \centering
@@ -44,7 +44,7 @@ CoffeeScriptRedux is more strict and yielded syntax errors in some of
 our files, which could be compiled correctly in the production code. The
 latest available release of Ibrik (version 1.1.1) also had major issues
 with certain constructs in CoffeeScript, which made the files impossible
-to analyze. This issues was however fixed in the development version.
+to analyze. These issues were however fixed in the development version.
 Ibrik was first released in December 2013, which may explain its
 immaturity. Ibrik internally uses istanbul-js for the coverage
 analysis and report generation.\\
@@ -65,16 +65,16 @@ produced as an interactive HTML report (see \fref{fig:karma_report}).\\
 \subsubsection{Test coverage issues}
 
 One issue with using test coverage in this particular project is the
-fact that very few files were added. Most of the changes was made in
+fact that very few files were added. Most of the changes were made in
 existing classes and files, either as new functions or as changes to
 existing functions. Since the overall test coverage is measured per
-file, it is impossible to get an exact measure of how well-tested the
-new and re-factored code is, since old and completely untested code
+file, it is impossible to get an exact measure of how well tested the
+new and refactored code is, since old and completely untested code
 lower the test coverage.\\
 
 We have tried to mitigate this by looking at the coverage reports by
 hand, and try to determine a subjective measure of how good the test
-coverage is for new and re-factored code. \Fref{fig:coverage_example}
+coverage is for new and refactored code. \Fref{fig:coverage_example}
 shows an excerpt of a coverage report. In this case, our subjective
 measure would say that the function |exports.getProduction()| is
 completely untested. The function |exports.getLabelId()| is well tested

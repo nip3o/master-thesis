@@ -1,7 +1,12 @@
-Since a unit test only assures that a single unit works as expected,
-faults may still reside in how the units works together. The purpose of
-integration testing is to test several individual units together, in
-order to see if they still work together as intended.\\
+Writing unit tests alone does not give sufficient test coverage for the
+whole system, since unit tests only assures that each single tested
+module works as expected. Since a unit test only assures that a single
+unit works as expected, faults may still reside in how the units work
+together. A well- tested function for validating a 12-digit personal
+identification number is worth nothing if the module that uses it passes
+a 10-digit number as input. The purpose of integration testing is to
+test several individual units together, in order to see if they still
+work together as intended.\\
 
 There are several ways of performing integration testing, as well as
 arguments and opinions about the different ways. \citet{book:adp} state
@@ -22,24 +27,20 @@ approaches such as \emph{top-down testing} and \emph{sandwich testing}
 are also mentioned, and the difference between the approaches is in which
 order the units are integrated.\\
 
-\citet{video:integrated_scam} criticizes one kind of integration tests,
-which he refers to as \emph{integrated tests}. This refers to
-integration tests that are testing the functionality of multiple units
-in the same way as unit tests, i.e. by input data and examine the
-output. When testing multiple units in this way, one loses the ability
-to see which part of all the tested units that are actually failing. As
-the number of tested units rises, the number of possible paths will grow
-exponentially. This makes it hard to see the reason for a failed test,
-but also makes it very hard to decide which of all this paths that needs
-to be tested. \citeauthor{video:integrated_scam} claims that this fact
-makes developers sloppier, which increases the risk of introducing
-mistakes that goes unnoticed through the test suite. If the problem is
-solved by writing even more integration tests, developers have less time
-to do proper unit tests and instead introduce more sloppy designs. One
-may however argue that this argument is based on the fact that
-integrated tests to a large part are used instead of unit tests, rather
-than as a complement as suggested by \citeauthor{book:pfleeger} and
-\citeauthor{book:adp}.\\
+The way of testing functionality of multiple units in the same way as
+unit tests, i.e. by input data and examine the output, are sometimes
+called \emph{integrated testing}. \citet{video:integrated_scam}
+criticizes this way of testing. When testing multiple units in this way,
+one loses the ability to see which part of all the tested units that are
+actually failing, he claims. As the number of tested units rises, the
+number of possible paths will grow exponentially. This makes it hard to
+see the reason for a failed test, but also makes it very hard to decide
+which of all this paths that needs to be tested.
+\citeauthor{video:integrated_scam} also claims that this fact makes
+developers sloppier, which increases the risk of introducing mistakes
+that goes unnoticed through the test suite. If this problem is solved by
+writing even more integration tests, developers will have less time to
+do proper unit tests and instead introduce more sloppy designs.\\
 
 Instead of integrated tests, another type of integration tests called
 contract- and collaboration tests are proposed. The purpose of these
@@ -52,3 +53,11 @@ idea of this is to build a chain of trust inside our own software via
 transitivity. This means that if Unit A and Unit B works together as
 expected, and Unit B and Unit C also works together as expected, Unit A
 and Unit C will also work together as expected.\\
+
+One may however argue that large parts of the criticism pointed out by
+\citeauthor{video:integrated_scam} is based on the fact that integrated
+tests to a large part are used instead of unit tests, rather than as a
+complement as suggested by \citeauthor{book:pfleeger} and
+\citeauthor{book:adp}. One may also note that contract- and
+collaboration tests could be used when doing top-down or bottom-up
+testing, rather than using integrated tests.\\

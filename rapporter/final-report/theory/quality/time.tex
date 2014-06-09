@@ -1,10 +1,10 @@
 \label{sec:theory_time}
 Performance of the developed software is often considered to be of great
 importance in software development. Some people mean that the
-performance of tests are just as important.\\
+performance of tests is just as important.\\
 
 \citet{video:fast_slow_test} talks about the problem with depending too
-much on large tests which are slow to run. He also mentions how the
+much on large tests that are slow to run. He also mentions how the
 execution time of a test can increase radically as the code base grows
 bigger, even if the test itself is not changed. If the system is small
 when the test is written, the test will run pretty fast even if it uses
@@ -24,7 +24,7 @@ source file in the system is changed. This gives the developer instant
 feedback if something breaks.\\
 
 In order to achieve fast tests, \citeauthor{video:fast_slow_test}
-proposes writing a large amount of low-level unit tests which is focused
+proposes writing a large amount of low-level unit tests that is focused
 on a small testing part of the system, rather than many system tests
 that integrates with large parts of the system.\\
 
@@ -33,5 +33,5 @@ tests, and proposes a way of achieving this in a Ruby on Rails
 application. The basic idea is the same as proposed by
 \citeauthor{video:fast_slow_test}, namely separating business logic so
 it is independent from Rails and other frameworks. This makes it
-possible to write small unit tests which only tests an isolated part of
+possible to write small unit tests that only test an isolated part of
 the system, independent from any third-party classes.\\

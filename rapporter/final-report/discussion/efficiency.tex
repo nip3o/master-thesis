@@ -13,9 +13,9 @@ executed as soon the application loads.\\
 
 A major part of the modules with high test coverage score in the
 beginning of the case study was modules without any methods, such as
-data models. Since these modules also can have methods which needs
-tests, it is not possible to just exclude all such modules from the
-coverage report either. This is an symptom of the weakness of statement
+data models. Since these modules also can have methods that need
+testing, it is not possible to just exclude all such modules from the
+coverage report either. This is a symptom of the weakness of statement
 coverage, which is also previously discussed in
 \fref{sec:theory_statement_coverage}. Statement coverage is a very weak
 metric and it is absolutely possible to create a non-empty class with
@@ -23,7 +23,7 @@ metric and it is absolutely possible to create a non-empty class with
 
 Based on the weaknesses of statement test coverage, one may thus impeach
 its usefulness. We did however find that apart from the coverage score
-being a bad indicator on how well-tested the code was, analyzing the
+being a bad indicator on how well tested the code was, analyzing the
 statement coverage report was highly usable for finding untested parts
 of the code. The nature of our code was such that it in general
 contained few branches, which of course makes statement coverage
@@ -32,8 +32,8 @@ considerably much more useful than for code with higher complexity.\\
 On the client-side, we also had the ability to evaluate branch coverage.
 The most important difference between the coverage scores for branch
 coverage versus statement coverage is that the branch coverage is zero
-for all untested functions, which makes the branch coverage score a more
-sound metric for the overall testing level. Branch coverage of course
+for all untested functions, which makes the branch coverage score a
+sounder metric for the overall testing level. Branch coverage of course
 also made it possible to discover a few more untested code paths.\\
 
 
@@ -42,12 +42,12 @@ also made it possible to discover a few more untested code paths.\\
 We believe that mutation testing may be a good alternative to code
 coverage as method for evaluating test efficiency. Our small manual test
 indicated that mutation testing and test coverage is related, since
-several of the alive mutants modified the same line, which also showed
+several of the living mutants modified the same line, which also showed
 to have zero statement test coverage. The mutation tests also found non-
-equivalent modifications to the code which was not discovered by the
+equivalent modifications to the code that was not discovered by the
 tests, even though they had full statement and branch test coverage.\\
 
-Our experiences with mutation testing however shows that more work is
+Our experiences with mutation testing however show that more work is
 required before it is possible to use it in our application. Mutation
 tests may also have limited usability on the server side, which in our
 case is mostly tested with higher-level integration-tests rather than
@@ -73,7 +73,7 @@ efficient the tests for the new functionality is.\\
 
 We can however see that the overall test coverage has increased during
 the different parts of the case study, which would not be the case if
-the test coverage of the newly implemented functionality was low, since
+the test coverage of the newly implemented functionality were low, since
 the total SLOC\footnote{Source lines of code} count has increased. Based
 on this fact, combined with the results of our subjective metric, we
 would argue that the efficiency of the tests written during this thesis

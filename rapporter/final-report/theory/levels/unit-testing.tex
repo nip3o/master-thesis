@@ -13,13 +13,7 @@ implementation, i.e. to make sure that the tested unit works correct
 \cite{book:pfleeger}.\\
 
 Since each unit test only covers a small part of the software, it is
-easy to find the cause for a failing test. Writing unit tests alone does
-not give sufficient test coverage for the whole system, since unit
-tests only assures that each single tested module works as expected. A
-well- tested function for validating a 12-digit personal identification
-number is worth nothing if the module that uses it passes a 10-digit
-number as input \cite{wiki:unittests}.\\
-
+easy to find the cause for a failing test.\\
 
 \subsubsection{Testability}
 
@@ -30,9 +24,9 @@ implementation is done. He demonstrates this by showing an example of
 code written without tests in mind, and points out which parts of the
 implementation that makes it hard to unit-test.
 \citeauthor{video:misko_psychology} mentions global state variables,
-violations of the Law of Demeter, global time references
-and hard-coded dependencies as some causes for making implementations
-hard to test.\\
+violations of the Law of Demeter\footnote{Also called the principle of
+least knowledge.}, global time references and hard-coded dependencies as
+some causes for making implementations hard to test.\\
 
 Global states infers a requirement on the order the tests
 must be run in, which is bad since it is often non-deterministic and
@@ -40,9 +34,8 @@ therefore might change between test runs. Global time references is bad
 since it depends on the time when the tests are run, which means that a
 test might pass if it is run today, but fail if it is run tomorrow.\\
 
-The Law of Demeter\footnote{Also called the principle of least
-knowledge.} means that one unit should only have limited knowledge of
-other units, and only communicate with related modules
+The Law of Demeter means that one unit should only have limited
+knowledge of other units, and only communicate with related modules
 \cite{wiki:demeter}. If this principle is not followed, it is hard to
 create an isolated test for a unit that does not depend on unrelated
 changes in some other module. The same thing also applies to the usage
@@ -76,10 +69,10 @@ replacement objects are used by the tested unit instead of some other
 module, but mocks sets expectations on how it can be used by the tested
 module on beforehand. \cite{web:mocks_arent_stubs}\\
 
-Another type of replacement object is
+Another type of replacement object is called
 \emph{factory objects}\footnote{Also called fakes.}.
-This kind of object is typically provides a real implementation of the
-object that it replaces, as opposed to a stub or mock which only has
+This kind of object typically provides a real implementation of the
+object that it replaces, as opposed to a stub or mock, which only has
 just as many methods or properties that is needed for the test to run.
 The difference between a fake object and the real object is typically
 that fake objects uses some shortcut that does not work in production.
@@ -96,7 +89,7 @@ class.\\
 
 If we rename the |eat_cookie()| method to |eat()| without changing the
 test or the implementation of |take_cookie()|, the test might still pass
-although the code will fail in a production environment. This is since
+although the code would fail in a production environment. This is since
 we have mocked an object that no longer exists in the |Cookie| class.\\
 
 Some testing frameworks and plug-ins detects replacement of non-existing

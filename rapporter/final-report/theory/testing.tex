@@ -1,14 +1,13 @@
 \MakeShortVerb{\|}
 
 \quotes{Software is written by humans and therefore has bugs} [sic].
-This quote is claimed to have been coined by John
-Jacobs \cite{web:quote_jacobs}, and explains the basic reason for
-software testing. Most programmers would agree that defects (or
-\quotes{undesirable features}), tend to show up during the software
-development process as well as in the finished software. The ultimate
-goal of the testing process is to establish that a certain level of
-software quality has been reached, which is achieved by revealing
-defects in the code \cite{book:adp}.\\
+This quote is was coined by John Jacobs \cite{web:quote_jacobs}, and
+explains the basic reason for software testing. Most programmers would
+agree that defects tend to show up during the software development
+process as well as in the finished software. The ultimate goal of the
+testing process is to establish that a certain level of software quality
+has been reached, which is achieved by revealing defects in the code
+\cite{book:adp}.\\
 
 Automated software testing is typically performed by writing pieces of
 code\footnote{There are also techniques for recoding clicks when testing
@@ -16,8 +15,8 @@ graphical interfaces, but that is outside the scope of this thesis.}
 called \emph{tests} \cite{wiki:test_automation}. Each test uses the
 implemented code that we want to evaluate, and performs different
 assertions to make sure that the result is the same as we expect. Code
-listing \ref{lst:basic_function} shows a very simple function and
-\ref{lst:dummy_test} shows a piece of code for testing it.\\
+listing \ref{lst:basic_function} shows a very simple function and code
+listing \ref{lst:dummy_test} shows a piece of code for testing it.\\
 
 For writing more complicated tests, and in order to manage collections
 of tests, writing a bunch of |if|-statements all the time is repetitive
@@ -32,7 +31,7 @@ code before each test for a specific module, assert that a function
 throws an exception, or present different error-messages depending on
 the assertion. A \emph{testing framework}\footnote{Also called testing
 tool.} typically provides such
-functionality.\cite{wiki:test_automation}\\
+functionality. \cite{wiki:test_automation}\\
 
 The code for each test is executed by a \emph{test runner}, which in
 many cases is included as a part of the testing framework. The test

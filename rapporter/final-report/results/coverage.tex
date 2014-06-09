@@ -1,6 +1,6 @@
 \label{sec:results_coverage}
 
-A quick overview of the results are presented in
+A quick overview of the results is presented in
 \fref{tab:unit_coverage}. More information is presented in the following
 sections. As discussed in \fref{sec:coverage_frameworks}, we were unable
 to find any tool for analyzing anything else than statement test
@@ -11,9 +11,9 @@ coverage for Ruby.\\
     \begin{tabular}{l l l}
         Phase & No. of tests & Test coverage\\
         \hline
-        Before case-study &       59 & 42.24 \%\\
-        After first part  &       58 & 55.25 \%\\
-        After second part &       81 & 62.34 \%\\
+        Before the case study &       59 & 42.24 \%\\
+        After the first part  &       58 & 55.25 \%\\
+        After the second part &       81 & 62.34 \%\\
     \end{tabular}
     \caption{ Statement test coverage of RSpec unit- and integration tests at different phases. }
     \label{tab:unit_coverage}
@@ -45,12 +45,12 @@ thus zero at this state.\\
 
 The first part of the case study (described in \fref{sec:casestudy_1})
 was focused on rewriting broken tests, since some of the existing tests
-was not functional. During this period, a large part of the existing
+were not functional. During this period, a large part of the existing
 test suite was either fixed or completely rewritten. Many of the
 existing unit- and integration tests was rewritten and a few large
-acceptance-level test was replaced by more fine-grained integration
-tests. The statement coverage of the increased to 53 \% after this
-part of the case study.\\
+acceptance-level tests were replaced by more fine-grained integration
+tests. The statement coverage of the application increased to 53 \%
+after this part of the case study.\\
 
 There were still no client-side unit-tests after this part, since the
 focus was fixing the existing server-side tests. The client-side test
@@ -61,22 +61,22 @@ coverage was still zero at this state \\
 
 The second part of the case study (described in \fref{sec:casestudy_2})
 was focused on implementing new functionality while re-factoring old
-parts as needed and write tests for new as well as re-factored code. The
+parts as needed and write tests for new as well as refactored code. The
 first sprint of this part was focused on basic functionality, while the
 second sprint was focused on extending and generalizing the new
 functionality.\\
 
 When the implementation of the new functionality was finished, statement
 coverage of unit- and integration tests for the server side was 62 \%. A
-subjective measure indicated that new and re-factored functions in
-general has high statement coverage. In cases where full statement
+subjective measure indicated that new and refactored functions in
+general have high statement coverage. In cases where full statement
 coverage is not achieved, the reason is generally special cases. The
 most common example is when error-messages are given when request
 parameters are missing or invalid.\\
 
 Statement test coverage for the client-side was 21 \% and the
 corresponding branch coverage was 10 \%. A subjective measure
-indicates that almost all of the newly implemented functions achieves
+indicates that almost all of the newly implemented functions achieve
 full statement coverage. The branch coverage is in general also high for
 newly implemented functions, but conditionals for special cases (such as
 when variables are zero or not set) are sometimes not covered.\\
@@ -85,7 +85,7 @@ when variables are zero or not set) are sometimes not covered.\\
 
 All metrics in the previous sections refer to test coverage for unit-
 and integration tests. As one of the last steps of the second part of
-the case study, browser tests was added in order to do system-level
+the case study, browser tests was added in order to do system
 testing.\\
 
 The total statement test coverage for the RSpec browser tests alone was

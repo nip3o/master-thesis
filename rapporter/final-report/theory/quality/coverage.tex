@@ -1,11 +1,10 @@
 \MakeShortVerb{\|}
 
-\label{sec:theory_coverage}
-Test coverage\footnote{Also known as \emph{code coverage}} is a measure
-to describe to which degree the program source code is tested by a
-certain test suite. If the test coverage is high, the program has been
-more thoroughly tested and probably has a lower chance of containing
-software bugs.\cite{wiki:coverage}\\
+\label{sec:theory_coverage} Test coverage\footnote{Also known as
+\emph{code coverage}} is a measure to describe to how large extent the
+program source code is tested. If the test coverage is high, the program
+has been more thoroughly tested and probably has a lower chance of
+containing software bugs. \cite{wiki:coverage}\\
 
 Multiple different categories of coverage criterion exist. The
 following subsections are based on the chapter on test-case designs in
@@ -37,16 +36,16 @@ in \ref{lst:small}, we could achieve full statement coverage by setting
 This requirement alone does however not verify the correctness of the
 code. Maybe the first comparison |a > 1| really should be |a > 0|. Such
 bugs would go unnoticed. The program also does nothing if x and a are
-less than zero. If this was an error, it would also go unnoticed.\\
+less than zero. If this were an error, it would also go unnoticed.\\
 
-\citeauthor{book:art_of_testing} finds that these properties makes the
+\citeauthor{book:art_of_testing} finds that these properties make the
 statement coverage criterion so weak that it often is useless. One could
 however argue that it does fill some functionality in interpreted
 programming languages. Syntax errors could go unnoticed in programs
 written in such languages since they are executed line-by-line, and
 syntax errors therefore does not show up until the interpreter tries to
 execute the erroneous statement. Full statement coverage at least makes
-sure that no syntax errors exists.\\
+sure that no syntax errors exist.\\
 
 
 \subsubsection{Branch coverage}

@@ -9,7 +9,7 @@ the case study.\\
 
 The major reason for the increase of speed comes from the refactoring of
 old tests, initiated in the first part of the case study. Some old tests
-was also re-factored during the second part, which explains the decrease
+were also refactored during the second part, which explains the decrease
 in test execution time between the first and the second part of the case
 study. One reason for the drop in average execution time after the
 second part was also the fact that a few more unit-tests was written,
@@ -17,17 +17,17 @@ compared to before.\\
 
 The single most important factor for speeding up tests when re-factoring
 the old tests was to reduce the construction of database objects. Before
-the case-study, all test data for all tests was created before every
+the case study, all test data for all tests was created before every
 test, since the database needs to be cleaned between each test in order
 for one test not to affect other tests. By using factory objects, we
 could instead only create the objects needed for each specific test,
-instead of creating a huge amount of data which is not even used. RSpec
-also caches factory objects between tests which uses the same objects,
+instead of creating a huge amount of data that is not even used. RSpec
+also caches factory objects between tests that use the same objects,
 which gives some additional speed gain.\\
 
 By looking at the execution times for the Cucumber feature test
 (\fref{tab:cucumber_times}), it might seem like these tests became a
-great deal slower after the first part of the case-study. One issue is
+great deal slower after the first part of the case study. One issue is
 however that Cucumber stops executing a test as soon as some part of the
 test fails. Since almost all of the tests failed at an early stage,
 large part of the test suite was never executed and the execution time
@@ -42,17 +42,17 @@ time. \Fref{tab:jasmine_times} shows that our Jasmine isolated unit-
 tests runs at a rate of over 700 tests per second, while our system-
 level browser tests in \fref{tab:rspec_browser_times} runs at a rate of
 less than 0.3 tests per second. We can conclude that the principle of
-writing many isolated unit tests and just a few system-level tests seems
+writing many isolated unit tests and just a few system tests seems
 very reasonable unless we choose to discard the execution time
 completely.\\
 
 One other interesting thing is the large difference between the Cucumber
 browser tests and the RSpec browser tests. Even though both types of
-tests are in the category of system-level tests, RSpec browser tests are
+tests are in the category of system tests, RSpec browser tests are
 more than four times faster than the Cucumber tests. One reason for this
 might be the size of the test. As seen in \fref{tab:browser_coverage},
 the Cucumber tests cover more code than the RSpec browser tests, and
-therefore takes longer time to execute. Another reason might be that
+therefore take longer time to execute. Another reason might be that
 some Cucumber tests are redundant. For example, the Cucumber test suite
 tests login functionality multiple times, while the RSpec browser test
 suite only tests this functionality once. Yet another reason might be
@@ -70,8 +70,8 @@ discuss some of our own experiences on this area.\\
 Having a super-fast unit test suite such as our Jasmine tests is really
 nice when using TDD methodology, since it feels like the whole test
 suite is completed in the same moment a file is saved. However, using
-integration-level RSpec tests which runs in about 150 ms also works fine
-when using TDD-methodology, as long as we only run tests for the
+integration-level RSpec tests, which runs in about 150 ms, also works
+fine when using TDD-methodology as long as we only run tests for the
 affected module. Running the whole integration test suite continuously
 takes too much time, though.\\
 
@@ -80,10 +80,10 @@ considerably long, since Rails and related components are very large and
 takes some time to load. It would be possible to separate parts of the
 test suite from Rails and associated frameworks as mentioned in
 \fref{sec:theory_time}, but we refrained from doing this since we
-considered it to affect the code structure in a bad way. This problem
-can be mitigated by using tools like
-Zeus\footnote{\url{https://github.com/burke/zeus/}}, but we were unable
-to evaluate this tool due to incompatibilities with our Ruby version.\\
+considered it to affect the code structure in a bad way. Using tools
+like Zeus\footnote{\url{https://github.com/burke/zeus/}} can work around
+this problem, but we were unable to evaluate this tool due to
+incompatibilities with our Ruby version.\\
 
 For browser tests, we believe that the important thing is the ability to
 run these in some reasonable time. In our case, we believe that the

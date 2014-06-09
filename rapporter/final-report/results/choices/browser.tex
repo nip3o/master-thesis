@@ -1,4 +1,3 @@
-Capybara and site\_prism.
 
 \subsubsection{Selenium}
 The absolutely most widespread framework for browser testing seems to be
@@ -34,7 +33,7 @@ Capybara\footnote{\url{https://github.com/jnicklas/capybara}} provides a
 much higher level API for browser testing compared to Selenium, and
 besides from using it with Selenium it can also be used with drivers for
 headless browsers or for testing frameworks using mock requests. Tests
-can also be written in multiple testing frameworks, such as RSpec which
+can also be written in multiple testing frameworks, such as RSpec that
 was used in our case.\\
 
 We did not find any particular difficulties when using Capybara. Its API
@@ -73,25 +72,25 @@ use this pattern from the start rather than cleaning up overly
 complicated tests afterwards. While this pattern is perfectly possible
 to use without any frameworks, we found a framework called
 SitePrism\footnote{\url{https://github.com/natritmeyer/site_prism}}
-which provided some additional convenient functionality.\\
+that provided some additional convenient functionality.\\
 
 SitePrism makes it possible to define pages of an application by
 specifying its URL, as well as elements and sections of a specific page
-by specifying a CSS or XPath selector. An example of a such definition
-can be seen in code listing \ref{lst:siteprism_page}. Page objects
-automatically gets basic methods for accessing elements, and allows us
-to define additional methods for each page or element. This allows us to
-use higher-level functions in our tests rather than locating elements
-manually in out Capybara tests, as seen in code listing
-\ref{lst:siteprism_test}.\\
+by specifying a CSS or XPath selector. An example of a page
+definition can be seen in code listing \ref{lst:siteprism_page}. Page
+objects automatically get basic methods for accessing elements, and
+allow us to define additional methods for each page or element. This
+allows us to use higher-level functions in our tests rather than
+locating elements manually in out Capybara tests, as seen in code
+listing \ref{lst:siteprism_test}.\\
 
 One drawback of using SitePrism can be that elements currently must be
 specified using selectors rather than having the possibility to select
-them based on text, which is possible with Capybara directly. On the
-other hand, it would be trivial to create a method for doing this using
-Capybara\'s helper methods. We would also claim that using text
-for locating elements only makes sense for some specific types of
-elements, such as buttons and links, not for elements in general.\\
+them based on text, which is possible with Capybara directly. It would
+on the other hand be easy to create a method for doing this using
+Capybara\'s helper methods. One could also claim that using text for
+locating elements only makes sense for some specific types of elements,
+such as buttons and links, not for elements in general.\\
 
 Overall, we found the page object pattern as well as SitePrism very
 convenient to work with.\\

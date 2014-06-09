@@ -24,7 +24,7 @@ and web browsers.
 \item The software itself typically consists of heterogeneous
 components, which often uses several different technologies. For example
 it may have a server component that uses Ruby and Ruby on Rails, and a
-client component which uses HTML, CSS and Javascript.
+client component that uses HTML, CSS and Javascript.
 
 \item Some components, such as parts of the graphical interface, may be
 generated at run time depending on user input and the current state of
@@ -33,7 +33,7 @@ the application.
 \end{itemize}
 
 Each of these characteristics contributes to different challenges when
-doing software testing. While some of these characteristics poses
+doing software testing. While some of these characteristics pose
 testing issues that are outside the scope of this thesis, others are
 highly relevant. It may for instance be impossible to use the same
 testing framework for the server-side components as for the client-side
@@ -49,10 +49,10 @@ Defining levels of testing requires greater attention in web
 applications than in traditional software due to its heterogeneous
 nature. For example, it is hard to define the scope of a unit during
 unit testing since it depends on the type of component. Defining levels
-of integration testing provides the same types of problem, since one for
-example may choose to either integrate different smaller server-side
-units, as well as test the integration between server-side and client-
-side components.\cite{book:web}
+of integration testing infer the same types of problem, since one may
+for example choose to either integrate different smaller server-side
+units, or test the integration between server-side and client- side
+components. \cite{book:web}
 
 \citeauthor{book:web} propose that client-side unit testing should be
 done on each page, where scripting modules as well as HTML statements
@@ -64,45 +64,47 @@ redirections and submission of forms. System testing is done by testing
 different use cases and by detecting defective pointing of links between
 pages.\\
 
-The book by \citeauthor{book:web} is rather old, and we would argue that
-some parts of the proposed testing approach would not fit into a modern
-web application. As one example, several modern web applications
-consists of one single page which makes it impossible to test the
+The book by \citeauthor{book:web} is rather old, and one could argue
+that some parts of the proposed testing approach would not fit into a
+modern web application. As one example, several modern web applications
+consist of one single page, which makes it impossible to test the
 integration of several pages, form submissions or to test link between
-pages. We also fail to see the purpose of testing hyperlinks at all
+pages. One may also fail to see the purpose of testing hyperlinks at all
 three testing levels, and would also claim that generation of such links
 is handled to a large extent by modern web frameworks and thus is
 outside our application scope. One could also claim that the interaction
-between different pages is covered by the use cases evaluated during
-the system-level testing.\\
+between different pages is covered by the use cases evaluated during the
+system testing.\\
 
 We do however believe that unit testing client-side as well as server-
 side code respectively is important, and also that use-cases are a
-relevant approach when doing system-level testing.\\
+relevant approach when doing system testing.\\
 
 
 \subsection{Browser testing}
 
 As previously mentioned, a web application may be run on a variety of
 different operating systems and browsers which may cause defects
-specific to each environment. In order to be able to discover such
-defects, we must be able to test our web application in each environment
-that we choose to support.\\
+specific to each environment. In order to be able to discover defects of
+that kind, one must be able to test our web application in each
+supported environment.\\
 
-\emph{Browser tests} are a kind of tests where a browser is controlled
-in order to simulate the behavior of a real user, by clicking on buttons
-and entering text into text fields. This tests the application in the
-same way as we would do when conducting manual testing, which is an
-advantage as well as a drawback. On one hand, it is by far the most
+A \emph{browser tests} is a kind of test where a web browser is
+controlled in order to simulate the behavior of a real user, by clicking
+on buttons and entering text into text fields. This approach tests the
+application in the same way as when conducting manual testing, which is
+an advantage as well as a drawback. On one hand, it is by far the most
 realistic way of testing functionality, but on the other hand it tests a
 lot of code and it takes a lot of effort to test things thoroughly.
-Because of this, browser tests are considered to be system-level
-tests.\\
+Because of this, browser tests are generally only used when conducting
+system testing.\\
 
-Besides from using browser tests in order to ensure the functionality of
-the system as a user would perceive it, it can be run the same test in
-multiple browsers, and can thus help finding browser-specific software
-defects.\\
+Cross-browser compatibility is an important issue for many web
+applications. This basically means that the application should work in
+the same way regardless of which browser the user are using, or at least
+as long as a common web browser is used. A browser test can often be run
+in multiple browsers, and can thus help finding browser-specific
+software defects.\\
 
 Browser tests are slow, mostly due to the level of testing, but also due
 to the script-execution, rending and loading speeds of the browser.
@@ -114,19 +116,18 @@ PhantomJS\footnote{\url{http://phantomjs.org/}}. A headless browser is a
 browser where most functionality of modern browsers has been stripped
 away in order to gain speed. It typically does not have any graphical
 interface and therefore does not require a graphical desktop
-environment.\cite{web:headless}\\
+environment. \cite{web:headless}\\
 
 One may argue that by running the tests in a headless browser is
 pointless since no real users uses a such browser, and that we therefore
 cannot be sure that the tested functionality actually would work in a
-real browser just because it works in a headless browser. It it of
+real browser just because it works in a headless browser. It is of
 course also impossible to find browser-specific defects when using  a
 headless browser. It would of course be possible to find bugs specific
-to the headless browser itself, but that would again be rather
-pointless. \citet{web:headless} however claims that using a headless
-browser covers the majority of all cases and can be used in the
-beginning of projects where cross-browser compatibility is less of an
-issue.\\
+to the headless browser itself, but that would be rather pointless.
+\citet{web:headless} however claims that using a headless browser covers
+the majority of all cases and can be used in the beginning of projects
+where cross-browser compatibility is less of an issue.\\
 
 \citet{web:page_object} explains that browser tests tend to be bound to
 the HTML and the CSS classes of the tested page, since we need to locate
@@ -138,7 +139,7 @@ parts of our test suite.\\
 One way of writing browser tests without making them bound to elements
 of a page is called \emph{page object pattern}. The basic principle is
 that the elements of a page are encapsulated into one or several
-\emph{page objects} which in turn provides an API that is used by the
+\emph{page objects}, which in turn provides an API that is used by the
 test itself. If we have a page with a list of items as well as a form
 for creating new items, we can for instance create one page object for
 the page itself, another for the form and yet another for the list of
@@ -146,5 +147,5 @@ items. The page object for the page itself provides methods for
 accessing the page objects for the form and the list of items. The page
 object for the form may provide methods for entering data, and the page
 object for the list may provide methods for accessing each item in the
-list.\cite{web:page_object}
+list. \cite{web:page_object}
 

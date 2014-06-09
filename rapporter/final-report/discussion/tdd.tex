@@ -1,6 +1,6 @@
 
 We have striven for using test- and behavioral-driven development
-methodologies in as strict way as possible throughout this entire
+methodologies in the strictest possible way throughout this entire
 thesis. The purpose of this has been to gain experience of different
 advantages and drawbacks of these methodologies. In situations where we
 have found these methodologies to be unsuitable, we have however chosen
@@ -8,9 +8,9 @@ to disregard some principles of these methodologies rather than try to
 apply them anyway.\\
 
 Using a test-driven approach has is in our opinion two major advantages.
-The most important is perhaps that it mitigates a sense of fear about
+The most important is perhaps that it alleviates a sense of fear about
 whether or not the implementation really works as it is supposed to, and
-a fear of that things may break when code is re-factored. The other
+a fear that things may break when the code is refactored. The second
 important aspect is that the written code is self-testing; you can run a
 command in order to find out whether or not the code is in a working
 state, rather than testing it manually and see what happens. In
@@ -20,35 +20,39 @@ was fixed and therefore know when we were done, and we did not have to
 constantly test the software manually during development.\\
 
 Another benefit from using the test-first principle is that one often
-think through the design before implementation. We have to write the
-implementation in a way such that it is testable, which makes us
-discover new ways of solving the problem and design our software better.
-In some cases this also reduces the amount of written code since we
-strive to minimize the number of cases that we have to test. Personally
-we also usually find it tedious to write tests when the implementation
-is done, and our opinion is that writing the tests first makes the
-development more fun than writing tests after implementation.\\
+thinks through the design before the implementation. The implementation
+has to be written in such way that it is testable, which makes the
+developer discover new ways of solving the problem and design the
+software better. In some cases this also reduces the amount of written
+code since we strive to minimize the number of cases that we have to
+test. Additionally, I personally find it tedious to write tests after
+the implementation is done. My opinion is that writing the tests first
+makes the development more fun than writing tests after
+implementation.\\
 
 There is however no guarantee that a more testable design is better than
-a less testable design. For example, making it possible to test a module
-may require it to be split up in several non-intuitive modules, or to
-use a large amount of mocking. We believe that it is better to test on a
+a less testable design. For example, making it possible to test a
+module may require using of a large amount of fake objects such as
+mocks. It might also be required to split up the module into several sub
+modules that does not map very well to the real world and thus are
+difficult to understand. We believe that it is better to test on a
 higher level and perhaps discard the test-first principle in cases where
 making the code testable introduces more drawbacks than advantages to
 the overall design.\\
 
-Our biggest difficulties while using TDD was the \emph{refactor}-part of
-the \emph{red/green/refactor} mantra. We found it hard to know whether
-or not code needed to be refactored, and to know how large part of the
-code to refactor. Some small changes required large parts of the code to
-be refactored in order for the code to be possible to unit-test, and in
-some situations we found that the overhead of doing refactoring simply
-was too large. One reason for this may be that the old implementations
-has been written without testability or test-driven development in mind,
-and the need for heavy refactoring would probably decrease over time if
-test-driven methodologies are used.\\
+Our main difficulty while using TDD was the \emph{refactor}-part of the
+\emph{red/green/refactor} mantra. We found it hard to know whether or
+not code needed to be refactored, and to know how large part of the code
+to refactor. Some small changes required large parts of the code to be
+refactored in order for the code to be possible to unit-test. In some
+situations we found that the overhead of doing refactoring simply was so
+large that we decided not to do any refactoring at all. One reason for
+this may be that the old implementations have been written without
+testability or test-driven development in mind. The need for heavy
+refactoring would probably decrease over time if test-driven
+methodologies were used.\\
 
-Our experiences from using behavior-driven development principles is
+Our experiences from using behavior-driven development principles are
 generally positive. We found that using descriptive strings for tests
 (rather than function names) forced us split up tests into smaller
 parts, since each part must be possible to describe with a single

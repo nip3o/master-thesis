@@ -1,33 +1,34 @@
 
 We worked with Cucumber during the first part of the case study since
 the major part of all existing tests was written using this framework.
-Cucumber is a framework for acceptance-level testing using BDD
-methodology. Tests, called \emph{features}, are written using an
-ubiquitous language as seen in listing \ref{lst:cucumber_feature}. The
+Cucumber is a framework for acceptance-level testing using the BDD
+methodology. Tests, called \emph{features}, are written using a
+ubiquitous language as seen in example \ref{lst:cucumber_feature}. The
 action for each line, called \emph{step}, of the feature is specified
-using a \emph{step definition}, as seen in listing
-\ref{lst:cucumber_step}.\cite{web:cucumber}\\
+using a \emph{step definition}, as seen in example
+\ref{lst:cucumber_step}. \cite{web:cucumber}\\
 
-One benefit from using Cucumber is that all steps are reusable, which
-means that code duplication can be avoided. However, it can be hard to
-write the steps in such way that they benefit from this, and it
-sometimes also requires a lot of parameters to be passed in to each
-step. Cucumber also provides code snippets for creating step
-definitions, which evades some unnecessary work.\\
+One benefit in using Cucumber is that all steps are reusable, which
+means that code duplication can be avoided. However, it can be difficult
+to write the steps in a way that they benefit from this, and sometimes
+it also requires a lot of parameters to be passed in to each step.
+Cucumber also provides code snippets for creating step definitions,
+which avoids some unnecessary work.\\
 
 Apart from these benefits, we found Cucumber tiresome to work with. The
 separation between features and step definitions makes it hard to get an
 overview of the code executed during the test, and it is often hard to
 find specific step definitions. We also experienced problems with the
-mapping step definitions, where the generated step definition simply did
-not match the written step. In cases where we want to use the same step
-definition, but use slightly different language (such as the steps on
-line 12 and line 14 in code listing \ref{lst:cucumber_feature}),
-adjusting the regular expression to match both steps can be hard.\\
+mapping between steps and step definitions, since the generated step
+definition simply did not match the written step in some cases. In cases
+where we wanted to use the same step definition, but used slightly
+different language (such as the steps on line 12 and line 14 in code
+listing \ref{lst:cucumber_feature}), adjusting the regular expression to
+match both steps was sometimes hard.\\
 
-The chosen level of testing is another big issue. We felt that using
-TDD-methodology was hard to do with system-level tests since they take
-long time to execute and affects a much larger part of the software than
+The chosen level of testing is another big issue. We felt that using the
+TDD-methodology was cumbersome to do with system tests, since these take
+long time to execute and affect a much larger part of the software than
 the part we are typically working with when implementing new
 functionality. Considering these drawbacks, we decided to not continue
 the use of Cucumber for this thesis.\\
