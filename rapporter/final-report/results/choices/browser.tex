@@ -1,3 +1,4 @@
+\label{sec:choices_browser}
 
 \subsubsection{Selenium}
 The absolutely most widespread framework for browser testing seems to be
@@ -76,13 +77,13 @@ that provided some additional convenient functionality.\\
 
 SitePrism makes it possible to define pages of an application by
 specifying its URL, as well as elements and sections of a specific page
-by specifying a CSS or XPath selector. An example of a page
-definition can be seen in code listing \ref{lst:siteprism_page}. Page
-objects automatically get basic methods for accessing elements, and
-allow us to define additional methods for each page or element. This
-allows us to use higher-level functions in our tests rather than
-locating elements manually in out Capybara tests, as seen in code
-listing \ref{lst:siteprism_test}.\\
+by specifying a CSS or XPath selector. An example of a page definition
+can be seen in code listing \ref{lst:siteprism_page}. Page objects
+automatically get basic methods for accessing elements, and allow us to
+define additional methods for each page or element. This allows us to
+use higher-level functions in our tests rather than locating elements
+manually in our Capybara tests. An example test using SitePrism is seen
+in code listing \ref{lst:siteprism_test}.\\
 
 One drawback of using SitePrism can be that elements currently must be
 specified using selectors rather than having the possibility to select

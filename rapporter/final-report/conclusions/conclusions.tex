@@ -1,6 +1,9 @@
 
 This chapter presents some final thoughts and reflections on the results
-and summarizes the previously discussed conclusions.\\
+and summarizes the previously discussed conclusions. We also present a
+summary of our proposed solution for testing a web application.\\
+
+\section{General conclusions}
 
 \begin{itemize}
 
@@ -48,3 +51,30 @@ not found any defects of this type by using test efficiency metrics in
 this project.\\
 
 \end{itemize}
+
+
+\section{Suggested solution for testing a web application}
+
+For a web application with at least some amount of client-side and
+server-side code, we would recommend unit-testing for the client as well
+as the server. In addition, system-level browser tests should be used.
+Most of the written tests should be on unit- or integration- level
+tests, but the exact proportions depend on the application.\\
+
+We would recommend applications that use Javascript or CoffeeScript on
+the client side to use the Jasmine testing framework together with the
+Karma test runner. For testing the client-side in Rails projects,
+Teaspoon could be an alternative to Karma. See \fref{sec:js_test} for
+more discussion on the subject.\\
+
+A server side written Ruby on Rails could be tested using RSpec, with
+factory\_girl for generating test data. Controllers can preferably be
+tested using higher-level tests, while model instance methods often can
+be tested using lower-level unit tests. See \fref{sec:ruby_test} for
+more details on Rails testing frameworks.\\
+
+Selenium is highly useful for system-level tests. Using a higher-level
+framework such as Capybara rather than using Selenium directly is
+recommended. The page object pattern should be used. SitePrism is useful
+for this purpose. See \fref{sec:choices_browser} for more information
+about these frameworks.\\

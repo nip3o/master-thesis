@@ -13,20 +13,22 @@ their tests and understanding why their tests failed.
 TDD in a way that avoids these confusions.\\
 
 Instead of focusing on what test cases to write for a specific feature,
-BDD instead focuses on behaviors that the feature should imply. Instead
-of using regular function names, each test is described by a string
-(typically starting with the word \emph{should}). For a function
-calculating the number of days left until a given date, this could for
-example be \quotes{should return 1 if tomorrow is given} or
-\quotes{should raise an exception if the date is in the past}.\\
+BDD instead focuses on behaviors that the feature should imply. Each
+test is described by a sentence, typically starting with the word
+\emph{should}. For a function calculating the number of days left until
+a given date, this could for example be \quotes{should return 1 if
+tomorrow is given} or \quotes{should raise an exception if the date is
+in the past}.\\
 
-Using strings instead of function names solves the problem of naming
-tests - the string describing the behavior is used instead of a
-traditional function name. It also makes it possible to give a human-
-readable error if the module fails to fulfill some behavior, which can
-make it easier to understand why a test fails. It also sets a natural
-barrier for how large the test should be, since it must be possible to
-describe in one sentence.\\
+Many frameworks use strings for declaring the sentence describing each
+test. Using strings rather than traditional function names allows us to
+use a native language, and solves the problem of naming tests. The
+string describing the behavior is used instead of a traditional function
+name, which also makes it possible to give a human-readable error if the
+module fails to fulfill some behavior. This can make it easier to
+understand why a test fails. It also sets a natural barrier for how
+large the test should be, since it must be possible to describe in one
+sentence.\\
 
 After coming up with these ideas, \citeauthor{web:dan_north} met a
 software analyst and realized that writing behavior-oriented

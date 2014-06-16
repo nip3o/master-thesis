@@ -7,17 +7,23 @@ which is used for generating factory objects. As discussed in
 model objects, but have several advantages. As alternatives to
 factory\_girl, we also considered
 Machinist\footnote{\url{https://github.com/notahat/machinist}} and
-Fabrication\footnote{\url{http://www.fabricationgem.org/}}. Machinist
-was discarded since it is no longer actively developed. We did not find
-any significant differences between Fabrication and factory\_girl, and
-therefore chose the latter since it was more popular.\\
+Fabrication\footnote{\url{http://www.fabricationgem.org/}}.\\
 
-There are many advantages of using a framework such as factory\_girl
-rather than just instantiate model objects by hand (i.e. just write
-|MyModel.new| in Ruby to create a new model instance). First of all,
-factory\_girl automatically passes in default values for required
-parameters, so that we only need to supply the attributes needed in a
-particular test. Secondly, related objects are also created
+Machinist was discarded since it is no longer actively developed.
+Fabrication is actively maintained and quite popular, although it has
+far less downloads and resources than factory\_girl. When looking at the
+documentation and examples, the two frameworks seem to be very similar.
+When searching for a comparison between the two, some people favor one
+of them while other people favor the other. Since we did not find any
+significant differences between Fabrication and factory\_girl, we chose
+the latter since it is more popular.\\
+
+There are many advantages of using a factory framework such as
+factory\_girl rather than just instantiate model objects by hand (i.e.
+just write |MyModel.new| in Ruby to create a new model instance). First
+of all, factory\_girl automatically passes in default values for
+required parameters, so that we only need to supply the attributes
+needed in a particular test. Secondly, related objects are also created
 automatically, which typically saves as huge amount of work compared to
 manual creation of objects. Code listing \ref{lst:factory_def} and
 \ref{lst:factory_use} shows a factory definition and its usage. The name

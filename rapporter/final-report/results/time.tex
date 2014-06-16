@@ -20,11 +20,11 @@ text in the following sections.\\
     \begin{tabular}{l l l l l}
         Phase & No. of tests & Total time & Time per test & Tests per second\\
         \hline
-        Before the case study & 59 & 19.9 s & 340 ms & 3.0 \\
+        Before the case study & 59 & 20 s & 340 ms & 3.0 \\
         After the first part  & 58 & 8.3 s  & 140 ms & 6.9 \\
-        After the second part & 81 & 7.6 s  & 153 ms & 10.7\\
+        After the second part & 81 & 7.6 s  & 94 ms & 11\\
     \end{tabular}
-    \caption{ Execution times of RSpec integration- and unit tests at different phases }
+    \caption{ Execution times of RSpec integration- and unit tests at different phases. }
     \label{tab:unit_times}
 \end{table}
 
@@ -33,11 +33,11 @@ text in the following sections.\\
     \begin{tabular}{l l l l l}
         Phase & No. of tests & Total time & Time per test & Tests per second \\
         \hline
-        Before the case study & 12 & 43 s & 3.6 s & 0.27 \\
-        After the first part  & 10 & 160 s & 18 s & 0.056\\
-        After the second part & 8 &  155 s & 17 s & 0.056\\
+        Before the case study & 12 & \sout{43 s} & \sout{3.6 s} & \sout{0.27}\\
+        After the first part  & 10 & 160 s & 16 s & 0.063\\
+        After the second part & 8 &  155 s & 19 s & 0.052\\
     \end{tabular}
-    \caption{ Execution times of Cucumber feature tests at different phases }
+    \caption{ Execution times of Cucumber feature tests at different phases. }
     \label{tab:cucumber_times}
 \end{table}
 
@@ -46,10 +46,10 @@ text in the following sections.\\
     \begin{tabular}{l l l l l}
         Phase & No. of tests & Total time & Time per test & Tests per second \\
         \hline
-        After second part & 3 &  12.4 s & 4.1 s & 0.24\\
-        At latest revision & 10 & 38.2 s & 3.8 & 0.26\\
+        After second part  & 3  & 12.4 s & 4.1 s & 0.24\\
+        At latest revision & 10 & 38.2 s & 3.8 s & 0.26\\
     \end{tabular}
-    \caption{ Execution times of RSpec browser tests }
+    \caption{ Execution times of RSpec browser tests. }
     \label{tab:rspec_browser_times}
 \end{table}
 
@@ -60,7 +60,7 @@ text in the following sections.\\
         \hline
         After second part & 34 &  0.043 s & 1.3 ms & 791\\
     \end{tabular}
-    \caption{ Execution times of Jasmine unit tests }
+    \caption{ Execution times of Jasmine unit tests. }
     \label{tab:jasmine_times}
 \end{table}
 
@@ -68,14 +68,20 @@ text in the following sections.\\
 \subsection{Before the case study}
 
 The total running time of the 59 RSpec integration- and unit tests
-before the case study was 23.0 seconds. Average test execution time was
-340 ms per test, which means an execution rate of 3.0 tests per
+before the case study was 19.9 seconds. Average test execution time was
+340 ms per test, which means an execution rate of three tests per
 second.\\
 
 Twelve Cucumber browser tests existed at this time (with 178 steps), but
 none of these tests passed at this stage. After fixing the most critical
 issues with these tests, 36 steps passed in 42.7 seconds. The average
 time per test was 3.6 seconds.\\
+
+Note that Cucumber stops executing a test as soon as some part of the
+test fails. Since almost all of the tests failed at an early stage,
+large part of the test suite was never executed and the execution times
+are therefore misleading. We have chosen to include them anyway for
+completeness.\\
 
 
 \subsection{After refactoring old tests}
@@ -86,7 +92,7 @@ and unit tests existed after this stage, an the total execution time was
 8.3 seconds.\\
 
 The running time of the ten Cucumber tests (with 118 steps) was 160
-seconds, and the average time per test was 18 seconds.\\
+seconds, and the average time per test was 16 seconds.\\
 
 
 \subsection{After implementation of new functionality}
@@ -108,7 +114,7 @@ test was 19 seconds.\\
 The running time of the three newly implemented RSpec browser tests was
 12.4 seconds, with an average time of 4.1 seconds per test. After the
 case study, other developers added additional RSpec browser tests.  At
-the latest revision of the code as of May 2014, there are ten RSpec
+the latest revision of the code as of June 2014, there are ten RSpec
 browser tests, and the total running time of these are 38 seconds. The
 average time per test is 3.8 seconds. While these new tests are not
 strictly a part of the case study, we have chosen to include them in

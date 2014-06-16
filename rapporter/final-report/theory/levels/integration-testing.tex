@@ -28,19 +28,20 @@ are also mentioned, and the difference between the approaches is in which
 order the units are integrated.\\
 
 The way of testing functionality of multiple units in the same way as
-unit tests, i.e. by input data and examine the output, are sometimes
-called \emph{integrated testing}. \citet{video:integrated_scam}
-criticizes this way of testing. When testing multiple units in this way,
-one loses the ability to see which part of all the tested units that are
-actually failing, he claims. As the number of tested units rises, the
-number of possible paths will grow exponentially. This makes it hard to
-see the reason for a failed test, but also makes it very hard to decide
-which of all this paths that needs to be tested.
-\citeauthor{video:integrated_scam} also claims that this fact makes
-developers sloppier, which increases the risk of introducing mistakes
-that goes unnoticed through the test suite. If this problem is solved by
-writing even more integration tests, developers will have less time to
-do proper unit tests and instead introduce more sloppy designs.\\
+unit tests, i.e. by input data into a module and then examine its
+output, are sometimes called \emph{integrated testing}.
+\citet{video:integrated_scam} criticizes this way of testing. When
+testing multiple units in this way, one loses the ability to see which
+part of all the tested units that are actually failing, he claims. As
+the number of tested units rises, the number of possible paths will grow
+exponentially. This makes it hard to see the reason for a failed test,
+but also makes it very hard to decide which of all this paths that needs
+to be tested. \citeauthor{video:integrated_scam} also claims that this
+fact makes developers sloppier, which increases the risk of introducing
+mistakes that goes unnoticed through the test suite. If this problem is
+solved by writing even more integration tests, developers will have less
+time to do proper unit tests and instead introduce more sloppy
+designs.\\
 
 Instead of integrated tests, another type of integration tests called
 contract- and collaboration tests are proposed. The purpose of these

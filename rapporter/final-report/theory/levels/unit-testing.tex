@@ -67,17 +67,17 @@ The naming of different kinds of replacement objects may differ, but two
 widely used concepts are \emph{stubs} and \emph{mocks}. Both these
 replacement objects are used by the tested unit instead of some other
 module, but mocks sets expectations on how it can be used by the tested
-module on beforehand. \cite{web:mocks_arent_stubs}\\
+module beforehand. \cite{web:mocks_arent_stubs}\\
 
-Another type of replacement object is called
-\emph{factory objects}\footnote{Also called fakes.}.
-This kind of object typically provides a real implementation of the
-object that it replaces, as opposed to a stub or mock, which only has
-just as many methods or properties that is needed for the test to run.
-The difference between a fake object and the real object is typically
-that fake objects uses some shortcut that does not work in production.
-One example is objects that are stored in memory instead of in a real
-database, in order to gain performance. \cite{web:mocks_arent_stubs}\\
+Another type of replacement object is called \emph{factory
+objects}\footnote{Also called fakes.}. This kind of object typically
+provides a real implementation of the object that it replaces, as
+opposed to a stub or mock, which only has just as many methods or
+properties that is needed for the test to run. The difference between a
+fake object and the real object is that fake objects may use some
+shortcut that does not work in production. One example is objects that
+are stored in memory instead of in a real database, in order to gain
+performance. \cite{web:mocks_arent_stubs}\\
 
 \citet{video:boundaries} mentions some of the drawbacks with using mocks
 and stubs. If the interface of the replaced unit changes, this might not

@@ -25,14 +25,6 @@ instead of creating a huge amount of data that is not even used. RSpec
 also caches factory objects between tests that use the same objects,
 which gives some additional speed gain.\\
 
-By looking at the execution times for the Cucumber feature test
-(\fref{tab:cucumber_times}), it might seem like these tests became a
-great deal slower after the first part of the case study. One issue is
-however that Cucumber stops executing a test as soon as some part of the
-test fails. Since almost all of the tests failed at an early stage,
-large part of the test suite was never executed and the execution time
-before the first part of the case study is therefore misleading.\\
-
 
 \subsection{Execution time for different test types}
 
@@ -48,15 +40,23 @@ completely.\\
 
 One other interesting thing is the large difference between the Cucumber
 browser tests and the RSpec browser tests. Even though both types of
-tests are in the category of system tests, RSpec browser tests are
-more than four times faster than the Cucumber tests. One reason for this
+tests are in the category of system tests, RSpec browser tests are more
+than four times faster than the Cucumber tests. One reason for this
 might be the size of the test. As seen in \fref{tab:browser_coverage},
 the Cucumber tests cover more code than the RSpec browser tests, and
-therefore take longer time to execute. Another reason might be that
+therefore take longer time to execute.\\
+
+Another reason for the large difference in execution time might be that
 some Cucumber tests are redundant. For example, the Cucumber test suite
 tests login functionality multiple times, while the RSpec browser test
-suite only tests this functionality once. Yet another reason might be
-the overhead of parsing the ubiquitous language used by Cucumber.\\
+suite only tests this functionality once. This is because a logged-in
+user is required in order to execute most tests, and the Cucumber tests
+does this by entering credentials into the login form for each test. The
+RSpec test suite instead uses a test helper to log in the user before
+each test starts, except for when testing the login form itself.\\
+
+Yet another reason for the execution time difference might be the
+overhead of parsing the ubiquitous language used by Cucumber.\\
 
 
 \subsection{Importance of a fast test suite}

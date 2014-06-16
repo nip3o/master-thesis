@@ -2,17 +2,29 @@
 Just like Cucumber, RSpec also claims to be made for use with
 BDD\cite{web:rspec}. In contrast, it only uses descriptive strings
 instead of a full ubiquitous language and can be used for writing
-isolated unit-tests as well as integration- and browser tests.\\
+isolated unit-tests as well as integration- and browser tests. \\
+
+As an alternative to RSpec, we also considered
+Minitest\footnote{\url{https://github.com/seattlerb/minitest}}. Similar
+to RSpec, Minitest is popular as well as actively developed. In contrast
+to RSpec, it is more modular and claims to be more readable. It also
+claims to be more minimalistic and lightweight. By looking at code
+examples and documentation, we however found that the syntax of the
+tests for recent versions of both these frameworks seemed to be very
+similar. We did not find any considerable advantages of using Minitest
+over RSpec and therefore concluded that RSpec was a better option, since
+some of the existing tests was written using this framework.\\
 
 We found it quite straightforward to write tests with RSpec, and to use
-descriptive strings rather than function names for describing tests. The
-plug-in rspec-mocks\footnote{\url{https://github.com/rspec/rspec-mocks}}
-were used in some situations where mocking was required, since the RSpec
-core does not include support for this. One major drawback of rspec-
-mocks is that it allows stubbing non-existent methods and properties,
-which as discussed in \fref{sec:theory_mocks} can be dangerous. We
-worked around this by writing a helper for checking existence of
-properties before stubbing them.\\
+descriptive strings rather than function names for describing tests as
+seen in code listing \ref{lst:rspec}. The plug-in rspec-
+mocks\footnote{\url{https://github.com/rspec/rspec-mocks}} were used in
+some situations where mocking was required, since the RSpec core does
+not include support for this. One major drawback of rspec- mocks is that
+it allows stubbing non-existent methods and properties, which as
+discussed in \fref{sec:theory_mocks} can be dangerous. We worked around
+this by writing a helper for checking existence of properties before
+stubbing them.\\
 
 \begin{lstlisting}[caption=Example of RSpec tests for a module.,
                    label=lst:rspec, float=t]

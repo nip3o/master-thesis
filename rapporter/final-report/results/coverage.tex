@@ -1,10 +1,11 @@
 \label{sec:results_coverage}
 
 A quick overview of the results is presented in
-\fref{tab:unit_coverage}. More information is presented in the following
-sections. As discussed in \fref{sec:coverage_frameworks}, we were unable
-to find any tool for analyzing anything else than statement test
-coverage for Ruby.\\
+\fref{tab:unit_coverage}, \ref{tab:client_coverage} and
+\ref{tab:browser_coverage}. More information is presented in the
+following sections. As discussed in \fref{sec:coverage_frameworks}, we
+were unable to find any tool for analyzing anything else than statement
+test coverage for Ruby.\\
 
 \begin{table}[t]
     \centering
@@ -15,8 +16,19 @@ coverage for Ruby.\\
         After the first part  &       58 & 55.25 \%\\
         After the second part &       81 & 62.34 \%\\
     \end{tabular}
-    \caption{ Statement test coverage of RSpec unit- and integration tests at different phases. }
+    \caption{ Statement test coverage for the RSpec unit- and integration tests at different phases. }
     \label{tab:unit_coverage}
+\end{table}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{l l l l}
+        Phase & No. of tests & Statement coverage & Branch coverage\\
+        \hline
+        After the second part & 34 & 21.22 \% & 10.14 \%\\
+    \end{tabular}
+    \caption{ Test coverage for the Karma client-side tests. }
+    \label{tab:client_coverage}
 \end{table}
 
 \begin{table}[t]
@@ -24,9 +36,9 @@ coverage for Ruby.\\
     \begin{tabular}{l l l}
         Description & No. of tests & Test coverage\\
         \hline
-        RSpec browser tests &     3 & 46.3 \%\\
-        Cucumber browser tests &  8 & 61.2 \%\\
-        All RSpec tests &        84 & 66.8 \%\\
+        RSpec browser tests &     3 & 46.31 \%\\
+        Cucumber browser tests &  8 & 61.23 \%\\
+        All RSpec tests &        84 & 66.81 \%\\
     \end{tabular}
     \caption{ Statement test coverage including browser tests after the second part of the case study. }
     \label{tab:browser_coverage}
@@ -54,7 +66,7 @@ after this part of the case study.\\
 
 There were still no client-side unit-tests after this part, since the
 focus was fixing the existing server-side tests. The client-side test
-coverage was still zero at this state \\
+coverage was still zero at this state.\\
 
 \subsubsection{After the second part of the case study}
 \label{sec:result_coverage_end}
