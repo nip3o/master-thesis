@@ -29,7 +29,7 @@ order the units are integrated.\\
 
 The way of testing functionality of multiple units in the same way as
 unit tests, i.e. by input data into a module and then examine its
-output, are sometimes called \emph{integrated testing}.
+output, is sometimes called \emph{integrated testing}.
 \citet{video:integrated_scam} criticizes this way of testing. When
 testing multiple units in this way, one loses the ability to see which
 part of all the tested units that are actually failing, he claims. As
@@ -44,7 +44,7 @@ time to do proper unit tests and instead introduce more sloppy
 designs.\\
 
 Instead of integrated tests, another type of integration tests called
-contract- and collaboration tests are proposed. The purpose of these
+contract- and collaboration tests is proposed. The purpose of these
 tests is to verify the interface between all unit-tested modules by
 using mocks to test that Unit A tries to invoke the expected methods on
 Unit B (contract test). In order to avoid errors due to mocking, tests
