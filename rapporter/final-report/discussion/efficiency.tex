@@ -2,14 +2,12 @@
 \subsection{Usefulness of test coverage}
 
 As seen in \fref{sec:results_coverage}, the test coverage for the
-existing RSpec integration-tests was 42 \% before this thesis project,
-which is quite much considering that the existing tests was partially
-duplicated and only was focused on a few specific parts of the system.
-One reason for this is found when the coverage reports are inspected,
-where we can see that certain kinds code gets full statement coverage,
-even though there are not any tests for them. Method definitions and
-field definitions on model objects are such types, since they are
-executed as soon the application loads.\\
+existing RSpec integration tests was 42 \% before this thesis, which is
+quite much considering that the existing tests was partially duplicated
+and only was focused on a few specific parts of the system. One reason
+for this was found when the coverage reports were inspected, in which
+certain files got full statement coverage even though there was not any
+tests for them.\\
 
 A major part of the modules with high test coverage score in the
 beginning of the case study was modules without any methods, such as
@@ -22,14 +20,14 @@ metric and it is absolutely possible to create a non-empty class with
 100 \% statement coverage without writing any tests for it.\\
 
 Based on the weaknesses of statement test coverage, one may thus impeach
-its usefulness. We did however find that apart from the coverage score
-being a bad indicator on how well tested the code was, analyzing the
-statement coverage report was highly usable for finding untested parts
-of the code. The nature of our code was such that it in general
+its usefulness. I did however find that apart from the coverage score
+being a bad indicator on how well tested the code was, the
+statement coverage reports was highly usable for finding untested parts
+of the code. The nature of the code was such that it in general
 contained few branches, which of course makes statement coverage
 considerably much more useful than for code with higher complexity.\\
 
-On the client-side, we also had the ability to evaluate branch coverage.
+On the client-side, I also had the ability to evaluate branch coverage.
 The most important difference between the coverage scores for branch
 coverage versus statement coverage is that the branch coverage is zero
 for all untested functions, which makes the branch coverage score a
@@ -39,43 +37,43 @@ also made it possible to discover a few more untested code paths.\\
 
 \subsection{Usefulness of mutation testing}
 
-We believe that mutation testing may be a good alternative to code
-coverage as method for evaluating test efficiency. Our small manual test
+I believe that mutation testing may be a good alternative to code
+coverage as method for evaluating test efficiency. My small manual test
 indicated that mutation testing and test coverage is related, since
 several of the living mutants modified the same line, which also showed
-to have zero statement test coverage. The mutation tests also found non-
-equivalent modifications to the code that was not discovered by the
+to have zero statement test coverage. The mutation tests also found
+nonequivalent modifications to the code that was not discovered by the
 tests, even though they had full statement and branch test coverage.\\
 
-Our experiences with mutation testing however show that more work is
+My experiences with mutation testing however show that more work is
 required before it is possible to use it in our application. Mutation
 tests may also have limited usability on the server side, which in our
-case is mostly tested with higher-level integration-tests rather than
-with unit-tests. As mentioned in \fref{sec:theory_mutation}, efficient
+case is mostly tested using higher-level integration tests rather than
+with unit tests. As mentioned in \fref{sec:theory_mutation}, efficient
 mutation testing requires the scope to be narrow and the test suite to
 be fast, due to the large amount of possible mutants. This is not the
-case for integration-level tests. Mutation testing might thus be more
+case for integration tests. Mutation testing might thus be more
 useful for the client-side, which contains more logic and therefore is
-tested with isolated unit-tests to a larger extent.\\
+tested with isolated unit tests to a larger extent.\\
 
 
 \subsection{Efficiency of written tests}
 
-Since most of the implemented code consisted of extensions or
-refactoring to existing files, it is hard to get a fair metric value for
-how well tested the modified parts of the software is. This is because
-these metrics are given in percent per file, and since the same file
-contains a lot of unmodified code, that will affect the result. It is
-also hard to detect which parts of the code that has been modified. We
-ended up using a self-constructed, subjective metric, which imposes
-questions on whether or not we can draw any solutions about how
-efficient the tests for the new functionality is.\\
+Since most of the implemented code consisted of extensions to existing
+files, it is hard to get a fair metric value for how well tested the
+modified parts of the software is. This is because these metrics are
+given in percent per file, and since the same file contains a lot of
+unmodified code, that will affect the result. It is also hard to detect
+which parts of the code that has been modified. I ended up using a self-
+constructed, subjective metric, which imposes questions on whether or
+not we can draw any solutions about how efficient the tests for the new
+functionality is.\\
 
 We can however see that the overall test coverage has increased during
 the different parts of the case study, which would not be the case if
 the test coverage of the newly implemented functionality were low, since
 the total SLOC\footnote{Source lines of code} count has increased. Based
-on this fact, combined with the results of our subjective metric, we
+on this fact, combined with the results of our subjective metric, I
 would argue that the efficiency of the tests written during this thesis
 is high in general. Mutation testing could be used in future in order to
 evaluate this conclusion further. It is however hard to tell whether or

@@ -37,7 +37,7 @@ code. We did initially have some problems with getting this tool to work
 correctly, since Ibrik internally uses another CoffeeScript compiler;
 CoffeeScriptRedux, than the compiler used when tests itself are run.
 CoffeeScriptRedux is more strict and yielded syntax errors in some of
-our files, which could be compiled correctly in the production code. The
+our files that could be compiled correctly in the production code. The
 latest available release of Ibrik (version 1.1.1) also had major issues
 with certain constructs in CoffeeScript, which made the files impossible
 to analyze. These issues were however fixed in the development version.
@@ -47,7 +47,7 @@ analysis and report generation.\\
 
 The chosen solution worked very well after sorting out the issues.
 Statement coverage as well as branch coverage is supported, and it
-yields useful reports. As with SimpleCov, the coverage reports are
+generates useful reports. As with SimpleCov, the coverage reports are
 produced as an interactive HTML report (see \fref{fig:karma_report}).\\
 
 \begin{figure}

@@ -4,14 +4,14 @@ One important framework used was
 factory\_girl\footnote{\url{https://github.com/thoughtbot/factory\_girl}},
 which is used for generating factory objects. As discussed in
 \fref{sec:theory_mocks}, factory objects behave just like instances of
-model objects, but have several advantages. As alternatives to
-factory\_girl, we also considered
-Machinist\footnote{\url{https://github.com/notahat/machinist}} and
-Fabrication\footnote{\url{http://www.fabricationgem.org/}}.\\
+model objects, but have several advantages.\\
 
-Machinist was discarded since it is no longer actively developed.
-Fabrication is actively maintained and quite popular, although it has
-far less downloads and resources than factory\_girl. When looking at the
+As alternatives to factory\_girl, we also considered
+Machinist\footnote{\url{https://github.com/notahat/machinist}} and
+Fabrication\footnote{\url{http://www.fabricationgem.org/}}. Machinist
+was discarded since it is no longer actively developed. Fabrication is
+actively maintained and quite popular, although it has far less
+downloads and resources than factory\_girl. When looking at the
 documentation and examples, the two frameworks seem to be very similar.
 When searching for a comparison between the two, some people favor one
 of them while other people favor the other. Since we did not find any
@@ -27,7 +27,7 @@ needed in a particular test. Secondly, related objects are also created
 automatically, which typically saves as huge amount of work compared to
 manual creation of objects. Code listing \ref{lst:factory_def} and
 \ref{lst:factory_use} shows a factory definition and its usage. The name
-of the cookie and a new Bakery-object is created automatically since we
+of the cookie and a new |Bakery| object is created automatically since we
 do not give them as parameters when using the factory.\\
 
 We did initially have some issues with the creation of related objects
@@ -45,14 +45,14 @@ this feature.\\
 
 \begin{lstlisting}[caption=Example usage of the factory defined in code listing \ref{lst:factory_def}.,
                    label=lst:factory_use, float=t]
-FactoryGirl.create :cookie, diameter: 4.5, thickness: 0.5
+FactoryGirl.create(:cookie, diameter: 4.5, thickness: 0.5)
 \end{lstlisting}
 
 \begin{lstlisting}[caption=A factory definition for a Cookie model.,
                    label=lst:factory_def, float=t]
 FactoryGirl.define do
   factory :cookie do
-    name      'Vanlilla dream'
+    name      'Vanilla dream'
     diameter  1
     thickness 2
     bakery    { FactoryGirl.build(:bakery) }

@@ -4,7 +4,7 @@
 
 \subsection{Typical characteristics of a web application}
 
-Web application typically shares multiple properties with traditional
+Web applications typically share multiple properties with traditional
 software, i.e. software that runs as an application locally on a single
 computer. Many languages can be used for writing traditional software as
 well as web applications, and the objective of doing software testing is
@@ -33,8 +33,8 @@ the application.
 \end{itemize}
 
 Each of these characteristics contributes to different challenges when
-doing software testing. While some of these characteristics pose
-testing issues that are outside the scope of this thesis, others are
+doing software testing. While some of these characteristics pose testing
+issues that are outside the scope of this thesis, other issues are
 highly relevant. It may for instance be impossible to use the same
 testing framework for the server-side components as for the client-side
 components since the components are written in different programming
@@ -85,60 +85,59 @@ relevant approach when doing system testing.\\
 
 As previously mentioned, a web application may be run on a variety of
 different operating systems and browsers which may cause defects
-specific to each environment. In order to be able to discover defects of
-that kind, one must be able to test our web application in each
-supported environment.\\
+specific to each environment. In order to discover defects of that kind,
+one must be able to test the web application in each supported
+environment.\\
 
-A \emph{browser tests} is a kind of test where a web browser is
+The \emph{browser test} is a kind of test where a web browser is
 controlled in order to simulate the behavior of a real user, by clicking
 on buttons and entering text into text fields. This approach tests the
 application in the same way as when conducting manual testing, which is
-an advantage as well as a drawback. On one hand, it is by far the most
-realistic way of testing functionality, but on the other hand it tests a
-lot of code and it takes a lot of effort to test things thoroughly.
+an advantage as well as a drawback. On one hand, this way of testing is
+by far the most realistic way of testing an application. On the other
+hand it often tests a lot of code and it may take a lot of effort to
+test things thoroughly and to find the cause of bugs when tests fail.
 Because of this, browser tests are generally only used when conducting
 system testing.\\
 
 Cross-browser compatibility is an important issue for many web
 applications. This basically means that the application should work in
-the same way regardless of which browser the user are using, or at least
-as long as a common web browser is used. A browser test can often be run
-in multiple browsers, and can thus help finding browser-specific
-software defects.\\
+the same way regardless of which browser the user are using, at least as
+long as we have chosen to support the web browser in question. A browser
+test can often be run in multiple browsers, and can thus help finding
+browser-specific software defects.\\
 
 Browser tests are slow, mostly due to the level of testing, but also due
-to the script-execution, rending and loading speeds of the browser.
-Another downside is that it requires a full graphical desktop
+to the overhead of executing scripts, rendering pages and loading
+images. Another downside is that it requires a full graphical desktop
 environment and thus may take some effort and resources to set up on a
 server. One way of achieving higher test execution speed is to use a
-\emph{headless} browser, such as
-PhantomJS\footnote{\url{http://phantomjs.org/}}. A headless browser is a
-browser where most functionality of modern browsers has been stripped
-away in order to gain speed. It typically does not have any graphical
-interface and therefore does not require a graphical desktop
-environment. \cite{web:headless}\\
+\emph{headless browser}. A headless browser is a web browser where most
+functionality of modern browsers has been stripped away in order to gain
+speed. It typically does not have any graphical interface and therefore
+does not require a graphical desktop environment. \cite{web:headless}\\
 
 One may argue that by running the tests in a headless browser is
-pointless since no real users uses a such browser, and that we therefore
-cannot be sure that the tested functionality actually would work in a
-real browser just because it works in a headless browser. It is of
-course also impossible to find browser-specific defects when using  a
-headless browser. It would of course be possible to find bugs specific
-to the headless browser itself, but that would be rather pointless.
-\citet{web:headless} however claims that using a headless browser covers
-the majority of all cases and can be used in the beginning of projects
-where cross-browser compatibility is less of an issue.\\
+pointless since no real users uses a such browser. Therefore, we cannot
+be sure that the tested functionality actually would work in a real
+browser just because it works in a headless browser. It is of course
+also impossible to find browser-specific defects when using a headless
+browser. It would be possible to find bugs specific to the headless
+browser itself, but that would be rather pointless. \citet{web:headless}
+however claims that using a headless browser covers the majority of all
+cases and can be used in the beginning of projects where cross-browser
+compatibility is less of an issue.\\
 
-\citet{web:page_object} explains that browser tests tend to be bound to
-the HTML and the CSS classes of the tested page, since we need to locate
-elements in order to click buttons or fill in forms. This makes the
-tests fragile since changes in the user interface may break them, and if
-the same elements are used in many tests, we may need to go over large
-parts of our test suite.\\
+\citet{web:page_object} explains that browser tests often tend to be
+bound to the HTML and the CSS classes of the tested page, since we need
+to locate elements in order to click buttons or fill in forms. This
+makes the tests fragile since changes in the user interface may break
+them, and if the same elements are used in many tests, we may need to go
+over large parts of our test suite.\\
 
 One way of writing browser tests without making them bound to elements
-of a page is called \emph{page object pattern}. The basic principle is
-that the elements of a page are encapsulated into one or several
+of a page is called the \emph{page object pattern}. The basic principle
+is that the elements of a page are encapsulated into one or several
 \emph{page objects}, which in turn provides an API that is used by the
 test itself. If we have a page with a list of items as well as a form
 for creating new items, we can for instance create one page object for

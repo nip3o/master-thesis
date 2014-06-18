@@ -1,26 +1,26 @@
 
-We have striven for using test- and behavioral-driven development
+I have striven for using test- and behavioral-driven development
 methodologies in the strictest possible way throughout this entire
 thesis. The purpose of this has been to gain experience of different
-advantages and drawbacks of these methodologies. In situations where we
-have found these methodologies to be unsuitable, we have however chosen
+advantages and drawbacks of these methodologies. In situations where I
+have found these methodologies to be unsuitable, I have however chosen
 to disregard some principles of these methodologies rather than try to
 apply them anyway.\\
 
-Using a test-driven approach has is in our opinion two major advantages.
+Using a test-driven approach has two major advantages in our opinion.
 The most important is perhaps that it alleviates a sense of fear about
 whether or not the implementation really works as it is supposed to, and
 a fear that things may break when the code is refactored. The second
-important aspect is that the written code is self-testing; you can run a
+important aspect is that the written code is self-testing; one can run a
 command in order to find out whether or not the code is in a working
 state, rather than testing it manually and see what happens. In
-particular we found writing a failing test before fixing a software
-defect to be especially helpful. We could instantly see when the defect
-was fixed and therefore know when we were done, and we did not have to
+particular, I found writing a failing test before fixing a software
+defect to be especially helpful. One can instantly see when the defect
+was fixed and therefore know when the work is done, and do not have to
 constantly test the software manually during development.\\
 
 Another benefit from using the test-first principle is that one often
-thinks through the design before the implementation. The implementation
+think through the design before the implementation. The implementation
 has to be written in such way that it is testable, which makes the
 developer discover new ways of solving the problem and design the
 software better. In some cases this also reduces the amount of written
@@ -35,26 +35,26 @@ a less testable design. For example, making it possible to test a
 module may require using of a large amount of fake objects such as
 mocks. It might also be required to split up the module into several sub
 modules that does not map very well to the real world and thus are
-difficult to understand. We believe that it is better to test on a
+difficult to understand. I believe that it is better to test on a
 higher level and perhaps discard the test-first principle in cases where
 making the code testable introduces more drawbacks than advantages to
 the overall design.\\
 
-Our main difficulty while using TDD was the \emph{refactor}-part of the
-\emph{red/green/refactor} mantra. We found it hard to know whether or
+My main difficulty while using TDD was the \emph{refactor}-part of the
+\emph{Red, green, refactor} mantra. I found it hard to know whether or
 not code needed to be refactored, and to know how large part of the code
 to refactor. Some small changes required large parts of the code to be
 refactored in order for the code to be possible to unit-test. In some
-situations we found that the overhead of doing refactoring simply was so
-large that we decided not to do any refactoring at all. One reason for
+situations I found that the overhead of doing refactoring simply was so
+large that I decided not to do any refactoring at all. One reason for
 this may be that the old implementations have been written without
 testability or test-driven development in mind. The need for heavy
 refactoring would probably decrease over time if test-driven
 methodologies were used.\\
 
-Our experiences from using behavior-driven development principles are
-generally positive. We found that using descriptive strings for tests
-(rather than function names) forced us split up tests into smaller
+My experiences from using behavior-driven development principles are
+generally positive. I found that using descriptive strings for tests
+(rather than function names) forced me to split up tests into smaller
 parts, since each part must be possible to describe with a single
 sentence. It also felt natural to share preconditions (such as \emph{if
 the user is logged in}) for a set of tests using a string. One drawback
@@ -62,12 +62,12 @@ is however that the full string for a test, including preconditions,
 tends to be very long. This can make it harder to perceive which of the
 tests that failed.\\
 
-While using single descriptive strings for describing tests and
-preconditions in general worked very well, using an ubiquitous language
-when writing and reading tests felt unnatural. We experienced that the
-resulting test stories was hard to read and understand, and we could not
+While using descriptive strings for describing tests and preconditions
+in general worked very well, while using a ubiquitous language when
+writing and reading tests felt unnatural. I experienced that the
+resulting test stories was hard to read and understand, and I could not
 see any gain from using it in this particular project. It might be worth
 considering for large software development projects with many roles and
-multiple stakeholders, but hardly for projects where developers are in
-charge of feature specifications as well as testing and
-implementation.\\
+multiple stakeholders, but hardly for projects like the GOLI application
+where the developers are in charge of feature specifications as well as
+testing and implementation.\\

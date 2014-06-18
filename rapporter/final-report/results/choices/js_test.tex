@@ -36,15 +36,15 @@ methodology.\\
 
 A larger problem with the default test runner was that the asset
 handling, i.e. the process of compiling CoffeeScript into Javascript.
-Rails handle this compilation upon each reload when using the Jasmine
+Rails handles this compilation upon each reload when using the Jasmine
 gem. Since the used version of Rails re-compiles all assets upon page
 load if any file has been changed, this process takes a while, which
 means that each test run could take up to 10-15 seconds even though the
 actual tests only takes a fraction of a second to run. The asset
 compilation also got stuck for apparently no reason once in a while.
-Since the server port on which the test runner runs can- not be
-specified, it is also impossible to restart the test runner without
-manually killing its system process.\\
+Since the server port on which the test runner runs cannot be specified,
+it is also impossible to restart the test runner without manually
+killing its system process.\\
 
 Another issue with the Jasmine test runner is that syntax errors are
 printed in the terminal rather than in the browser window where the test
@@ -52,21 +52,21 @@ result is reported, which is confusing. In practice, syntax errors were
 often undetected for a long time, which required more debugging than
 necessary.\\
 
-Due to these issues, we switched to the Karma\footnote{
-\url{http://karma-runner.github.io/}} test runner. Karma originates from
-a master's thesis by \citet{article:karma}, and this covers several
-problems with the Jasmine test runner as well as with some other
-Javascript test runners. Karma was designed to solve several of these
-issues and to be used with test-driven software methodologies. Tests are
-run in a browser as soon as a file is changed, and the results are
-reported back to the terminal and displayed as shown in
-\fref{fig:karma_runner}. Re-compilation of source files and tests is
-very fast and we did not experience any stability issues. One minor
-drawback is however that pending tests is not displayed very clearly.
-This can be solved by using a different Karma test reporter.\\
+Due to these issues, we switched to the Karma\footnote{\url{http
+://karma-runner.github.io/}} test runner. Karma originates from a
+master's thesis by \citet{article:karma}, which covers several problems
+with the Jasmine test runner as well as with some other Javascript test
+runners. Karma was designed to solve several of these issues and to be
+used with test-driven software methodologies. Tests are run in a browser
+as soon as a file is changed, and the results are reported back to the
+terminal and displayed as shown in \fref{fig:karma_runner}. Re-
+compilation of source files and tests is very fast and we did not
+experience any stability issues. One minor drawback is however that
+pending tests is not displayed very clearly. This can be solved by using
+a different Karma test reporter.\\
 
-It took some effort with getting Karma to work with Rails, since Karma
-is written in Node.js and does not have any knowledge about which
+It took some effort getting Karma to work with Rails, since Karma is
+written in Node.js and does not have any knowledge about which
 CoffeeScript files that exist in the Rails application. The task of
 finding the location of all such files became more complex since
 external Javascript libraries such as jQuery was loaded as Ruby gems,
@@ -83,8 +83,8 @@ which is built for Rails and can discover assets by default. We believe
 that this test runner looks very promising and may be more suitable for
 Rails projects than Karma. At the time of this writing, Teaspoon does
 not have support for the most recent version of Jasmine and therefore
-does not work with our test suite. We were thus unable to evaluate this
-test runner any further.\\
+does not work with our test suite. We were thus unable to evaluate
+Teaspoon any further.\\
 
 \begin{lstlisting}[caption=Example of Jasmine tests for a module (compare with code listing \ref{lst:rspec}).,
                    label=lst:jasmine, float=t, language=HTML]

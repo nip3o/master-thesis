@@ -7,7 +7,7 @@ has been more thoroughly tested and probably has a lower chance of
 containing software bugs. \cite{wiki:coverage}\\
 
 Multiple different categories of coverage criterion exist. The
-following subsections are based on the chapter on test-case designs in
+following subsections are based on the chapter on test case designs in
 \citet{book:art_of_testing} unless mentioned otherwise.\\
 
 
@@ -16,10 +16,10 @@ following subsections are based on the chapter on test-case designs in
 \begin{lstlisting}[caption=A small example program for explaining different test coverage concepts.,
                    label=lst:small, float=t]
   def foo(a, b, x)
-    if a > 1 and b == 0
+    if a > 1 && b == 0
       x = x / a
     end
-    if a == 2 or x > 1
+    if a == 2 || x > 1
       x = x + 1
     end
   end

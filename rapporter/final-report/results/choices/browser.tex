@@ -1,20 +1,22 @@
 \label{sec:choices_browser}
 
 \subsubsection{Selenium}
-The absolutely most widespread framework for browser testing seems to be
+
+The absolutely most widespread framework for browser testing is
 Selenium\footnote{\url{http://docs.seleniumhq.org/}}. In fact, we have
 not even been able to find any other frameworks for running tests in
 real browsers, possibly since it takes a lot of effort to integrate with
 a large number of browsers on a large number of platforms. Selenium
 supports a number of popular programming languages, for example Java,
-C\#, Python and Ruby, and also has support the majority of all modern web
-browsers on Windows as well as Linux and Mac OS. The interface used by
-newer versions of Selenium for interacting with browsers, WebDriver, has
-been proposed as an W3C Internet
-standard\footnote{\url{https://dvcs.w3.org/hg/webdriver/raw-file/default
-/webdriver-spec.html}}, which may indicate that support for Selenium
-is very likely to continue to be present in future browser versions.
-\cite{wiki:selenium}\\
+C\#, Python and Ruby, and also has support the majority of all modern
+web browsers on Windows as well as Linux and Mac OS. The interface used
+by newer versions of Selenium for interacting with browsers, WebDriver,
+has been proposed as an W3C Internet standard \cite{web:webdriver},
+which may indicate that support for Selenium is very likely to continue
+to be present in future browser versions. \cite{wiki:selenium}\\
+
+Note that there are two major versions of Selenium; Selenium RC
+and the newer Selenium 2, of which we have used the latter.\\
 
 While Selenium is very widespread and seems to be the only option for
 running tests in real browsers, its API is on a rather low level. In
@@ -26,16 +28,13 @@ sending out text as keystrokes to this element. Rather than writing
 helper methods for such functionality ourselves, we decided to use
 a higher-level framework.\\
 
-Note that there are two major versions of Selenium; Selenium RC
-and the newer Selenium 2, of which we have used the latter.\\
-
 \subsubsection{Capybara}
 Capybara\footnote{\url{https://github.com/jnicklas/capybara}} provides a
 much higher level API for browser testing compared to Selenium, and
 besides from using it with Selenium it can also be used with drivers for
 headless browsers or for testing frameworks using mock requests. Tests
-can also be written in multiple testing frameworks, such as RSpec that
-was used in our case.\\
+can also be written using multiple testing frameworks, such as RSpec
+in our case.\\
 
 We did not find any particular difficulties when using Capybara. Its API
 provides very convenient high-level helpers for every common task that
@@ -48,18 +47,18 @@ example of a browser test using Capybara is found in code listing
                    label=lst:capybara, float=t]
 describe 'creating new cookies' do
   before do
-    FactoryGirl.create :cookie_type, name: 'Chocolate chip'
-    login_as FactoryGirl.create :user
+    FactoryGirl.create(:cookie_type, name: 'Chocolate chip')
+    login_as(FactoryGirl.create(:user))
   end
 
   it 'should be possible to create new cookies' do
-    visit new_cookie_path
+    visit(new_cookie_path)
 
-    fill_in 'Amount', with: 1
-    select 'Chocolate chip', from: 'Cookie type'
-    click_button 'Save'
+    fill_in('Amount', with: 1)
+    select('Chocolate chip', from: 'Cookie type')
+    click_button('Save')
 
-    expect(page).to have_content 'The cookie has been created.'
+    expect(page).to(have_content('The cookie has been created.'))
   end
 end
 \end{lstlisting}
@@ -88,10 +87,10 @@ in code listing \ref{lst:siteprism_test}.\\
 One drawback of using SitePrism can be that elements currently must be
 specified using selectors rather than having the possibility to select
 them based on text, which is possible with Capybara directly. It would
-on the other hand be easy to create a method for doing this using
-Capybara\'s helper methods. One could also claim that using text for
-locating elements only makes sense for some specific types of elements,
-such as buttons and links, not for elements in general.\\
+on the other hand be easy to create a method for doing this using the
+helper methods provided by Capybara. One could also claim that using
+text for locating elements only makes sense for some specific types of
+elements, such as buttons and links, not for elements in general.\\
 
 Overall, we found the page object pattern as well as SitePrism very
 convenient to work with.\\
@@ -105,14 +104,14 @@ class CookieRowSection < SitePrism::Section
 end
 
 class CookiePage < SitePrism::Page
-  set_url '/cookies'
+  set_url('/cookies')
 
   element :heading, 'h1'
   element :new_cookie_button, 'button#createCookie'
   sections :cookies, CookieRowSection, '.cookieInfo'
 
   def create_cookie
-    self.new_cookie_button.click
+    self.new_cookie_button.click()
   end
 end
 
@@ -124,19 +123,19 @@ end
 
 describe 'cookie information page' do
   before do
-    FactoryGirl.create :cookie, name: 'Vanilla dream', amount: 2
-    FactoryGirl.create :cookie, name: 'Apple crush', amount: 4
+    FactoryGirl.create(:cookie, name: 'Vanilla dream', amount: 2)
+    FactoryGirl.create(:cookie, name: 'Apple crush', amount: 4)
     @cookie_page = CookiePage.new
-    @cookie_page.load
+    @cookie_page.load()
   end
 
   it 'should contain a list of cookies in alphabetical order' do
-    expect(page.heading.text).to eq('List of cookies')
-    expect(page.cookies.length).to be(2)
+    expect(page.heading.text).to(eq('List of cookies'))
+    expect(page.cookies.length).to(be(2))
 
     cookie = page.cookies.first
-    expect(cookie.name.text).to eq('Apple crush')
-    expect(cookie.amount.text).to eq('2')
+    expect(cookie.name.text).to(eq('Apple crush'))
+    expect(cookie.amount.text).to(eq('2'))
   end
 end
 

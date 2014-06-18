@@ -5,34 +5,34 @@
 % pieces of logic, and the possible input data into different classes.
 % \citet{book:pfleeger}
 
-Unit testing\footnote{Also called low-level testing, module testing or
-component testing.} refers to testing of small parts of a software
-program. In practice, this often means testing a specific class or
-method of a software. The purpose of unit tests is to verify the
+\emph{Unit testing}\footnote{Also called low-level testing, module
+testing or component testing.} refers to testing of small parts of a
+software program. In practice, this often means testing a specific class
+or method of a software. The purpose of unit tests is to verify the
 implementation, i.e. to make sure that the tested unit works correct
-\cite{book:pfleeger}.\\
-
-Since each unit test only covers a small part of the software, it is
-easy to find the cause for a failing test.\\
+\cite{book:pfleeger}. Since each unit test only covers a small part of
+the software, it is easy to find the cause for a failing test. On the
+other hand, a single unit test only verifies that a small part of the
+application works as expected.\\
 
 \subsubsection{Testability}
 
-Writing unit tests might be really hard or really easy depending on the
-implementation of the tested unit. \citet{video:misko_psychology} claims
-that it is impossible to apply tests as some kind of magic after the
-implementation is done. He demonstrates this by showing an example of
-code written without tests in mind, and points out which parts of the
-implementation that makes it hard to unit-test.
-\citeauthor{video:misko_psychology} mentions global state variables,
-violations of the Law of Demeter\footnote{Also called the principle of
-least knowledge.}, global time references and hard-coded dependencies as
-some causes for making implementations hard to test.\\
+Writing unit tests might be hard or easy depending on the implementation
+of the tested unit. \citet{video:misko_psychology} claims that it is
+impossible to apply tests as some kind of magic after the implementation
+is done. He demonstrates this by showing an example of code written
+without tests in mind, and points out which parts of the implementation
+that makes it hard to unit-test. \citeauthor{video:misko_psychology}
+mentions global state variables, violations of the Law of
+Demeter\footnote{Also called the principle of least knowledge.}, global
+time references and hard-coded dependencies as some causes for making
+implementations hard to test.\\
 
-Global states infers a requirement on the order the tests
-must be run in, which is bad since it is often non-deterministic and
-therefore might change between test runs. Global time references is bad
-since it depends on the time when the tests are run, which means that a
-test might pass if it is run today, but fail if it is run tomorrow.\\
+Global states infer a requirement on the order the tests must be run in.
+This is bad since the order might change between test runs, which would
+make the tests fail for no reason. Global time references is bad since
+it depends on the time when the tests are run, which means that a test
+might pass if it is run today, but fail if it is run tomorrow.\\
 
 The Law of Demeter means that one unit should only have limited
 knowledge of other units, and only communicate with related modules
@@ -52,22 +52,26 @@ unit much easier.\\
 \subsubsection{Stubs, mocks and factory objects}
 \label{sec:theory_mocks}
 
-Another way of dealing with dependencies on other modules is to use some
-kind of object that replaces the other module. The replacement object
-has a known value that is specified in the test, which means that
-changes to the real object will not affect the test. The main reason for
-using replacement objects are often to make it more robust to code
-changes outside the tested unit. A replacement object might also be used
-instead of calls to external services such as web-based APIs in order
-to make the tests run when the service is unavailable, or to be able to
-test implementations that depends on classes that has not been
-implemented yet.\\
+A central part of unit testing is the isolation of each unit, since we
+do not want tests to fail because of unrelated changes. One way of
+dealing with dependencies on other modules is to use some kind of object
+that replaces the other module during the execution of the test. The
+replacement object has a known value that is specified by the test,
+which means that changes to the real object will not affect the result
+of the test.\\
 
 The naming of different kinds of replacement objects may differ, but two
 widely used concepts are \emph{stubs} and \emph{mocks}. Both these
 replacement objects are used by the tested unit instead of some other
-module, but mocks sets expectations on how it can be used by the tested
-module beforehand. \cite{web:mocks_arent_stubs}\\
+module, but mocks also sets expectations on how it can be used by the
+tested module beforehand. \cite{web:mocks_arent_stubs}\\
+
+As mentioned, the main reason for using mocks or stubs is often to make
+the test more robust to code changes outside the tested unit. Such
+replacement objects might also be used instead of calls to external
+services such as web- based APIs in order to make the tests run when the
+service is unavailable, or to be able to test implementations that
+depends on classes that has not been implemented yet.\\
 
 Another type of replacement object is called \emph{factory
 objects}\footnote{Also called fakes.}. This kind of object typically
@@ -77,7 +81,9 @@ properties that is needed for the test to run. The difference between a
 fake object and the real object is that fake objects may use some
 shortcut that does not work in production. One example is objects that
 are stored in memory instead of in a real database, in order to gain
-performance. \cite{web:mocks_arent_stubs}\\
+performance. Factory objects also provide a single entry point for
+constructing data, which makes it easier to maintain changes to the
+object structure. \cite{web:mocks_arent_stubs}\\
 
 \citet{video:boundaries} mentions some of the drawbacks with using mocks
 and stubs. If the interface of the replaced unit changes, this might not
@@ -85,17 +91,16 @@ be noticed in our test. Consider the scenario given in \ref{lst:mocks}.
 In this example we have written a test for the |take_cookie()| method of
 the |CookieJar| class, which replaces the |eat_cookie()| method with a
 stub in order to make the |CookieJar| class independent of the |Cookie|
-class.\\
+class. If we rename the |eat_cookie()| method to |eat()| without
+changing the test or the implementation of |take_cookie()|, the test
+might still pass although the code would fail in a production
+environment. This is since we have mocked an object that no longer
+exists in the |Cookie| class.\\
 
-If we rename the |eat_cookie()| method to |eat()| without changing the
-test or the implementation of |take_cookie()|, the test might still pass
-although the code would fail in a production environment. This is since
-we have mocked an object that no longer exists in the |Cookie| class.\\
-
-Some testing frameworks and plug-ins detects replacement of non-existing
-methods and warns or makes the test fail if such mocks are created
-\cite{video:boundaries}. Another possible solution is to re-factor the
-code to avoid the need for mocks or stubs.\\
+Some testing frameworks and plug-ins detect replacement of non-existing
+methods, and give a warning or make the test fail in these situations.
+Another possible solution is to do refactoring of the code to avoid the
+need for mocks and stubs. \cite{video:boundaries}\\
 
 \begin{lstlisting}[caption=Example of how mocking might make tests unaware
                            of changes which breaks functionality.,

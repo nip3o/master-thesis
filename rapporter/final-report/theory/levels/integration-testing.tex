@@ -2,11 +2,11 @@ Writing unit tests alone does not give sufficient test coverage for the
 whole system, since unit tests only assures that each single tested
 module works as expected. Since a unit test only assures that a single
 unit works as expected, faults may still reside in how the units work
-together. A well- tested function for validating a 12-digit personal
+together. A well-tested function for validating a 12-digit personal
 identification number is worth nothing if the module that uses it passes
-a 10-digit number as input. The purpose of integration testing is to
-test several individual units together, in order to see if they still
-work together as intended.\\
+a 10-digit number as input. The purpose of \emph{integration tests} is
+to test several individual units together, in order to see if a larger
+part of the software works as intended.\\
 
 There are several ways of performing integration testing, as well as
 arguments and opinions about the different ways. \citet{book:adp} state
@@ -44,21 +44,22 @@ time to do proper unit tests and instead introduce more sloppy
 designs.\\
 
 Instead of integrated tests, another type of integration tests called
-contract- and collaboration tests is proposed. The purpose of these
-tests is to verify the interface between all unit-tested modules by
-using mocks to test that Unit A tries to invoke the expected methods on
-Unit B (contract test). In order to avoid errors due to mocking, tests
-are also needed to make sure that Unit B really responds to the calls
-that are expected to be performed by Unit A in the contract test. The
+contract- and collaboration tests is proposed by
+\citeauthor{video:integrated_scam}. The purpose of these tests is to
+verify the interface between all unit-tested modules by using mocks to
+test that Unit~A tries to invoke the expected methods on Unit~B. This is
+called a contract test. In order to avoid errors due to mocking, tests
+are also needed to make sure that Unit~B really responds to the calls
+that are expected to be performed by Unit~A in the contract test. The
 idea of this is to build a chain of trust inside our own software via
-transitivity. This means that if Unit A and Unit B works together as
-expected, and Unit B and Unit C also works together as expected, Unit A
-and Unit C will also work together as expected.\\
+transitivity. This means that if Unit~A and Unit~B works together as
+expected, and Unit~B and Unit~C works together as expected, Unit~A
+and Unit~C will also work together as expected.\\
 
 One may however argue that large parts of the criticism pointed out by
 \citeauthor{video:integrated_scam} is based on the fact that integrated
 tests to a large part are used instead of unit tests, rather than as a
-complement as suggested by \citeauthor{book:pfleeger} and
-\citeauthor{book:adp}. One may also note that contract- and
-collaboration tests could be used when doing top-down or bottom-up
-testing, rather than using integrated tests.\\
+complement as suggested by \citeauthor{book:pfleeger} as well as
+\citeauthor{book:adp}. One option could also be to use contract- and
+collaboration tests when doing top-down or bottom-up testing, rather
+than using integrated tests.\\

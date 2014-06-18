@@ -33,7 +33,17 @@ text in the following sections.\\
     \begin{tabular}{l l l l l}
         Phase & No. of tests & Total time & Time per test & Tests per second \\
         \hline
-        Before the case study & 12 & \sout{43 s} & \sout{3.6 s} & \sout{0.27}\\
+        After second part & 34 &  0.043 s & 1.3 ms & 791\\
+    \end{tabular}
+    \caption{ Execution times of Jasmine unit tests. }
+    \label{tab:jasmine_times}
+\end{table}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{l l l l l}
+        Phase & No. of tests & Total time & Time per test & Tests per second \\
+        \hline
         After the first part  & 10 & 160 s & 16 s & 0.063\\
         After the second part & 8 &  155 s & 19 s & 0.052\\
     \end{tabular}
@@ -53,35 +63,22 @@ text in the following sections.\\
     \label{tab:rspec_browser_times}
 \end{table}
 
-\begin{table}[t]
-    \centering
-    \begin{tabular}{l l l l l}
-        Phase & No. of tests & Total time & Time per test & Tests per second \\
-        \hline
-        After second part & 34 &  0.043 s & 1.3 ms & 791\\
-    \end{tabular}
-    \caption{ Execution times of Jasmine unit tests. }
-    \label{tab:jasmine_times}
-\end{table}
-
 
 \subsection{Before the case study}
 
 The total running time of the 59 RSpec integration- and unit tests
-before the case study was 19.9 seconds. Average test execution time was
-340 ms per test, which means an execution rate of three tests per
+before the case study was 19.9 seconds. The average test execution time
+was 340 ms per test, which means an execution rate of three tests per
 second.\\
 
 Twelve Cucumber browser tests existed at this time (with 178 steps), but
 none of these tests passed at this stage. After fixing the most critical
 issues with these tests, 36 steps passed in 42.7 seconds. The average
-time per test was 3.6 seconds.\\
-
-Note that Cucumber stops executing a test as soon as some part of the
-test fails. Since almost all of the tests failed at an early stage,
-large part of the test suite was never executed and the execution times
-are therefore misleading. We have chosen to include them anyway for
-completeness.\\
+time per test was 3.6 seconds. It should however be noted that Cucumber
+stops executing a test as soon as some part of the test fails. Since
+almost all of the tests failed at an early stage, large part of the test
+suite was never executed and the execution times are therefore
+misleading.\\
 
 
 \subsection{After refactoring old tests}
@@ -118,6 +115,5 @@ the latest revision of the code as of June 2014, there are ten RSpec
 browser tests, and the total running time of these are 38 seconds. The
 average time per test is 3.8 seconds. While these new tests are not
 strictly a part of the case study, we have chosen to include them in
-order to get more robust measurements (since we get a sample size of ten
-instead of three).\\
+order to get a more robust value for the average time per test.\\
 

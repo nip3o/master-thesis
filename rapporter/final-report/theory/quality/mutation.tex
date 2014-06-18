@@ -4,14 +4,14 @@ from what happens when we modify the code. The idea is that if the code
 is incorrect, the test should fail. Thus, we can modify the code so it
 becomes incorrect and then look at whether the test fails or not.\\
 
-Mutation testing is done by creating several versions of the tested
-code where each version contains a slight modification. Each
-such version containing a mutated version of the original source code is
+\emph{Mutation testing} is done by creating several versions of the
+tested code where each version contains a slight modification. Each such
+version containing a mutated version of the original source code is
 called a \emph{mutant}. A mutant only differs at one location compared
 to the original program, which means that each mutant should represent
 exactly one bug. \cite{article:mutation, wiki:mutation}\\
 
-\begin{lstlisting}[caption=Example of a piece of code before mutation,
+\begin{lstlisting}[caption=Example of a piece of code before mutation.,
                    label=lst:mutation_before, float=t]
     def odd?(x, y)
         return (x % 2) && (y % 2)
@@ -19,7 +19,7 @@ exactly one bug. \cite{article:mutation, wiki:mutation}\\
 \end{lstlisting}
 
 
-\begin{lstlisting}[caption=Mutated versions of \ref{lst:mutation_before},
+\begin{lstlisting}[caption=Mutated versions of code listing \ref{lst:mutation_before}.,
                    label=lst:mutation_after, float=t]
     def odd?(x, y)
         return (x % 2) && (x % 2)
@@ -79,7 +79,7 @@ overview of multiple ways of dealing with equivalent mutants, but
 concludes that even though some approaches looks promising, there is
 still much work to be done in this field.\\
 
-\begin{lstlisting}[caption=Example of a program with an equivalent mutant,
+\begin{lstlisting}[caption=Example of a program with an equivalent mutant.,
                    label=lst:mutation_eq, float=t]
     def some_function(x)
         i = 0
