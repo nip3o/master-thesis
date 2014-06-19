@@ -3,7 +3,7 @@ For the server side, we have chosen to mainly write integration
 tests, since the server side in this particular application is mostly
 concerned about loading and storing data. Most of these are integration
 tests of Rails controllers, which send a request with input data to the
-controller and asserts that correct data exist in database. We argue
+controller and assert that correct data exist in database. We argue
 that it would be hard to write good unit tests for such logic
 without using an actual database and requests. Low-level unit tests
 without database access have instead been written for model instance

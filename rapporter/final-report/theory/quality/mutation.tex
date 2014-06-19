@@ -51,6 +51,9 @@ by a programmer. \cite{article:mutation}\\
 All tests that we want to evaluate are run for the original program as
 well as for each mutant. If the test results differ, the mutant is
 \emph{killed}, which means that the test suite has discovered the bug.
+In practice, a mutant is killed when all relevant tests fail for the
+mutant. \cite{wiki:mutation}\\
+
 Some mutants may however have a change that does not change the
 functionality of the program. An example of this can be seen in
 \ref{lst:mutation_eq}, where two variables are equal and therefore not
